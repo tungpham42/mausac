@@ -20,7 +20,7 @@ export default function ColorSearchForm() {
         <Col md={8}>
           <Form.Control
             type="text"
-            placeholder="Điền màu (v.d. red, #00edc3)"
+            placeholder="Nhập tên màu (v.d. red, #00edc3)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />

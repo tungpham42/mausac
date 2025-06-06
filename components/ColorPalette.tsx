@@ -21,7 +21,11 @@ export default function ColorPalette({
           return (
             <Col key={idx}>
               <Card>
-                <Card.Body style={{ backgroundColor: hex, height: "50px" }} />
+                <Card.Body
+                  as={Link}
+                  href={`/${hexClean}`}
+                  style={{ backgroundColor: hex, height: "50px" }}
+                />
                 <Card.Footer className="text-center">
                   <Link href={`/${hexClean}`}>{hex}</Link>
                 </Card.Footer>

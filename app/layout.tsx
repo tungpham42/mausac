@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootswatch/dist/lumen/bootstrap.min.css";
 import "./globals.css";
 import { getHostUrl } from "@/utils/getHostUrl";
 

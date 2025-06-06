@@ -13,6 +13,7 @@ import ColorCard from "@/components/ColorCard";
 import ColorFormats from "@/components/ColorFormats";
 import ColorPalette from "@/components/ColorPalette";
 import ColorSearchForm from "@/components/ColorSearchForm";
+import Link from "next/link";
 
 export default async function ColorPage({
   params,
@@ -39,7 +40,9 @@ export default async function ColorPage({
 
   return (
     <div className="container mt-5">
-      <h1 className="mb-4">Tra cứu mã màu</h1>
+      <Link href="/" className="mb-4">
+        <h1>Tra cứu mã màu</h1>
+      </Link>
       <ColorSearchForm />
       <h2>
         {formats.hex} - {color.toName() || "Unnamed Color"}
