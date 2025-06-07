@@ -35,11 +35,11 @@ export default function ScreenColorPicker() {
   return (
     <div className="mb-4">
       <ButtonGroup>
-        <Button variant="success" onClick={handlePickColor}>
+        <Button variant="success" size="lg" onClick={handlePickColor}>
           <FontAwesomeIcon icon={faMousePointer} className="me-2" />
           Chọn màu từ màn hình
         </Button>
-        <Button variant="outline-secondary" onClick={handleReset}>
+        <Button variant="outline-secondary" size="lg" onClick={handleReset}>
           <FontAwesomeIcon icon={faRedo} className="me-2" />
           Đặt lại
         </Button>

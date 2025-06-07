@@ -69,7 +69,7 @@ export default function ImageColorPicker() {
         <>
           <Button
             variant="outline-secondary"
-            size="sm"
+            size="lg"
             className="mb-3 me-2"
             onClick={handleReset}
           >
@@ -78,7 +78,7 @@ export default function ImageColorPicker() {
           </Button>
           <Button
             variant="outline-primary"
-            size="sm"
+            size="lg"
             className="mb-3"
             onClick={handlePickColor}
           >
