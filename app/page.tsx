@@ -63,7 +63,9 @@ export default function HomePage() {
               />
               <Card.Body>
                 <Card.Title>{color.name}</Card.Title>
-                <Card.Text>Mã HEX: {color.hex}</Card.Text>
+                <Card.Text>
+                  Mã HEX: <span className="color-code">{color.hex}</span>
+                </Card.Text>
                 <Link
                   href={`/${color.clean}`}
                   className="stretched-link"

@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Questrial&display=swap");
 
 :root {
   --background: #f8fafc;
@@ -102,4 +102,10 @@ a:hover {
   html {
     color-scheme: dark;
   }
+}
+
+span.color-code {
+  font-family: "Geist Mono", Courier, monospace;
+  font-weight: 400;
+  color: var(--foreground);
 }

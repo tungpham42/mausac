@@ -48,7 +48,9 @@ export default function ScreenColorPicker() {
       {pickedColor && (
         <Alert variant="info" className="mt-3">
           <strong>Màu đã chọn:</strong>{" "}
-          <Link href={`/${hexClean}`}>{pickedColor}</Link>
+          <Link href={`/${hexClean}`}>
+            <span className="color-code">{pickedColor}</span>
+          </Link>
           <Link href={`/${hexClean}`}>
             <div
               style={{

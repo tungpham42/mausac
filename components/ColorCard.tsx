@@ -14,8 +14,10 @@ export default function ColorCard({ hex }: { hex: string }) {
         style={{
           backgroundColor: hex,
           height: "100px",
-          borderBottomLeftRadius: "8px",
-          borderBottomRightRadius: "8px",
+          borderTopLeftRadius: "0 !important",
+          borderTopRightRadius: "0 !important",
+          borderBottomLeftRadius: "8px !important",
+          borderBottomRightRadius: "8px !important",
         }}
       />
     </Card>

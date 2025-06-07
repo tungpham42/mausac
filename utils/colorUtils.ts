@@ -16,7 +16,7 @@ export function getColorFormats(color: tinycolor.Instance) {
 export function getShades(color: string) {
   const parsedColor = parseColor(color);
   if (!parsedColor) return null;
-  return Array.from({ length: 9 }, (_, i) =>
+  return Array.from({ length: 12 }, (_, i) =>
     parsedColor.darken(i).toHexString()
   );
 }
@@ -24,7 +24,7 @@ export function getShades(color: string) {
 export function getTints(color: string) {
   const parsedColor = parseColor(color);
   if (!parsedColor) return null;
-  return Array.from({ length: 9 }, (_, i) =>
+  return Array.from({ length: 12 }, (_, i) =>
     parsedColor.lighten(i).toHexString()
   );
 }

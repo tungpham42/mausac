@@ -50,7 +50,8 @@ export default async function ColorPage({
       </Link>
       <ColorSearchForm />
       <h2>
-        {formats.hex} - {color.toName() || "Unnamed Color"}
+        <span className="color-code">{formats.hex}</span> -{" "}
+        {color.toName() || "Màu không tên"}
       </h2>
       <ColorCard hex={formats.hex} />
       <ColorFormats formats={formats} />

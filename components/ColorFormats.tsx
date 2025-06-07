@@ -19,9 +19,15 @@ export default function ColorFormats({ formats }: Props) {
         Định dạng
       </Card.Header>
       <ListGroup variant="flush">
-        <ListGroup.Item>HEX: {formats.hex}</ListGroup.Item>
-        <ListGroup.Item>RGB: {formats.rgb}</ListGroup.Item>
-        <ListGroup.Item>HSL: {formats.hsl}</ListGroup.Item>
+        <ListGroup.Item>
+          HEX: <span className="color-code">{formats.hex}</span>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          RGB: <span className="color-code">{formats.rgb}</span>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          HSL: <span className="color-code">{formats.hsl}</span>
+        </ListGroup.Item>
       </ListGroup>
     </Card>
   );
