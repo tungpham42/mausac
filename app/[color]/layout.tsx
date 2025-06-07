@@ -12,16 +12,15 @@ export async function generateMetadata({
   const paramsResolved = await params;
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
-  const name = color?.toName() || paramsResolved.color;
 
   const hexClean = hex.replace("#", "");
 
   return {
-    title: `${name} - Tra Cứu Mã Màu`,
-    description: `Tổng hợp các biến thể của màu ${name}`,
+    title: `${hex} - Tra Cứu Mã Màu`,
+    description: `Tổng hợp các biến thể của màu ${hex}`,
     openGraph: {
-      title: `${name} - Tra Cứu Mã Màu`,
-      description: `Tổng hợp các biến thể của màu ${name}`,
+      title: `${hex} - Tra Cứu Mã Màu`,
+      description: `Tổng hợp các biến thể của màu ${hex}`,
       type: "website",
       url: `${hostUrl}/${hexClean}`,
       siteName: "Tra Cứu Mã Màu",
@@ -30,7 +29,7 @@ export async function generateMetadata({
           url: `https://singlecolorimage.com/get/${hexClean}/1200x630`,
           width: 1200,
           height: 630,
-          alt: `Xem trước ${name}`,
+          alt: `Xem trước ${hex} - Tra Cứu Mã Màu`,
         },
       ],
     },
