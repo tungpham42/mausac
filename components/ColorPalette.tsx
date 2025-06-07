@@ -51,9 +51,9 @@ export default function ColorPalette({
               }
               xs={
                 hasTwelveColors
-                  ? 12
+                  ? 6
                   : hasSixColors
-                  ? 12
+                  ? 6
                   : hasThreeColors
                   ? 12
                   : 12
