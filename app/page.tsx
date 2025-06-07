@@ -30,7 +30,7 @@ export default function HomePage() {
           HEX (ví dụ: <code>#FF5733</code>).
         </li>
         <li>Nhấn nút &ldquo;Tìm kiếm&rdquo; để xem thông tin chi tiết.</li>
-        <li>Công cụ hỗ trợ cả tiếng Việt và tiếng Anh.</li>
+        <li>Công cụ hỗ trợ chọn màu từ màn hình hoặc ảnh tải lên.</li>
       </ul>
       <hr className="my-5" />
       <h2 className="mb-4">

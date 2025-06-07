@@ -6,16 +6,6 @@ import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMousePointer, faRedo } from "@fortawesome/free-solid-svg-icons";
 
-declare global {
-  interface Window {
-    EyeDropper?: typeof EyeDropper;
-  }
-
-  class EyeDropper {
-    open(): Promise<{ sRGBHex: string }>;
-  }
-}
-
 export default function ScreenColorPicker() {
   const [pickedColor, setPickedColor] = useState<string | null>(null);
 

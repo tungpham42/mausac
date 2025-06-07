@@ -1,16 +1,19 @@
 "use client";
-import { useState, useRef } from "react";
+
+import { useState } from "react";
 import { Form, Alert, Button, Image } from "react-bootstrap";
 import { parseColor } from "@/utils/colorUtils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faFileUpload, faRedo } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFileUpload,
+  faRedo,
+  faEyeDropper,
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function ImageColorPicker() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const imgRef = useRef<HTMLImageElement>(null);
 
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -24,40 +27,24 @@ export default function ImageColorPicker() {
     }
   };
 
-  const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (!canvas || !ctx) return;
+  const handlePickColor = async () => {
+    if (!window.EyeDropper) {
+      alert("Trình duyệt của bạn không hỗ trợ EyeDropper API");
+      return;
+    }
 
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const pixel = ctx.getImageData(x, y, 1, 1).data;
-    const hex = `#${[...pixel]
-      .slice(0, 3)
-      .map((n) => n.toString(16).padStart(2, "0"))
-      .join("")}`;
-    setPickedColor(hex);
-  };
-
-  const drawToCanvas = () => {
-    const img = imgRef.current;
-    const canvas = canvasRef.current;
-    const ctx = canvas?.getContext("2d");
-    if (img && canvas && ctx) {
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0);
+    const eyeDropper = new window.EyeDropper();
+    try {
+      const result = await eyeDropper.open();
+      setPickedColor(result.sRGBHex);
+    } catch (err) {
+      console.error("Color pick cancelled or failed", err);
     }
   };
 
   const handleReset = () => {
     setImageSrc(null);
     setPickedColor(null);
-    if (canvasRef.current) {
-      const ctx = canvasRef.current.getContext("2d");
-      ctx?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    }
   };
 
   const parsedColor = pickedColor ? parseColor(pickedColor) : null;
@@ -83,27 +70,27 @@ export default function ImageColorPicker() {
           <Button
             variant="outline-secondary"
             size="sm"
-            className="mb-3"
+            className="mb-3 me-2"
             onClick={handleReset}
           >
             <FontAwesomeIcon icon={faRedo} className="me-2" />
             Đặt lại
           </Button>
+          <Button
+            variant="outline-primary"
+            size="sm"
+            className="mb-3"
+            onClick={handlePickColor}
+          >
+            <FontAwesomeIcon icon={faEyeDropper} className="me-2" />
+            Chọn màu từ ảnh
+          </Button>
           <Image
-            ref={imgRef}
             src={imageSrc}
             alt="Uploaded"
-            style={{ display: "none" }}
-            onLoad={drawToCanvas}
-          />
-          <canvas
-            ref={canvasRef}
-            onClick={handleCanvasClick}
-            style={{
-              maxWidth: "100%",
-              cursor: "crosshair",
-              border: "1px solid #ccc",
-            }}
+            fluid
+            className="border mt-2"
+            style={{ maxHeight: "80vh", objectFit: "contain" }}
           />
         </>
       )}
