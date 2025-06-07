@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Form, Button, Row, Col } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export default function ColorSearchForm() {
   const [query, setQuery] = useState("");
@@ -14,6 +16,7 @@ export default function ColorSearchForm() {
       router.push(`/${encodeURIComponent(cleanedQuery)}`);
     }
   };
+
   return (
     <Form onSubmit={handleSubmit} className="mb-4">
       <Row>
@@ -27,6 +30,7 @@ export default function ColorSearchForm() {
         </Col>
         <Col md={4}>
           <Button type="submit" variant="primary">
+            <FontAwesomeIcon icon={faSearch} className="me-2" />
             Tìm kiếm
           </Button>
         </Col>

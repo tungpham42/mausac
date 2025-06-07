@@ -1,5 +1,7 @@
 "use client";
 import { Card, ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faList } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   formats: {
@@ -12,7 +14,10 @@ type Props = {
 export default function ColorFormats({ formats }: Props) {
   return (
     <Card className="mb-3">
-      <Card.Header>Định dạng</Card.Header>
+      <Card.Header>
+        <FontAwesomeIcon icon={faList} className="me-2" />
+        Định dạng
+      </Card.Header>
       <ListGroup variant="flush">
         <ListGroup.Item>HEX: {formats.hex}</ListGroup.Item>
         <ListGroup.Item>RGB: {formats.rgb}</ListGroup.Item>

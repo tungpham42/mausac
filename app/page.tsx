@@ -1,35 +1,49 @@
 "use client";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import ColorSearchForm from "@/components/ColorSearchForm";
+import ScreenColorPicker from "@/components/ScreenColorPicker";
+import ImageColorPicker from "@/components/ImageColorPicker";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPalette, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 
 export default function HomePage() {
   return (
     <Container className="mt-5">
-      <h1 className="mb-4 text-center">🎨 Tra cứu Mã Màu</h1>
-
+      <h1 className="mb-4 text-center">
+        <FontAwesomeIcon icon={faPalette} className="me-2" />
+        Tra cứu Mã Màu
+      </h1>
       <p className="text-center">
         Chào mừng bạn đến với công cụ tra cứu mã màu. Hãy nhập tên màu hoặc mã
         HEX để tìm kiếm màu sắc yêu thích của bạn!
       </p>
-
       <ColorSearchForm />
-
       <hr className="my-5" />
-
-      <h2 className="mb-4">📘 Hướng dẫn sử dụng</h2>
+      <h2 className="mb-4">
+        <FontAwesomeIcon icon={faInfoCircle} className="me-2" />
+        Hướng dẫn sử dụng
+      </h2>
       <ul>
         <li>
           Nhập tên màu (ví dụ: <code>red</code>, <code>blue</code>) hoặc mã màu
           HEX (ví dụ: <code>#FF5733</code>).
         </li>
-        <li>Nhấn nút &ldquo;Tìm kiếm&rdquo; để hiển thị thông tin chi tiết.</li>
+        <li>Nhấn nút &ldquo;Tìm kiếm&rdquo; để xem thông tin chi tiết.</li>
         <li>Công cụ hỗ trợ cả tiếng Việt và tiếng Anh.</li>
       </ul>
-
       <hr className="my-5" />
-
-      <h2 className="mb-4">🌈 Một số màu sắc phổ biến</h2>
+      <h2 className="mb-4">
+        <FontAwesomeIcon icon={faPalette} className="me-2" />
+        Chọn màu từ màn hình hoặc ảnh
+      </h2>
+      <ScreenColorPicker />
+      <ImageColorPicker />
+      <hr className="my-5" />
+      <h2 className="mb-4">
+        <FontAwesomeIcon icon={faPalette} className="me-2" />
+        Một số màu sắc phổ biến
+      </h2>
       <Row>
         {[
           { name: "Đỏ", hex: "#FF0000", clean: "FF0000" },
