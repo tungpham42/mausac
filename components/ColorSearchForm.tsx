@@ -20,7 +20,7 @@ export default function ColorSearchForm() {
   return (
     <Form onSubmit={handleSubmit} className="mb-4">
       <Row>
-        <Col md={11} sm={11} xs={10} className="d-flex justify-content-end">
+        <Col md={11} sm={11} xs={9} className="d-flex justify-content-end">
           <Form.Control
             type="text"
             placeholder="Nhập tên màu (v.d. red, #00edc3)"
@@ -28,7 +28,7 @@ export default function ColorSearchForm() {
             onChange={(e) => setQuery(e.target.value)}
           />
         </Col>
-        <Col md={1} sm={1} xs={2} className="d-flex justify-content-start">
+        <Col md={1} sm={1} xs={3} className="d-flex justify-content-start">
           <Button type="submit" variant="primary">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
