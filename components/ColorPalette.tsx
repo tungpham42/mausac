@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { hexToRgba, parseColor } from "@/utils/colorUtils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette, faCopy } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 export default function ColorPalette({
   title,
@@ -26,10 +26,7 @@ export default function ColorPalette({
 
   return (
     <>
-      <h4>
-        <FontAwesomeIcon icon={faPalette} className="me-2" />
-        {title}
-      </h4>
+      <h4>{title}</h4>
       <Row className="mb-4">
         {colors.map((color, idx) => {
           const parsedColor = parseColor(color);

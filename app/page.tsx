@@ -4,8 +4,6 @@ import ColorSearchForm from "@/components/ColorSearchForm";
 import ScreenColorPicker from "@/components/ScreenColorPicker";
 import ImageColorPicker from "@/components/ImageColorPicker";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPalette, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { hexToRgba } from "@/utils/colorUtils";
 
 export default function HomePage() {
@@ -18,10 +16,7 @@ export default function HomePage() {
       </p>
       <ColorSearchForm />
       <hr className="my-5" />
-      <h2 className="mb-4">
-        <FontAwesomeIcon icon={faInfoCircle} className="me-2" />
-        Hướng dẫn sử dụng
-      </h2>
+      <h2 className="mb-4">Hướng dẫn sử dụng</h2>
       <ul>
         <li>
           Nhập tên màu (ví dụ: <code>red</code>, <code>blue</code>) hoặc mã màu
@@ -31,17 +26,11 @@ export default function HomePage() {
         <li>Công cụ hỗ trợ chọn màu từ màn hình hoặc ảnh tải lên.</li>
       </ul>
       <hr className="my-5" />
-      <h2 className="mb-4">
-        <FontAwesomeIcon icon={faPalette} className="me-2" />
-        Chọn màu từ màn hình hoặc ảnh
-      </h2>
+      <h2 className="mb-4">Chọn màu từ màn hình hoặc ảnh</h2>
       <ScreenColorPicker />
       <ImageColorPicker />
       <hr className="my-5" />
-      <h2 className="mb-4">
-        <FontAwesomeIcon icon={faPalette} className="me-2" />
-        Một số màu sắc phổ biến
-      </h2>
+      <h2 className="mb-4">Một số màu sắc phổ biến</h2>
       <Row>
         {[
           { name: "Đỏ", hex: "#FF0000", clean: "FF0000" },
