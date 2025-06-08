@@ -52,7 +52,7 @@ export default function HomePage() {
           <Col key={color.hex} md={3} className="mb-4">
             <Card
               style={{
-                border: "2px solid transparent",
+                border: "1px solid #f8fafc",
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.borderColor = color.hex;
@@ -62,7 +62,7 @@ export default function HomePage() {
                 )}`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "transparent";
+                e.currentTarget.style.borderColor = "#f8fafc";
                 e.currentTarget.style.boxShadow = "none";
               }}
             >

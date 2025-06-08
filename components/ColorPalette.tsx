@@ -63,7 +63,7 @@ export default function ColorPalette({
               <Card
                 className="mb-4"
                 style={{
-                  border: "2px solid transparent",
+                  border: "1px solid #f8fafc",
                   position: "relative",
                 }}
                 onMouseEnter={(e) => {
@@ -74,7 +74,7 @@ export default function ColorPalette({
                   )}`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "transparent";
+                  e.currentTarget.style.borderColor = "#f8fafc";
                   e.currentTarget.style.boxShadow = "none";
                 }}
               >
