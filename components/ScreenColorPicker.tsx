@@ -35,7 +35,7 @@ export default function ScreenColorPicker() {
   return (
     <div className="mb-4">
       <ButtonGroup>
-        <Button variant="success" size="lg" onClick={handlePickColor}>
+        <Button variant="primary" size="lg" onClick={handlePickColor}>
           <FontAwesomeIcon icon={faMousePointer} className="me-2" />
           Chọn màu từ màn hình
         </Button>
@@ -51,14 +51,18 @@ export default function ScreenColorPicker() {
           <Link href={`/${hexClean}`}>
             <span className="color-code">{pickedColor}</span>
           </Link>
-          <Link href={`/${hexClean}`}>
+          <Link
+            href={`/${hexClean}`}
+            style={{ display: "block", width: "fit-content" }}
+          >
             <div
               style={{
                 backgroundColor: pickedColor,
-                width: "100px",
-                height: "40px",
+                width: "200px",
+                height: "80px",
                 border: "1px solid #ccc",
                 marginTop: "8px",
+                display: "block",
               }}
             />
           </Link>
