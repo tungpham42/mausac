@@ -52,3 +52,27 @@ export function getSplitComplement(color: string) {
   if (!parsedColor) return null;
   return parsedColor.splitcomplement().map((c) => c.toHexString());
 }
+
+export function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+export function rgbaToHex(rgba: string): string {
+  const result = rgba.match(
+    /^rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*[\d.]+)?\s*\)$/
+  );
+  if (!result) return "#000000"; // Default to black if invalid
+  const r = parseInt(result[1]).toString(16).padStart(2, "0");
+  const g = parseInt(result[2]).toString(16).padStart(2, "0");
+  const b = parseInt(result[3]).toString(16).padStart(2, "0");
+  return `#${r}${g}${b}`;
+}
+
+export function hexToClean(color: string): string {
+  const parsedColor = parseColor(color);
+  const hex = parsedColor?.toHexString() || "#000000";
+  return hex.replace("#", "");
+}

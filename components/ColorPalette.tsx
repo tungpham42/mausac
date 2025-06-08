@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { Row, Col, Card } from "react-bootstrap";
-import { parseColor } from "@/utils/colorUtils";
+import { hexToRgba, parseColor } from "@/utils/colorUtils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette, faCopy } from "@fortawesome/free-solid-svg-icons";
 
@@ -60,7 +60,24 @@ export default function ColorPalette({
               }
               key={idx}
             >
-              <Card className="mb-4" style={{ position: "relative" }}>
+              <Card
+                className="mb-4"
+                style={{
+                  border: "2px solid transparent",
+                  position: "relative",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = hex;
+                  e.currentTarget.style.boxShadow = `0 4px 12px ${hexToRgba(
+                    hex,
+                    0.5
+                  )}`;
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "transparent";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
                 <Card.Body
                   as={Link}
                   href={`/${hexClean}`}

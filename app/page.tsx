@@ -6,14 +6,12 @@ import ImageColorPicker from "@/components/ImageColorPicker";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { hexToRgba } from "@/utils/colorUtils";
 
 export default function HomePage() {
   return (
     <Container className="mt-5">
-      <h1 className="mb-4 text-center">
-        <FontAwesomeIcon icon={faPalette} className="me-2" />
-        Tra cứu Mã Màu
-      </h1>
+      <h1 className="mb-4 text-center">Tra cứu Mã Màu</h1>
       <p className="text-center">
         Chào mừng bạn đến với công cụ tra cứu mã màu. Hãy nhập tên màu hoặc mã
         HEX để tìm kiếm màu sắc yêu thích của bạn!
@@ -52,7 +50,22 @@ export default function HomePage() {
           { name: "Vàng", hex: "#FFFF00", clean: "FFFF00" },
         ].map((color) => (
           <Col key={color.hex} md={3} className="mb-4">
-            <Card>
+            <Card
+              style={{
+                border: "2px solid transparent",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = color.hex;
+                e.currentTarget.style.boxShadow = `0 4px 12px ${hexToRgba(
+                  color.hex,
+                  0.5
+                )}`;
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "transparent";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+            >
               <div
                 style={{
                   borderTopLeftRadius: "8px",

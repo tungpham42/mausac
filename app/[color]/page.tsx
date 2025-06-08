@@ -14,8 +14,6 @@ import ColorFormats from "@/components/ColorFormats";
 import ColorPalette from "@/components/ColorPalette";
 import ColorSearchForm from "@/components/ColorSearchForm";
 import Link from "next/link";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from "@fortawesome/free-solid-svg-icons";
 
 export default async function ColorPage({
   params,
@@ -42,11 +40,8 @@ export default async function ColorPage({
 
   return (
     <div className="container mt-5">
-      <Link href="/" className="mb-4">
-        <h1>
-          <FontAwesomeIcon icon={faHome} className="me-2" />
-          Tra cứu mã màu
-        </h1>
+      <Link href="/" className="mb-4 text-center d-block">
+        <h1>Tra cứu mã màu</h1>
       </Link>
       <ColorSearchForm />
       <h2>

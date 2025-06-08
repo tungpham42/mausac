@@ -11,6 +11,7 @@ export default function ColorCard({ hex }: { hex: string }) {
         Màu sắc
       </Card.Header>
       <Card.Body
+        className="color-card-body"
         style={{
           backgroundColor: hex,
           height: "100px",
