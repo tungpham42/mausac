@@ -69,11 +69,7 @@ export default function HomePage() {
                 <Card.Text>
                   Mã HEX: <span className="color-code">{color.hex}</span>
                 </Card.Text>
-                <Link
-                  href={`/${color.clean}`}
-                  className="stretched-link"
-                  passHref
-                >
+                <Link href={`/${color.clean}`} passHref>
                   <Button variant="primary">Xem chi tiết</Button>
                 </Link>
               </Card.Body>
