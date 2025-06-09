@@ -13,7 +13,7 @@ type Props = {
 
 export default function ColorFormats({ formats }: Props) {
   return (
-    <Card className="mb-3">
+    <Card className="mb-5">
       <Card.Header>
         <FontAwesomeIcon icon={faList} className="me-2" />
         Định dạng

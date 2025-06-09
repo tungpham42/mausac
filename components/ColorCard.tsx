@@ -5,7 +5,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 
 export default function ColorCard({ hex }: { hex: string }) {
   return (
-    <Card className="my-3">
+    <Card className="my-4">
       <Card.Header>
         <FontAwesomeIcon icon={faEye} className="me-2" />
         Màu sắc
