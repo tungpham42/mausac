@@ -109,10 +109,12 @@ export default function ImageColorPicker() {
               style={{
                 backgroundColor: pickedColor,
                 width: "200px",
-                height: "80px",
+                height: "100px",
                 border: "1px solid #ccc",
+                borderRadius: "8px",
                 marginTop: "8px",
                 display: "block",
+                boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
               }}
             />
           </Link>
