@@ -37,9 +37,5 @@ export async function generateMetadata({
 }
 
 export default function ColorLayout({ children }: { children: ReactNode }) {
-  return (
-    <html lang="vi">
-      <body>{children}</body>
-    </html>
-  );
+  return <>{children}</>;
 }
