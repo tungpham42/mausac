@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { getHostUrl } from "@/utils/getHostUrl";
+import Footer from "@/components/Footer";
 
 export async function generateMetadata(): Promise<Metadata> {
   const hostUrl = await getHostUrl();
@@ -36,7 +37,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="vi">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
