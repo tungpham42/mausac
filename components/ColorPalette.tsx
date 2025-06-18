@@ -76,38 +76,38 @@ export default function ColorPalette({
                     "0 4px 6px rgba(0, 0, 0, 0.1)";
                 }}
               >
-                <Card.Body
-                  as={Link}
-                  href={`/${hexClean}`}
-                  style={{
-                    backgroundColor: hex,
-                    height: "50px",
-                    position: "relative",
-                  }}
-                >
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      copyToClipboard(hex);
-                    }}
+                <Link href={`/${hexClean}`} passHref>
+                  <Card.Body
                     style={{
-                      position: "absolute",
-                      top: "5px",
-                      right: "5px",
-                      background: "rgba(0, 0, 0, 0.5)",
-                      border: "none",
-                      borderRadius: "4px",
-                      padding: "5px",
-                      cursor: "pointer",
+                      backgroundColor: hex,
+                      height: "50px",
+                      position: "relative",
                     }}
-                    title="Copy color"
                   >
-                    <FontAwesomeIcon
-                      icon={faCopy}
-                      style={{ color: "#ffffff" }}
-                    />
-                  </button>
-                </Card.Body>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        copyToClipboard(hex);
+                      }}
+                      style={{
+                        position: "absolute",
+                        top: "5px",
+                        right: "5px",
+                        background: "rgba(0, 0, 0, 0.5)",
+                        border: "none",
+                        borderRadius: "4px",
+                        padding: "5px",
+                        cursor: "pointer",
+                      }}
+                      title="Copy color"
+                    >
+                      <FontAwesomeIcon
+                        icon={faCopy}
+                        style={{ color: "#ffffff" }}
+                      />
+                    </button>
+                  </Card.Body>
+                </Link>
                 {showAlert === hex && (
                   <div
                     style={{
