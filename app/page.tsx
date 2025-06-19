@@ -9,7 +9,7 @@ import { hexToRgba } from "@/utils/colorUtils";
 export default function HomePage() {
   return (
     <Container className="mt-5">
-      <h1 className="mb-4 text-center">Tra cứu Mã Màu</h1>
+      <h1 className="mb-4 text-center">Tra cứu mã màu</h1>
       <p className="text-center">
         Chào mừng bạn đến với công cụ tra cứu mã màu. Hãy nhập tên màu hoặc mã
         HEX để tìm kiếm màu sắc yêu thích của bạn!
