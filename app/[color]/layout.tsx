@@ -16,20 +16,20 @@ export async function generateMetadata({
   const hexClean = hex.replace("#", "");
 
   return {
-    title: `${hex} - Tra Cứu Mã Màu`,
+    title: `${hex} - Tra cứu mã màu`,
     description: `Tổng hợp các biến thể của màu ${hex}`,
     openGraph: {
-      title: `${hex} - Tra Cứu Mã Màu`,
+      title: `${hex} - Tra cứu mã màu`,
       description: `Tổng hợp các biến thể của màu ${hex}`,
       type: "website",
       url: `${hostUrl}/${hexClean}`,
-      siteName: "Tra Cứu Mã Màu",
+      siteName: "Tra cứu mã màu",
       images: [
         {
           url: `https://singlecolorimage.com/get/${hexClean}/1200x630`,
           width: 1200,
           height: 630,
-          alt: `Xem trước ${hex} - Tra Cứu Mã Màu`,
+          alt: `Xem trước ${hex} - Tra cứu mã màu`,
         },
       ],
     },
