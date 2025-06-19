@@ -26,6 +26,7 @@ export default function ColorSearchForm() {
             placeholder="Nhập tên màu (v.d. red, #00edc3)"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            required
           />
         </Col>
         <Col md={1} sm={1} xs={3} className="d-flex justify-content-start">
