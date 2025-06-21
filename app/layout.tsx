@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./globals.css";
 import { getHostUrl } from "@/utils/getHostUrl";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 export async function generateMetadata(): Promise<Metadata> {
   const hostUrl = await getHostUrl();
@@ -40,6 +41,7 @@ export default function RootLayout({
       <body>
         {children}
         <Footer />
+        <GoogleAnalytics ga_id="G-HHXZSNQ65X" />
       </body>
     </html>
   );
