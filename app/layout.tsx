@@ -4,6 +4,7 @@ import "./globals.css";
 import { getHostUrl } from "@/utils/getHostUrl";
 import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import MainBrandLogo from "@/components/MainBrandLogo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const hostUrl = await getHostUrl();
@@ -39,6 +40,12 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body>
+        <MainBrandLogo
+          logoSrc="/soft-logo.webp"
+          mainDomain="soft.io.vn"
+          dismissible={false}
+          altText="Logo Soft"
+        />
         {children}
         <Footer />
         <GoogleAnalytics ga_id="G-HHXZSNQ65X" />
