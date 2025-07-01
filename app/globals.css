@@ -58,17 +58,18 @@ h6 {
 
 a {
   color: var(--primary);
-  text-decoration: none;
+  text-decoration: none !important;
   transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--primary-hover);
+  text-decoration: underline !important;
 }
 
 .card {
   background: var(--card-bg);
-  border: 1px solid #f8fafc;
+  border: none !important;
   border-radius: var(--border-radius);
   box-shadow: var(--shadow);
   transition: all 0.5s ease;
