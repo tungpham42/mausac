@@ -11,6 +11,7 @@ export async function generateMetadata({
   const hostUrl = await getHostUrl();
   const params = await searchParams;
   const language = params.lang || "vi";
+  const canonicalUrl = params.lang ? `${hostUrl}?lang=${language}` : hostUrl;
 
   return {
     title: getTranslation(language, "metadata.home.title") as string,
@@ -19,6 +20,9 @@ export async function generateMetadata({
       "metadata.home.description"
     ) as string,
     keywords: getTranslation(language, "metadata.home.keywords") as string[],
+    alternates: {
+      canonical: canonicalUrl, // Include lang query string if present
+    },
     openGraph: {
       title: getTranslation(language, "metadata.home.ogTitle") as string,
       description: getTranslation(
@@ -26,7 +30,7 @@ export async function generateMetadata({
         "metadata.home.ogDescription"
       ) as string,
       type: "website",
-      url: hostUrl,
+      url: canonicalUrl, // Update openGraph.url to match canonical
       images: [
         {
           url: `${hostUrl}/1200x630.jpg`,

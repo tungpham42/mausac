@@ -36,6 +36,11 @@ export async function generateMetadata({
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
   const hexClean = hex.replace("#", "");
+  const colorName = color?.toName();
+  const baseUrl = `${hostUrl}/${colorName || hexClean}`;
+  const canonicalUrl = searchParamsResolved.lang
+    ? `${baseUrl}?lang=${language}`
+    : baseUrl;
 
   return {
     title: (
@@ -47,6 +52,9 @@ export async function generateMetadata({
     keywords: (
       getTranslation(language, "metadata.colorPage.keywords") as string[]
     ).map((kw) => kw.replace("<hex>", hex)),
+    alternates: {
+      canonical: canonicalUrl, // Include lang query string if present
+    },
     openGraph: {
       title: (
         getTranslation(language, "metadata.colorPage.ogTitle") as string
@@ -55,7 +63,7 @@ export async function generateMetadata({
         getTranslation(language, "metadata.colorPage.ogDescription") as string
       ).replace("<hex>", hex),
       type: "website",
-      url: `${hostUrl}/${hexClean}`,
+      url: canonicalUrl, // Update openGraph.url to match canonical
       siteName: getTranslation(
         language,
         "metadata.colorPage.siteName"
