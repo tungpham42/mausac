@@ -8,16 +8,16 @@ import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 export default function ColorPalette({
   label,
-  title,
+  type,
   colors,
 }: {
   label: string;
-  title: string;
+  type: string;
   colors: string[];
 }) {
-  const hasTwelveColors = title === "Shades" || title === "Tints";
-  const hasThreeColors = title === "Triadic" || title === "Split Complement";
-  const hasSixColors = title === "Analogous";
+  const hasTwelveColors = type === "Shades" || type === "Tints";
+  const hasThreeColors = type === "Triadic" || type === "Split Complement";
+  const hasSixColors = type === "Analogous";
   const [showAlert, setShowAlert] = useState<string | null>(null);
 
   const copyToClipboard = (hex: string) => {
