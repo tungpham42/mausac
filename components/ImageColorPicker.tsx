@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Form, Alert, Button, Image } from "react-bootstrap";
 import { parseColor } from "@/utils/colorUtils";
 import Link from "next/link";
@@ -15,6 +15,7 @@ export default function ImageColorPicker() {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
 
+  // Handle image upload from file input
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -27,6 +28,36 @@ export default function ImageColorPicker() {
     }
   };
 
+  // Handle paste event from clipboard
+  const handlePaste = (event: ClipboardEvent) => {
+    const items = event.clipboardData?.items;
+    if (!items) return;
+
+    for (const item of items) {
+      if (item.type.includes("image")) {
+        const blob = item.getAsFile();
+        if (blob) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            setImageSrc(e.target?.result as string);
+            setPickedColor(null);
+          };
+          reader.readAsDataURL(blob);
+        }
+        break;
+      }
+    }
+  };
+
+  // Add paste event listener
+  useEffect(() => {
+    window.addEventListener("paste", handlePaste);
+    return () => {
+      window.removeEventListener("paste", handlePaste);
+    };
+  }, []);
+
+  // Handle color picking with EyeDropper API
   const handlePickColor = async () => {
     if (!window.EyeDropper) {
       alert("Trình duyệt của bạn không hỗ trợ EyeDropper API");
@@ -42,6 +73,7 @@ export default function ImageColorPicker() {
     }
   };
 
+  // Reset image and color
   const handleReset = () => {
     setImageSrc(null);
     setPickedColor(null);
@@ -56,7 +88,7 @@ export default function ImageColorPicker() {
       <Form.Group controlId="formFile">
         <Form.Label>
           <FontAwesomeIcon icon={faFileUpload} className="me-2" />
-          Tải ảnh lên để chọn màu:
+          Tải ảnh lên hoặc dán từ clipboard (Ctrl+V / Cmd+V):
         </Form.Label>
         <Form.Control
           type="file"
@@ -87,7 +119,7 @@ export default function ImageColorPicker() {
           </Button>
           <Image
             src={imageSrc}
-            alt="Uploaded"
+            alt="Uploaded or pasted image"
             fluid
             className="border mt-2"
             style={{ maxHeight: "80vh", objectFit: "contain" }}
