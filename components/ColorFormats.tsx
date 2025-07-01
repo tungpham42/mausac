@@ -2,6 +2,8 @@
 import { Card, ListGroup } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faList } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { LanguageContext } from "@/context/LanguageContext";
 
 type Props = {
   formats: {
@@ -12,21 +14,26 @@ type Props = {
 };
 
 export default function ColorFormats({ formats }: Props) {
+  const { t } = useContext(LanguageContext);
+
   return (
     <Card className="mb-5">
       <Card.Header>
         <FontAwesomeIcon icon={faList} className="me-2" />
-        Định dạng
+        {t("colorFormats.header")}
       </Card.Header>
       <ListGroup variant="flush">
         <ListGroup.Item>
-          HEX: <span className="color-code">{formats.hex}</span>
+          {t("colorFormats.hex")}:{" "}
+          <span className="color-code">{formats.hex}</span>
         </ListGroup.Item>
         <ListGroup.Item>
-          RGB: <span className="color-code">{formats.rgb}</span>
+          {t("colorFormats.rgb")}:{" "}
+          <span className="color-code">{formats.rgb}</span>
         </ListGroup.Item>
         <ListGroup.Item>
-          HSL: <span className="color-code">{formats.hsl}</span>
+          {t("colorFormats.hsl")}:{" "}
+          <span className="color-code">{formats.hsl}</span>
         </ListGroup.Item>
       </ListGroup>
     </Card>

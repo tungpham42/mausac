@@ -1,18 +1,30 @@
 import Home from "@/components/Home";
 import type { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
+import { getTranslation } from "@/translations";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}): Promise<Metadata> {
   const hostUrl = await getHostUrl();
+  const params = await searchParams;
+  const language = params.lang || "vi";
+
   return {
-    title: "Tra cứu mã màu | Trang chủ",
-    description:
-      "Tra cứu mã màu nhanh chóng và chính xác. Hỗ trợ các định dạng màu sắc như HEX, RGB, HSL và cung cấp các biến thể màu sắc.",
-    keywords: ["mã màu", "tra cứu màu sắc", "màu sắc", "hex", "rgb", "hsl"],
+    title: getTranslation(language, "metadata.home.title") as string,
+    description: getTranslation(
+      language,
+      "metadata.home.description"
+    ) as string,
+    keywords: getTranslation(language, "metadata.home.keywords") as string[],
     openGraph: {
-      title: "Tra cứu mã màu | Trang chủ",
-      description:
-        "Tra cứu mã màu nhanh chóng và chính xác. Hỗ trợ các định dạng màu sắc như HEX, RGB, HSL và cung cấp các biến thể màu sắc.",
+      title: getTranslation(language, "metadata.home.ogTitle") as string,
+      description: getTranslation(
+        language,
+        "metadata.home.ogDescription"
+      ) as string,
       type: "website",
       url: hostUrl,
       images: [
@@ -20,14 +32,20 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${hostUrl}/1200x630.jpg`,
           width: 1200,
           height: 630,
-          alt: "Tra cứu mã màu",
+          alt: getTranslation(language, "metadata.home.ogImageAlt") as string,
         },
       ],
-      siteName: "Tra cứu mã màu",
+      siteName: getTranslation(language, "metadata.home.siteName") as string,
     },
   };
 }
 
-export default function HomePage() {
-  return <Home />;
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ lang?: string }>;
+}) {
+  const params = await searchParams;
+  const language = params.lang || "vi";
+  return <Home language={language} />;
 }

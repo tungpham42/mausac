@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Form, Alert, Button, Image } from "react-bootstrap";
 import { parseColor } from "@/utils/colorUtils";
 import Link from "next/link";
@@ -10,12 +10,13 @@ import {
   faRedo,
   faEyeDropper,
 } from "@fortawesome/free-solid-svg-icons";
+import { LanguageContext } from "@/context/LanguageContext";
 
 export default function ImageColorPicker() {
+  const { t, language } = useContext(LanguageContext);
   const [imageSrc, setImageSrc] = useState<string | null>(null);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
 
-  // Handle image upload from file input
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -28,7 +29,6 @@ export default function ImageColorPicker() {
     }
   };
 
-  // Handle paste event from clipboard
   const handlePaste = (event: ClipboardEvent) => {
     const items = event.clipboardData?.items;
     if (!items) return;
@@ -49,7 +49,6 @@ export default function ImageColorPicker() {
     }
   };
 
-  // Add paste event listener
   useEffect(() => {
     window.addEventListener("paste", handlePaste);
     return () => {
@@ -57,10 +56,9 @@ export default function ImageColorPicker() {
     };
   }, []);
 
-  // Handle color picking with EyeDropper API
   const handlePickColor = async () => {
     if (!window.EyeDropper) {
-      alert("Trình duyệt của bạn không hỗ trợ EyeDropper API");
+      alert(t("imageColorPicker.browserNotSupported"));
       return;
     }
 
@@ -73,7 +71,6 @@ export default function ImageColorPicker() {
     }
   };
 
-  // Reset image and color
   const handleReset = () => {
     setImageSrc(null);
     setPickedColor(null);
@@ -88,7 +85,7 @@ export default function ImageColorPicker() {
       <Form.Group controlId="formFile">
         <Form.Label>
           <FontAwesomeIcon icon={faFileUpload} className="me-2" />
-          Tải ảnh lên hoặc dán từ clipboard (Ctrl+V / Cmd+V):
+          {t("imageColorPicker.formLabel")}
         </Form.Label>
         <Form.Control
           type="file"
@@ -106,7 +103,7 @@ export default function ImageColorPicker() {
             onClick={handleReset}
           >
             <FontAwesomeIcon icon={faRedo} className="me-2" />
-            Đặt lại
+            {t("imageColorPicker.resetButton")}
           </Button>
           <Button
             variant="outline-primary"
@@ -115,11 +112,11 @@ export default function ImageColorPicker() {
             onClick={handlePickColor}
           >
             <FontAwesomeIcon icon={faEyeDropper} className="me-2" />
-            Chọn màu từ ảnh
+            {t("imageColorPicker.pickColorButton")}
           </Button>
           <Image
             src={imageSrc}
-            alt="Uploaded or pasted image"
+            alt={t("imageColorPicker.imageAlt")}
             fluid
             className="border mt-2"
             style={{ maxHeight: "80vh", objectFit: "contain" }}
@@ -129,12 +126,12 @@ export default function ImageColorPicker() {
 
       {pickedColor && (
         <Alert variant="info" className="mt-3">
-          <strong>Màu đã chọn:</strong>{" "}
-          <Link href={`/${hexClean}`}>
+          <strong>{t("imageColorPicker.selectedColor")}</strong>{" "}
+          <Link href={`/${hexClean}?lang=${language}`}>
             <span className="color-code">{pickedColor}</span>
           </Link>
           <Link
-            href={`/${hexClean}`}
+            href={`/${hexClean}?lang=${language}`}
             style={{ display: "block", width: "fit-content" }}
           >
             <div

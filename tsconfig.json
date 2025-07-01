@@ -24,6 +24,7 @@
       "@/*": ["./*"],
       "@/styles/*": ["styles/*"],
       "@/components/*": ["components/*"],
+      "@/context/*": ["context/*"],
       "@/data/*": ["data/*"],
       "@/sounds/*": ["sounds/*"],
       "@/utils/*": ["utils/*"],

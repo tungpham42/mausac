@@ -1,17 +1,19 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Button, Alert, ButtonGroup } from "react-bootstrap";
 import { parseColor } from "@/utils/colorUtils";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMousePointer, faRedo } from "@fortawesome/free-solid-svg-icons";
+import { LanguageContext } from "@/context/LanguageContext";
 
 export default function ScreenColorPicker() {
+  const { t } = useContext(LanguageContext);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
 
   const handlePickColor = async () => {
     if (!window.EyeDropper) {
-      alert("Trình duyệt của bạn không hỗ trợ EyeDropper API");
+      alert(t("screenColorPicker.browserNotSupported"));
       return;
     }
 
@@ -37,17 +39,17 @@ export default function ScreenColorPicker() {
       <ButtonGroup>
         <Button variant="primary" size="lg" onClick={handlePickColor}>
           <FontAwesomeIcon icon={faMousePointer} className="me-2" />
-          Chọn màu từ màn hình
+          {t("screenColorPicker.pickColorButton")}
         </Button>
         <Button variant="outline-secondary" size="lg" onClick={handleReset}>
           <FontAwesomeIcon icon={faRedo} className="me-2" />
-          Đặt lại
+          {t("screenColorPicker.resetButton")}
         </Button>
       </ButtonGroup>
 
       {pickedColor && (
         <Alert variant="info" className="mt-3">
-          <strong>Màu đã chọn:</strong>{" "}
+          <strong>{t("screenColorPicker.selectedColor")}</strong>{" "}
           <Link href={`/${hexClean}`}>
             <span className="color-code">{pickedColor}</span>
           </Link>

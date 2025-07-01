@@ -13,37 +13,61 @@ import ColorCard from "@/components/ColorCard";
 import ColorFormats from "@/components/ColorFormats";
 import ColorPalette from "@/components/ColorPalette";
 import ColorSearchForm from "@/components/ColorSearchForm";
+import LanguageToggle from "@/components/LanguageToggle";
 import Link from "next/link";
 import { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
+import { getTranslation } from "@/translations";
+import { LanguageProvider } from "@/context/LanguageContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
 export async function generateMetadata({
   params,
+  searchParams,
 }: {
   params: Promise<{ color: string }>;
+  searchParams: Promise<{ lang?: string }>;
 }): Promise<Metadata> {
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
+  const searchParamsResolved = await searchParams;
+  const language = searchParamsResolved.lang || "vi";
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
-
   const hexClean = hex.replace("#", "");
 
   return {
-    title: `${hex} - Tra cứu mã màu`,
-    description: `Tổng hợp các biến thể của màu ${hex}`,
+    title: (
+      getTranslation(language, "metadata.colorPage.title") as string
+    ).replace("<hex>", hex),
+    description: (
+      getTranslation(language, "metadata.colorPage.description") as string
+    ).replace("<hex>", hex),
+    keywords: (
+      getTranslation(language, "metadata.colorPage.keywords") as string[]
+    ).map((kw) => kw.replace("<hex>", hex)),
     openGraph: {
-      title: `${hex} - Tra cứu mã màu`,
-      description: `Tổng hợp các biến thể của màu ${hex}`,
+      title: (
+        getTranslation(language, "metadata.colorPage.ogTitle") as string
+      ).replace("<hex>", hex),
+      description: (
+        getTranslation(language, "metadata.colorPage.ogDescription") as string
+      ).replace("<hex>", hex),
       type: "website",
       url: `${hostUrl}/${hexClean}`,
-      siteName: "Tra cứu mã màu",
+      siteName: getTranslation(
+        language,
+        "metadata.colorPage.siteName"
+      ) as string,
       images: [
         {
           url: `https://singlecolorimage.com/get/${hexClean}/1200x630`,
           width: 1200,
           height: 630,
-          alt: `Xem trước ${hex} - Tra cứu mã màu`,
+          alt: (
+            getTranslation(language, "metadata.colorPage.ogImageAlt") as string
+          ).replace("<hex>", hex),
         },
       ],
     },
@@ -52,10 +76,14 @@ export async function generateMetadata({
 
 export default async function ColorPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ color: string }>;
+  searchParams: Promise<{ lang?: string }>;
 }) {
-  const resolvedParams = await params; // Resolve the Promise
+  const resolvedParams = await params;
+  const searchParamsResolved = await searchParams;
+  const language = searchParamsResolved.lang || "vi";
   const color = parseColor(resolvedParams.color);
 
   if (!color) return notFound();
@@ -74,25 +102,56 @@ export default async function ColorPage({
   const splitComp = getSplitComplement(colorHex) || [];
 
   return (
-    <div className="container mt-5">
-      <Link href="/" className="mb-4 text-center d-block">
-        <h1>Tra cứu mã màu</h1>
-      </Link>
-      <ColorSearchForm />
-      <h2>
-        <span className="color-code">{formats.hex}</span> -{" "}
-        {color.toName() || "Màu không tên"}
-      </h2>
-      <ColorCard hex={formats.hex} />
-      <ColorFormats formats={formats} />
-      <ColorPalette title="Shades" colors={shades} />
-      <ColorPalette title="Tints" colors={tints} />
-      {complement && (
-        <ColorPalette title="Complementary" colors={[complement]} />
-      )}
-      <ColorPalette title="Triadic" colors={triadic} />
-      <ColorPalette title="Analogous" colors={analogous} />
-      <ColorPalette title="Split Complement" colors={splitComp} />
-    </div>
+    <LanguageProvider initialLanguage={language}>
+      <div className="container mt-5">
+        <LanguageToggle />
+        <h1 className="mb-4 text-center">
+          <Link href="/" className="btn btn-link btn-lg text-decoration-none">
+            <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />
+          </Link>
+          {(getTranslation(language, "colorPage.header") as string).replace(
+            "<hex>",
+            formats.hex
+          )}
+        </h1>
+        <ColorSearchForm />
+        <h2>
+          <span className="color-code">{formats.hex}</span> -{" "}
+          {color.toName() || getTranslation(language, "colorPage.unnamedColor")}
+        </h2>
+        <ColorCard hex={formats.hex} />
+        <ColorFormats formats={formats} />
+        <ColorPalette
+          title={getTranslation(language, "colorPage.shades") as string}
+          colors={shades}
+        />
+        <ColorPalette
+          title={getTranslation(language, "colorPage.tints") as string}
+          colors={tints}
+        />
+        {complement && (
+          <ColorPalette
+            title={
+              getTranslation(language, "colorPage.complementary") as string
+            }
+            colors={[complement]}
+          />
+        )}
+        <ColorPalette
+          title={getTranslation(language, "colorPage.triadic") as string}
+          colors={triadic}
+        />
+        <ColorPalette
+          title={getTranslation(language, "colorPage.analogous") as string}
+          colors={analogous}
+        />
+        <ColorPalette
+          title={
+            getTranslation(language, "colorPage.splitComplement") as string
+          }
+          colors={splitComp}
+        />
+      </div>
+    </LanguageProvider>
   );
 }

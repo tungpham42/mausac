@@ -1,11 +1,13 @@
 "use client";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { LanguageContext } from "@/context/LanguageContext";
 
 export default function ColorSearchForm() {
+  const { t, language } = useContext(LanguageContext);
   const [query, setQuery] = useState("");
   const router = useRouter();
 
@@ -13,7 +15,7 @@ export default function ColorSearchForm() {
     e.preventDefault();
     if (query) {
       const cleanedQuery = query.replace("#", "");
-      router.push(`/${encodeURIComponent(cleanedQuery)}`);
+      router.push(`/${encodeURIComponent(cleanedQuery)}?lang=${language}`);
     }
   };
 
@@ -23,7 +25,7 @@ export default function ColorSearchForm() {
         <Col md={11} sm={11} xs={9} className="d-flex justify-content-end">
           <Form.Control
             type="text"
-            placeholder="Nhập tên màu (v.d. red, #00edc3)"
+            placeholder={t("colorSearchForm.placeholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             required
