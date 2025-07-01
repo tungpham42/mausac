@@ -122,31 +122,37 @@ export default async function ColorPage({
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
         <ColorPalette
-          title={getTranslation(language, "colorPage.shades") as string}
+          title="Shades"
+          label={getTranslation(language, "colorPage.shades") as string}
           colors={shades}
         />
         <ColorPalette
-          title={getTranslation(language, "colorPage.tints") as string}
+          title="Tints"
+          label={getTranslation(language, "colorPage.tints") as string}
           colors={tints}
         />
         {complement && (
           <ColorPalette
-            title={
+            title="Complementary"
+            label={
               getTranslation(language, "colorPage.complementary") as string
             }
             colors={[complement]}
           />
         )}
         <ColorPalette
-          title={getTranslation(language, "colorPage.triadic") as string}
+          title="Triadic"
+          label={getTranslation(language, "colorPage.triadic") as string}
           colors={triadic}
         />
         <ColorPalette
-          title={getTranslation(language, "colorPage.analogous") as string}
+          title="Analogous"
+          label={getTranslation(language, "colorPage.analogous") as string}
           colors={analogous}
         />
         <ColorPalette
-          title={
+          title="Split Complement"
+          label={
             getTranslation(language, "colorPage.splitComplement") as string
           }
           colors={splitComp}

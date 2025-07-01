@@ -7,9 +7,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 export default function ColorPalette({
+  label,
   title,
   colors,
 }: {
+  label: string;
   title: string;
   colors: string[];
 }) {
@@ -26,7 +28,7 @@ export default function ColorPalette({
 
   return (
     <>
-      <h4>{title}</h4>
+      <h4>{label}</h4>
       <Row className="mb-4">
         {colors.map((color, idx) => {
           const parsedColor = parseColor(color);
