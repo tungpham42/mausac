@@ -63,11 +63,6 @@ interface Translations {
     splitComplement: string;
     backToHome: string;
   };
-  notFound: {
-    header: string;
-    errorMessage: string;
-    metadata: MetadataPage;
-  };
   metadata: Metadata;
 }
 
@@ -135,21 +130,6 @@ export const translations: { [key: string]: Translations } = {
       analogous: "Màu tương tự",
       splitComplement: "Màu bổ sung tách đôi",
       backToHome: "Quay về trang chủ",
-    },
-    notFound: {
-      header: "404 - Không tìm thấy màu",
-      errorMessage: "Mã màu sai hoặc không hỗ trợ.",
-      metadata: {
-        title: "404 - Không tìm thấy màu | Tra cứu mã màu",
-        description:
-          "Mã màu bạn tìm kiếm không tồn tại hoặc không được hỗ trợ. Hãy thử tìm kiếm mã màu khác!",
-        keywords: ["404", "mã màu", "tra cứu màu sắc", "không tìm thấy"],
-        ogTitle: "404 - Không tìm thấy màu | Tra cứu mã màu",
-        ogDescription:
-          "Mã màu bạn tìm kiếm không tồn tại hoặc không được hỗ trợ. Hãy thử tìm kiếm mã màu khác!",
-        siteName: "Tra cứu mã màu",
-        ogImageAlt: "404 - Không tìm thấy màu",
-      },
     },
     metadata: {
       home: {
@@ -233,21 +213,6 @@ export const translations: { [key: string]: Translations } = {
       analogous: "Analogous",
       splitComplement: "Split Complement",
       backToHome: "Back to Home",
-    },
-    notFound: {
-      header: "404 - Color Not Found",
-      errorMessage: "Invalid or unsupported color code.",
-      metadata: {
-        title: "404 - Color Not Found | Color Lookup",
-        description:
-          "The color code you searched for does not exist or is not supported. Try searching for another color!",
-        keywords: ["404", "color code", "color lookup", "not found"],
-        ogTitle: "404 - Color Not Found | Color Lookup",
-        ogDescription:
-          "The color code you searched for does not exist or is not supported. Try searching for another color!",
-        siteName: "Color Lookup",
-        ogImageAlt: "404 - Color Not Found",
-      },
     },
     metadata: {
       home: {

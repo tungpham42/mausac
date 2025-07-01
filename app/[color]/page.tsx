@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { redirect } from "next/navigation";
 import {
   parseColor,
   getColorFormats,
@@ -94,11 +94,11 @@ export default async function ColorPage({
   const language = searchParamsResolved.lang || "vi";
   const color = parseColor(resolvedParams.color);
 
-  if (!color) return notFound();
+  if (!color) redirect(`/${language ? `?lang=${language}` : ""}`);
 
   const formats = getColorFormats(color);
 
-  if (!formats) return notFound();
+  if (!formats) redirect(`/${language ? `?lang=${language}` : ""}`);
 
   const colorHex = formats.hex;
 
@@ -114,7 +114,10 @@ export default async function ColorPage({
       <div className="container mt-5">
         <LanguageToggle />
         <h1 className="mb-4 text-center">
-          <Link href="/" className="btn btn-link btn-lg text-decoration-none">
+          <Link
+            href={`/${language ? `?lang=${language}` : ""}`}
+            className="btn btn-link btn-lg text-decoration-none"
+          >
             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />
           </Link>
           {(getTranslation(language, "colorPage.header") as string).replace(
