@@ -9,7 +9,7 @@ import { LanguageContext } from "@/context/LanguageContext";
 import Link from "next/link";
 import { hexToRgba } from "@/utils/colorUtils";
 
-export default function HomePage({ language }: { language: string }) {
+export default function Home({ language }: { language: string }) {
   const { t } = useContext(LanguageContext);
 
   return (

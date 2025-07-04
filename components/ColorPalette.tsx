@@ -1,10 +1,11 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Row, Col, Card } from "react-bootstrap";
 import { hexToRgba, parseColor } from "@/utils/colorUtils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import { LanguageContext } from "@/context/LanguageContext";
 
 export default function ColorPalette({
   label,
@@ -15,6 +16,7 @@ export default function ColorPalette({
   type: string;
   colors: string[];
 }) {
+  const { language } = useContext(LanguageContext);
   const hasTwelveColors = type === "Shades" || type === "Tints";
   const hasThreeColors = type === "Triadic" || type === "Split Complement";
   const hasSixColors = type === "Analogous";
@@ -23,7 +25,7 @@ export default function ColorPalette({
   const copyToClipboard = (hex: string) => {
     navigator.clipboard.writeText(hex);
     setShowAlert(hex);
-    setTimeout(() => setShowAlert(null), 2000); // Hide alert after 2 seconds
+    setTimeout(() => setShowAlert(null), 2000);
   };
 
   return (
@@ -78,7 +80,7 @@ export default function ColorPalette({
                     "0 4px 6px rgba(0, 0, 0, 0.1)";
                 }}
               >
-                <Link href={`/${hexClean}`} passHref>
+                <Link href={`/${hexClean}?lang=${language}`} passHref>
                   <Card.Body
                     style={{
                       backgroundColor: hex,
@@ -131,7 +133,7 @@ export default function ColorPalette({
                   </div>
                 )}
                 <Card.Footer className="text-center">
-                  <Link href={`/${hexClean}`} passHref>
+                  <Link href={`/${hexClean}?lang=${language}`} passHref>
                     <span className="color-code text-decoration-none">
                       {hex}
                     </span>

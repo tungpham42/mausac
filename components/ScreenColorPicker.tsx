@@ -8,7 +8,7 @@ import { faMousePointer, faRedo } from "@fortawesome/free-solid-svg-icons";
 import { LanguageContext } from "@/context/LanguageContext";
 
 export default function ScreenColorPicker() {
-  const { t } = useContext(LanguageContext);
+  const { t, language } = useContext(LanguageContext);
   const [pickedColor, setPickedColor] = useState<string | null>(null);
 
   const handlePickColor = async () => {
@@ -50,11 +50,11 @@ export default function ScreenColorPicker() {
       {pickedColor && (
         <Alert variant="info" className="mt-3">
           <strong>{t("screenColorPicker.selectedColor")}</strong>{" "}
-          <Link href={`/${hexClean}`}>
+          <Link href={`/${hexClean}?lang=${language}`}>
             <span className="color-code">{pickedColor}</span>
           </Link>
           <Link
-            href={`/${hexClean}`}
+            href={`/${hexClean}?lang=${language}`}
             style={{ display: "block", width: "fit-content" }}
           >
             <div

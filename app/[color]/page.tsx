@@ -38,9 +38,7 @@ export async function generateMetadata({
   const hexClean = hex.replace("#", "");
   const colorName = color?.toName();
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
-  const canonicalUrl = searchParamsResolved.lang
-    ? `${baseUrl}?lang=${language}`
-    : baseUrl;
+  const canonicalUrl = `${baseUrl}?lang=${language}`;
 
   return {
     title: (
@@ -53,7 +51,7 @@ export async function generateMetadata({
       getTranslation(language, "metadata.colorPage.keywords") as string[]
     ).map((kw) => kw.replace("<hex>", hex)),
     alternates: {
-      canonical: canonicalUrl, // Include lang query string if present
+      canonical: canonicalUrl,
     },
     openGraph: {
       title: (
@@ -63,7 +61,7 @@ export async function generateMetadata({
         getTranslation(language, "metadata.colorPage.ogDescription") as string
       ).replace("<hex>", hex),
       type: "website",
-      url: canonicalUrl, // Update openGraph.url to match canonical
+      url: canonicalUrl,
       siteName: getTranslation(
         language,
         "metadata.colorPage.siteName"
@@ -94,11 +92,11 @@ export default async function ColorPage({
   const language = searchParamsResolved.lang || "vi";
   const color = parseColor(resolvedParams.color);
 
-  if (!color) redirect(`/${language ? `?lang=${language}` : ""}`);
+  if (!color) redirect(`/?lang=${language}`);
 
   const formats = getColorFormats(color);
 
-  if (!formats) redirect(`/${language ? `?lang=${language}` : ""}`);
+  if (!formats) redirect(`/?lang=${language}`);
 
   const colorHex = formats.hex;
 
@@ -115,7 +113,7 @@ export default async function ColorPage({
         <LanguageToggle />
         <h1 className="mb-4 text-center">
           <Link
-            href={`/${language ? `?lang=${language}` : ""}`}
+            href={`/?lang=${language}`}
             className="btn btn-link btn-lg text-decoration-none"
           >
             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />
