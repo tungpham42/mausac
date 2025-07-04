@@ -27,7 +27,7 @@ export const LanguageProvider = ({
 }) => {
   const [language, setLanguage] = useState<string>(initialLanguage);
 
-  // Initialize language on mount
+  // Initialize language on mount and ensure 'lang' query string
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
     const queryLang = urlParams.get("lang");
@@ -37,14 +37,20 @@ export const LanguageProvider = ({
       setLanguage(queryLang);
       localStorage.setItem("language", queryLang);
     } else {
-      // Fallback to localStorage if no valid query string
+      // Fallback to localStorage or initialLanguage
       const savedLanguage = localStorage.getItem("language");
-      if (savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage)) {
-        setLanguage(savedLanguage);
-      } else {
-        // Default to initialLanguage if no valid saved language
-        setLanguage(initialLanguage);
-        localStorage.setItem("language", initialLanguage);
+      const selectedLanguage =
+        savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage)
+          ? savedLanguage
+          : initialLanguage;
+      setLanguage(selectedLanguage);
+      localStorage.setItem("language", selectedLanguage);
+
+      // Redirect to include 'lang' query string if missing or invalid
+      if (!queryLang || !SUPPORTED_LANGUAGES.includes(queryLang)) {
+        const url = new URL(window.location.href);
+        url.searchParams.set("lang", selectedLanguage);
+        window.location.replace(url.toString());
       }
     }
   }, [initialLanguage]);
@@ -54,10 +60,10 @@ export const LanguageProvider = ({
     if (SUPPORTED_LANGUAGES.includes(lang)) {
       setLanguage(lang);
       localStorage.setItem("language", lang);
-      // Update URL query string without reloading
+      // Update URL query string with redirect
       const url = new URL(window.location.href);
       url.searchParams.set("lang", lang);
-      window.history.replaceState({}, "", url.toString());
+      window.location.replace(url.toString());
     }
   };
 
