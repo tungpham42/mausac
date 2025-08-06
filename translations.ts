@@ -194,7 +194,7 @@ export const translations: { [key: string]: Translations } = {
       pickerTitle: "Pick Color from Screen or Image",
       popularColorsTitle: "Some Popular Colors",
       red: "Red",
-      green: "Green",
+      green: "Lime",
       blue: "Blue",
       yellow: "Yellow",
       viewDetails: "View Details",
