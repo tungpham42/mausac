@@ -1,4 +1,5 @@
 import { getHostUrl } from "@/utils/getHostUrl";
+import { NextResponse } from "next/server";
 
 const TOTAL_COLORS = 16777216; // 256^3
 const MAX_PER_SITEMAP = 50000;
@@ -23,7 +24,7 @@ export async function GET() {
 
   xml += `</sitemapindex>`;
 
-  return new Response(xml, {
+  return new NextResponse(xml, {
     status: 200,
     headers: { "Content-Type": "application/xml" },
   });

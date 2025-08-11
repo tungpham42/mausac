@@ -1,6 +1,5 @@
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
-export const runtime = "nodejs";
 
 const TOTAL_COLORS = 16777216;
 const MAX_PER_SITEMAP = 50000;
@@ -35,7 +34,7 @@ export async function GET(
 
   xml += `</urlset>`;
 
-  return new Response(xml, {
+  return new NextResponse(xml, {
     status: 200,
     headers: { "Content-Type": "application/xml" },
   });
