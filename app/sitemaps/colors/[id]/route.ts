@@ -16,7 +16,7 @@ export async function GET(
   const { id } = await params; // Await the params to resolve the Promise
   const idNum = parseInt(id, 10);
   if (Number.isNaN(idNum) || idNum < 1 || idNum > SITEMAP_COUNT) {
-    return new Response("Invalid sitemap ID", { status: 404 });
+    return new NextResponse("Invalid sitemap ID", { status: 404 });
   }
 
   const hostUrl = await getHostUrl();
