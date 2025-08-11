@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import MainBrandLogo from "@/components/MainBrandLogo";
 import { LanguageProvider } from "@/context/LanguageContext";
+import Script from "next/script";
 
 export default async function RootLayout({
   children,
@@ -18,6 +19,15 @@ export default async function RootLayout({
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
       <html lang={initialLanguage}>
+        <head>
+          <Script
+            id="adsense-script"
+            async
+            strategy="afterInteractive"
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585118770961536`}
+            crossOrigin="anonymous"
+          />
+        </head>
         <body>
           <MainBrandLogo
             logoSrc="/soft-logo.webp"
