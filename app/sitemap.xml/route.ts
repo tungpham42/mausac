@@ -11,10 +11,6 @@ export async function GET() {
   const now = new Date().toISOString();
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
   xml += `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-  xml += `  <sitemap>\n`;
-  xml += `      <loc>${hostUrl}</loc>\n`;
-  xml += `      <lastmod>${now}</lastmod>\n`;
-  xml += `  </sitemap>\n`;
   for (let i = 1; i <= SITEMAP_COUNT; i++) {
     xml += `  <sitemap>\n`;
     xml += `    <loc>${hostUrl}/sitemaps/colors/${i}.xml</loc>\n`;
