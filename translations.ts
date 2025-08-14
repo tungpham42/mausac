@@ -47,6 +47,7 @@ interface Translations {
     blue: string;
     yellow: string;
     viewDetails: string;
+    youtubeCode: string;
   };
   colorPage: {
     title: string;
@@ -115,6 +116,7 @@ export const translations: { [key: string]: Translations } = {
       blue: "Xanh dương",
       yellow: "Vàng",
       viewDetails: "Xem chi tiết",
+      youtubeCode: "ULDRwd5dLLg",
     },
     colorPage: {
       title: "<hex> - Tra cứu mã màu",
@@ -198,6 +200,7 @@ export const translations: { [key: string]: Translations } = {
       blue: "Blue",
       yellow: "Yellow",
       viewDetails: "View Details",
+      youtubeCode: "ULDRwd5dLLg",
     },
     colorPage: {
       title: "<hex> - Color Lookup",
