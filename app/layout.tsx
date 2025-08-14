@@ -7,6 +7,14 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  icons: {
+    icon: './favicon.ico',
+    apple: './apple-touch-icon.png',
+  },
+};
 
 export default async function RootLayout({
   children,
@@ -34,7 +42,7 @@ export default async function RootLayout({
         </head>
         <body>
           <MainBrandLogo
-            logoSrc="/soft-logo.webp"
+            logoSrc="./soft-logo.webp"
             mainDomain="soft.io.vn"
             dismissible={false}
             altText="Logo Soft"

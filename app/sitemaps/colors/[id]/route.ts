@@ -1,16 +1,26 @@
-import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
+
+export const dynamic = 'force-static';
 
 const TOTAL_COLORS = 16777216; // 256^3 (total possible hex colors)
 const MAX_PER_SITEMAP = 50000; // Maximum URLs per sitemap file
 const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
+
+// Generate static params for all sitemap IDs
+export async function generateStaticParams() {
+  const sitemapIds = [];
+  for (let i = 1; i <= SITEMAP_COUNT; i++) {
+    sitemapIds.push({ id: i.toString() });
+  }
+  return sitemapIds;
+}
 
 function padHex(n: number) {
   return n.toString(16).padStart(6, "0").toUpperCase(); // Uppercase for consistency
 }
 
 export async function GET(
-  req: Request | NextRequest,
+  req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
@@ -18,7 +28,7 @@ export async function GET(
 
   // Validate sitemap ID
   if (Number.isNaN(idNum) || idNum < 1 || idNum > SITEMAP_COUNT) {
-    return new NextResponse("Invalid sitemap ID", { status: 404 });
+    return new Response("Invalid sitemap ID", { status: 404 });
   }
 
   const hostUrl = await getHostUrl();
@@ -50,11 +60,10 @@ export async function GET(
   xml += `</urlset>\n`;
   xml += `<!-- End of Sitemap ${id} -->`;
 
-  return new NextResponse(xml, {
+  return new Response(xml, {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate",
     },
   });
 }

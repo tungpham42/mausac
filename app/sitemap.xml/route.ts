@@ -1,5 +1,6 @@
 import { getHostUrl } from "@/utils/getHostUrl";
-import { NextResponse } from "next/server";
+
+export const dynamic = 'force-static';
 
 const TOTAL_COLORS = 16777216; // 256^3 (total possible hex colors)
 const MAX_PER_SITEMAP = 50000; // Maximum URLs per sitemap file
@@ -28,11 +29,10 @@ export async function GET() {
   xml += `</sitemapindex>\n`;
   xml += `<!-- End of Sitemap Index -->`;
 
-  return new NextResponse(xml, {
+  return new Response(xml, {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate",
     },
   });
 }

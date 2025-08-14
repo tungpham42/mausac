@@ -22,23 +22,53 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
 
+// Force static generation
+export const dynamic = 'force-static';
+
+// Generate static params for common colors
+export async function generateStaticParams() {
+  // Common colors for static generation
+  const commonColors = [
+    'ff0000', // red
+    '00ff00', // green  
+    '0000ff', // blue
+    'ffff00', // yellow
+    'ff00ff', // magenta
+    '00ffff', // cyan
+    '000000', // black
+    'ffffff', // white
+    '808080', // gray
+    'orange',
+    'purple',
+    'pink',
+    'brown',
+    'navy',
+    'lime',
+    'teal',
+    'silver',
+    'gold',
+    'maroon',
+    'olive'
+  ];
+
+  return commonColors.map((color) => ({
+    color: color,
+  }));
+}
+
 export async function generateMetadata({
   params,
-  searchParams,
 }: {
   params: Promise<{ color: string }>;
-  searchParams: Promise<{ lang?: string }>;
 }): Promise<Metadata> {
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
-  const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "vi";
+  const language = "vi"; // Default language for static generation
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
   const hexClean = hex.replace("#", "");
   const colorName = color?.toName();
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
-  const canonicalUrl = `${baseUrl}?lang=${language}`;
 
   return {
     title: (
@@ -51,7 +81,7 @@ export async function generateMetadata({
       getTranslation(language, "metadata.colorPage.keywords") as string[]
     ).map((kw) => kw.replace("<hex>", hex)),
     alternates: {
-      canonical: canonicalUrl,
+      canonical: baseUrl,
     },
     openGraph: {
       title: (
@@ -61,7 +91,7 @@ export async function generateMetadata({
         getTranslation(language, "metadata.colorPage.ogDescription") as string
       ).replace("<hex>", hex),
       type: "website",
-      url: canonicalUrl,
+      url: baseUrl,
       siteName: getTranslation(
         language,
         "metadata.colorPage.siteName"
@@ -82,21 +112,18 @@ export async function generateMetadata({
 
 export default async function ColorPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ color: string }>;
-  searchParams: Promise<{ lang?: string }>;
 }) {
   const resolvedParams = await params;
-  const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "vi";
+  const language = "vi"; // Default language for static generation
   const color = parseColor(resolvedParams.color);
 
-  if (!color) redirect(`/?lang=${language}`);
+  if (!color) redirect(`/`);
 
   const formats = getColorFormats(color);
 
-  if (!formats) redirect(`/?lang=${language}`);
+  if (!formats) redirect(`/`);
 
   const colorHex = formats.hex;
 
@@ -113,7 +140,7 @@ export default async function ColorPage({
         <LanguageToggle />
         <h1 className="mb-4 text-center">
           <Link
-            href={`/?lang=${language}`}
+            href={`/`}
             className="btn btn-link btn-lg text-decoration-none"
           >
             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />
