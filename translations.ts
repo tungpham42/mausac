@@ -200,7 +200,7 @@ export const translations: { [key: string]: Translations } = {
       blue: "Blue",
       yellow: "Yellow",
       viewDetails: "View Details",
-      youtubeCode: "ULDRwd5dLLg",
+      youtubeCode: "XohC9ZTDPbo",
     },
     colorPage: {
       title: "<hex> - Color Lookup",
