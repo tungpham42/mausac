@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
 
 const TOTAL_COLORS = 16777216; // 256^3 (total possible hex colors)
-const MAX_PER_SITEMAP = 256; // Maximum URLs per sitemap file
+const MAX_PER_SITEMAP = 4096; // Maximum URLs per sitemap file
 const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
 
 function padHex(n: number) {
