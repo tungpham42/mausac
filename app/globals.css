@@ -1,25 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --background: #f8fafc;
+  --background: linear-gradient(135deg, #f8fafc, #e0f2fe); /* light gradient */
   --foreground: #1e293b;
-  --primary: #3b82f6;
-  --primary-hover: #2563eb;
+  --primary: linear-gradient(135deg, #3b82f6, #2563eb);
+  --primary-hover: linear-gradient(135deg, #2563eb, #1d4ed8);
   --accent: #f59e0b;
   --card-bg: #ffffff;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --border-radius: 8px;
+  --shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 12px 20px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1e293b;
+    --background: linear-gradient(135deg, #0f172a, #1e293b); /* dark gradient */
     --foreground: #e2e8f0;
-    --primary: #60a5fa;
-    --primary-hover: #3b82f6;
+    --primary: linear-gradient(135deg, #60a5fa, #3b82f6);
+    --primary-hover: linear-gradient(135deg, #3b82f6, #2563eb);
     --accent: #fbbf24;
-    --card-bg: #334155;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    --card-bg: #1e293b;
+    --shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 12px 20px rgba(0, 0, 0, 0.5);
   }
 }
 
@@ -33,10 +35,11 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: "Work Sans", sans-serif !important;
-  font-weight: 300;
+  font-weight: 400;
+  font-size: 1.05rem;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  line-height: 1.6;
+  background-attachment: fixed; /* subtle parallax feel */
 }
 
 h1,
