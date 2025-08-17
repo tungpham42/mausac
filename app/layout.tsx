@@ -16,7 +16,7 @@ export default async function RootLayout({
   params: Promise<{ lang?: string }>;
 }) {
   const resolvedParams = await params;
-  const initialLanguage = resolvedParams.lang || "vi";
+  const initialLanguage = resolvedParams.lang || "en";
 
   return (
     <LanguageProvider initialLanguage={initialLanguage}>

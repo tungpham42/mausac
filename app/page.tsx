@@ -10,7 +10,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const hostUrl = await getHostUrl();
   const params = await searchParams;
-  const language = params.lang || "vi";
+  const language = params.lang || "en";
   const canonicalUrl = `${hostUrl}?lang=${language}`;
 
   return {
@@ -50,6 +50,6 @@ export default async function HomePage({
   searchParams: Promise<{ lang?: string }>;
 }) {
   const params = await searchParams;
-  const language = params.lang || "vi";
+  const language = params.lang || "en";
   return <Home language={language} />;
 }

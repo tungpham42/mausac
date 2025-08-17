@@ -32,7 +32,7 @@ export async function generateMetadata({
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
   const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "vi";
+  const language = searchParamsResolved.lang || "en";
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
   const hexClean = hex.replace("#", "");
@@ -89,7 +89,7 @@ export default async function ColorPage({
 }) {
   const resolvedParams = await params;
   const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "vi";
+  const language = searchParamsResolved.lang || "en";
   const color = parseColor(resolvedParams.color);
 
   if (!color) redirect(`/?lang=${language}`);

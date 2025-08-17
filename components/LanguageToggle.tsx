@@ -21,16 +21,16 @@ export default function LanguageToggle() {
   return (
     <Container className="mb-4 d-flex justify-content-end gap-2">
       <Button
-        variant={language === "vi" ? "primary" : "outline-primary"}
-        onClick={() => setLanguageAndNavigate("vi")}
-      >
-        Tiếng Việt
-      </Button>
-      <Button
         variant={language === "en" ? "primary" : "outline-primary"}
         onClick={() => setLanguageAndNavigate("en")}
       >
         English
+      </Button>
+      <Button
+        variant={language === "vi" ? "primary" : "outline-primary"}
+        onClick={() => setLanguageAndNavigate("vi")}
+      >
+        Tiếng Việt
       </Button>
     </Container>
   );

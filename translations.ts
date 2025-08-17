@@ -274,7 +274,7 @@ export const getTranslation = (
   key: string
 ): string | string[] => {
   const keys = key.split(".");
-  let value: unknown = translations[language] || translations["vi"]; // Fallback to Vietnamese
+  let value: unknown = translations[language] || translations["en"]; // Fallback to Vietnamese
   for (const k of keys) {
     if (typeof value === "object" && value !== null) {
       value = (value as { [key: string]: unknown })[k] as

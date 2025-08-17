@@ -4,7 +4,7 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { getTranslation } from "@/translations";
 
 // Define supported languages (adjust as per your app's needs)
-const SUPPORTED_LANGUAGES = ["vi", "en"]; // Example: Vietnamese and English
+const SUPPORTED_LANGUAGES = ["en", "vi"]; // Example: Vietnamese and English
 
 interface LanguageContextType {
   language: string;
@@ -13,14 +13,14 @@ interface LanguageContextType {
 }
 
 export const LanguageContext = createContext<LanguageContextType>({
-  language: "vi",
+  language: "en",
   setLanguage: () => {},
   t: (key) => key,
 });
 
 export const LanguageProvider = ({
   children,
-  initialLanguage = "vi",
+  initialLanguage = "en",
 }: {
   children: ReactNode;
   initialLanguage?: string;
