@@ -48,7 +48,7 @@ export default function Home({ language }: { language: string }) {
           { name: t("home.blue"), hex: "#0000FF", clean: "0000FF" },
           { name: t("home.yellow"), hex: "#FFFF00", clean: "FFFF00" },
           { name: t("home.cyan"), hex: "#00FFFF", clean: "00FFFF" },
-          { name: t("home.magenta"), hex: "#FF00FF", clean: "808080" },
+          { name: t("home.magenta"), hex: "#FF00FF", clean: "FF00FF" },
           { name: t("home.orange"), hex: "#FFA500", clean: "FFA500" },
           { name: t("home.purple"), hex: "#800080", clean: "800080" },
           { name: t("home.pink"), hex: "#FFC0CB", clean: "FFC0CB" },
