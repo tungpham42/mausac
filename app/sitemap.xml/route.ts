@@ -18,7 +18,7 @@ export async function GET() {
   xml += `  <!-- Total sitemaps: ${SITEMAP_COUNT} -->\n`;
 
   // Generate sitemap entries with consistent indentation
-  for (let i = 1; i <= SITEMAP_COUNT; i++) {
+  for (let i = 0; i <= SITEMAP_COUNT; i++) {
     xml += `  <sitemap>\n`;
     xml += `    <loc>${hostUrl}/sitemaps/colors/${i}.xml</loc>\n`;
     xml += `    <lastmod>${now}</lastmod>\n`;
