@@ -140,7 +140,8 @@ export const translations: { [key: string]: Translations } = {
     },
     colorPage: {
       title: "<hex> - Tra cứu mã màu",
-      description: "Tổng hợp các biến thể của màu <hex>",
+      description:
+        "Khám phá biến thể màu <hex> với HEX, RGB, HSL, sắc độ, và màu bổ sung. Tìm mã màu hoàn hảo ngay!",
       siteName: "Tra cứu mã màu",
       imageAlt: "Xem trước <hex> - Tra cứu mã màu",
       header: "Tra cứu mã màu cho <hex>",
@@ -159,20 +160,38 @@ export const translations: { [key: string]: Translations } = {
       home: {
         title: "Tra cứu mã màu | Trang chủ",
         description:
-          "Tra cứu mã màu nhanh chóng và chính xác. Hỗ trợ các định dạng màu sắc như HEX, RGB, HSL và cung cấp các biến thể màu sắc.",
-        keywords: ["mã màu", "tra cứu màu sắc", "màu sắc", "hex", "rgb", "hsl"],
+          "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
+        keywords: [
+          "mã màu",
+          "tra cứu màu sắc",
+          "tra cứu mã màu",
+          "màu sắc",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
         ogTitle: "Tra cứu mã màu | Trang chủ",
         ogDescription:
-          "Tra cứu mã màu nhanh chóng và chính xác. Hỗ trợ các định dạng màu sắc như HEX, RGB, HSL và cung cấp các biến thể màu sắc.",
+          "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
         siteName: "Tra cứu mã màu",
         ogImageAlt: "Tra cứu mã màu",
       },
       colorPage: {
         title: "<hex> - Tra cứu mã màu",
-        description: "Tổng hợp các biến thể của màu <hex>",
-        keywords: ["mã màu", "<hex>", "tra cứu màu sắc", "hex", "rgb", "hsl"],
+        description:
+          "Khám phá biến thể màu <hex> với HEX, RGB, HSL, sắc độ, và màu bổ sung. Tìm mã màu hoàn hảo ngay!",
+        keywords: [
+          "mã màu",
+          "<hex>",
+          "tra cứu màu sắc",
+          "tra cứu mã màu",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
         ogTitle: "<hex> - Tra cứu mã màu",
-        ogDescription: "Tổng hợp các biến thể của màu <hex>",
+        ogDescription:
+          "Khám phá biến thể màu <hex> với HEX, RGB, HSL, sắc độ, và màu bổ sung. Tìm mã màu hoàn hảo ngay!",
         siteName: "Tra cứu mã màu",
         ogImageAlt: "Xem trước <hex> - Tra cứu mã màu",
       },
@@ -235,7 +254,8 @@ export const translations: { [key: string]: Translations } = {
     },
     colorPage: {
       title: "<hex> - Color Lookup",
-      description: "Collection of variations for the color <hex>",
+      description:
+        "Explore color <hex> variations with HEX, RGB, HSL, shades, and complements. Find your perfect color now!",
       siteName: "Color Lookup",
       imageAlt: "Preview <hex> - Color Lookup",
       header: "Color Lookup for <hex>",
@@ -254,20 +274,22 @@ export const translations: { [key: string]: Translations } = {
       home: {
         title: "Color Lookup | Home",
         description:
-          "Quickly and accurately look up colors. Supports color formats like HEX, RGB, HSL, and provides color variations.",
+          "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         keywords: ["color code", "color lookup", "color", "hex", "rgb", "hsl"],
         ogTitle: "Color Lookup | Home",
         ogDescription:
-          "Quickly and accurately look up colors. Supports color formats like HEX, RGB, HSL, and provides color variations.",
+          "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         siteName: "Color Lookup",
         ogImageAlt: "Color Lookup",
       },
       colorPage: {
         title: "<hex> - Color Lookup",
-        description: "Collection of variations for the color <hex>",
+        description:
+          "Explore color <hex> variations with HEX, RGB, HSL, shades, and complements. Find your perfect color now!",
         keywords: ["color code", "<hex>", "color lookup", "hex", "rgb", "hsl"],
         ogTitle: "<hex> - Color Lookup",
-        ogDescription: "Collection of variations for the color <hex>",
+        ogDescription:
+          "Explore color <hex> variations with HEX, RGB, HSL, shades, and complements. Find your perfect color now!",
         siteName: "Color Lookup",
         ogImageAlt: "Preview <hex> - Color Lookup",
       },
