@@ -54,6 +54,7 @@ interface Translations {
     grey: string;
     cyan: string;
     brown: string;
+    magenta: string;
     viewDetails: string;
     youtubeCode: string;
   };
@@ -131,6 +132,7 @@ export const translations: { [key: string]: Translations } = {
       grey: "Xám",
       cyan: "Xanh lơ",
       brown: "Nâu",
+      magenta: "Cánh sen",
       viewDetails: "Xem chi tiết",
       youtubeCode: "ULDRwd5dLLg",
     },
@@ -223,6 +225,7 @@ export const translations: { [key: string]: Translations } = {
       grey: "Grey",
       cyan: "Cyan",
       brown: "Brown",
+      magenta: "Magenta",
       viewDetails: "View Details",
       youtubeCode: "ULDRwd5dLLg",
     },
