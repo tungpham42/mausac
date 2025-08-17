@@ -25,6 +25,8 @@ import {
   faFacebook,
   faXTwitter,
   faLinkedin,
+  faReddit,
+  faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 
 export async function generateMetadata({
@@ -174,6 +176,36 @@ export default async function ColorPage({
             className="btn btn-linkedin btn-lg text-decoration-none mx-2"
           >
             <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+          <a
+            href={`https://www.reddit.com/submit?url=${encodeURIComponent(
+              canonicalUrl
+            )}&title=${encodeURIComponent(
+              (getTranslation(language, "colorPage.shareText") as string) +
+                " " +
+                formats.hex
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-reddit btn-lg text-decoration-none mx-2"
+          >
+            <FontAwesomeIcon icon={faReddit} />
+          </a>
+          <a
+            href={`https://pinterest.com/pin/create/button/?url=${encodeURIComponent(
+              canonicalUrl
+            )}&media=${encodeURIComponent(
+              `https://singlecolorimage.com/get/${hexClean}/1200x630`
+            )}&description=${encodeURIComponent(
+              (getTranslation(language, "colorPage.shareText") as string) +
+                " " +
+                formats.hex
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-pinterest btn-lg text-decoration-none mx-2"
+          >
+            <FontAwesomeIcon icon={faPinterest} />
           </a>
         </div>
         <ColorPalette
