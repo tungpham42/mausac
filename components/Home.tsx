@@ -47,9 +47,14 @@ export default function Home({ language }: { language: string }) {
           { name: t("home.green"), hex: "#00FF00", clean: "00FF00" },
           { name: t("home.blue"), hex: "#0000FF", clean: "0000FF" },
           { name: t("home.yellow"), hex: "#FFFF00", clean: "FFFF00" },
+          { name: t("home.orange"), hex: "#FFA500", clean: "FFA500" },
+          { name: t("home.purple"), hex: "#800080", clean: "800080" },
+          { name: t("home.pink"), hex: "#FFC0CB", clean: "FFC0CB" },
+          { name: t("home.black"), hex: "#000000", clean: "000000" },
         ].map((color) => (
-          <Col key={color.hex} md={3} className="mb-4">
+          <Col key={color.hex} md={3} className="mb-4 d-flex">
             <Card
+              className="h-100 w-100"
               style={{
                 border: "1px solid #f8fafc",
               }}
@@ -74,15 +79,17 @@ export default function Home({ language }: { language: string }) {
                   height: "100px",
                 }}
               />
-              <Card.Body>
+              <Card.Body className="d-flex flex-column">
                 <Card.Title>{color.name}</Card.Title>
                 <Card.Text>
                   {t("colorFormats.hex")}:{" "}
                   <span className="color-code">{color.hex}</span>
                 </Card.Text>
-                <Link href={`/${color.clean}?lang=${language}`} passHref>
-                  <Button variant="primary">{t("home.viewDetails")}</Button>
-                </Link>
+                <div className="mt-auto">
+                  <Link href={`/${color.clean}?lang=${language}`} passHref>
+                    <Button variant="primary">{t("home.viewDetails")}</Button>
+                  </Link>
+                </div>
               </Card.Body>
             </Card>
           </Col>
