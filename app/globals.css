@@ -127,3 +127,63 @@ span.color-code {
   border-bottom-left-radius: 8px !important;
   border-bottom-right-radius: 8px !important;
 }
+
+.btn-facebook {
+  background-color: #1877f2 !important;
+  border-color: #1877f2 !important;
+  color: #fff !important;
+}
+
+.btn-facebook:hover {
+  background-color: #1565c0 !important;
+  border-color: #1565c0 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-x {
+  background-color: #000000 !important;
+  border-color: #000000 !important;
+  color: #fff !important;
+}
+
+.btn-x:hover {
+  background-color: #333333 !important;
+  border-color: #333333 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-pinterest {
+  background-color: #e60023 !important;
+  border-color: #e60023 !important;
+  color: #fff !important;
+}
+
+.btn-pinterest:hover {
+  background-color: #cc0000 !important;
+  border-color: #cc0000 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-whatsapp {
+  background-color: #25d366 !important;
+  border-color: #25d366 !important;
+  color: #fff !important;
+}
+
+.btn-whatsapp:hover {
+  background-color: #20b558 !important;
+  border-color: #20b558 !important;
+  transform: scale(1.05) !important;
+}
+
+.btn-linkedin {
+  background-color: #0077b5 !important;
+  border-color: #0077b5 !important;
+  color: #fff !important;
+}
+
+.btn-linkedin:hover {
+  background-color: #005582 !important;
+  border-color: #005582 !important;
+  transform: scale(1.05) !important;
+}

@@ -72,6 +72,8 @@ interface Translations {
     analogous: string;
     splitComplement: string;
     backToHome: string;
+    shareLabel: string;
+    shareText: string;
   };
   metadata: Metadata;
 }
@@ -150,6 +152,8 @@ export const translations: { [key: string]: Translations } = {
       analogous: "Màu tương tự",
       splitComplement: "Màu bổ sung tách đôi",
       backToHome: "Quay về trang chủ",
+      shareLabel: "Chia sẻ màu này:",
+      shareText: "Tra cứu mã màu này",
     },
     metadata: {
       home: {
@@ -243,6 +247,8 @@ export const translations: { [key: string]: Translations } = {
       analogous: "Analogous",
       splitComplement: "Split Complement",
       backToHome: "Back to Home",
+      shareLabel: "Share this color:",
+      shareText: "Look up this color",
     },
     metadata: {
       home: {

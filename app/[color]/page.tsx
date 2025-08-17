@@ -21,6 +21,11 @@ import { getTranslation } from "@/translations";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebook,
+  faXTwitter,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
 
 export async function generateMetadata({
   params,
@@ -107,6 +112,12 @@ export default async function ColorPage({
   const analogous = getAnalogous(colorHex) || [];
   const splitComp = getSplitComplement(colorHex) || [];
 
+  const hostUrl = await getHostUrl();
+  const hexClean = formats.hex.replace("#", "");
+  const colorName = color.toName();
+  const baseUrl = `${hostUrl}/${colorName || hexClean}`;
+  const canonicalUrl = `${baseUrl}?lang=${language}`;
+
   return (
     <LanguageProvider initialLanguage={language}>
       <div className="container mt-5">
@@ -130,6 +141,41 @@ export default async function ColorPage({
         </h2>
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
+        <div className="my-4 text-center">
+          <p>{getTranslation(language, "colorPage.shareLabel")}</p>
+          <a
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+              canonicalUrl
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-facebook btn-lg text-decoration-none mx-2"
+          >
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a
+            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(
+              canonicalUrl
+            )}&text=${getTranslation(language, "colorPage.shareText")} ${
+              formats.hex
+            }`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-x btn-lg text-decoration-none mx-2"
+          >
+            <FontAwesomeIcon icon={faXTwitter} />
+          </a>
+          <a
+            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+              canonicalUrl
+            )}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn btn-linkedin btn-lg text-decoration-none mx-2"
+          >
+            <FontAwesomeIcon icon={faLinkedin} />
+          </a>
+        </div>
         <ColorPalette
           type="Shades"
           label={getTranslation(language, "colorPage.shades") as string}
