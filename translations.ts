@@ -50,6 +50,10 @@ interface Translations {
     purple: string;
     pink: string;
     black: string;
+    white: string;
+    grey: string;
+    cyan: string;
+    brown: string;
     viewDetails: string;
     youtubeCode: string;
   };
@@ -123,6 +127,10 @@ export const translations: { [key: string]: Translations } = {
       purple: "Tím",
       pink: "Hồng",
       black: "Đen",
+      white: "Trắng",
+      grey: "Xám",
+      cyan: "Xanh lơ",
+      brown: "Nâu",
       viewDetails: "Xem chi tiết",
       youtubeCode: "ULDRwd5dLLg",
     },
@@ -211,6 +219,10 @@ export const translations: { [key: string]: Translations } = {
       purple: "Purple",
       pink: "Pink",
       black: "Black",
+      white: "White",
+      grey: "Grey",
+      cyan: "Cyan",
+      brown: "Brown",
       viewDetails: "View Details",
       youtubeCode: "ULDRwd5dLLg",
     },

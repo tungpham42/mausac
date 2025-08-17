@@ -50,9 +50,20 @@ export default function Home({ language }: { language: string }) {
           { name: t("home.orange"), hex: "#FFA500", clean: "FFA500" },
           { name: t("home.purple"), hex: "#800080", clean: "800080" },
           { name: t("home.pink"), hex: "#FFC0CB", clean: "FFC0CB" },
+          { name: t("home.cyan"), hex: "#00FFFF", clean: "00FFFF" },
+          { name: t("home.brown"), hex: "#A52A2A", clean: "A52A2A" },
+          { name: t("home.grey"), hex: "#808080", clean: "808080" },
           { name: t("home.black"), hex: "#000000", clean: "000000" },
+          { name: t("home.white"), hex: "#FFFFFF", clean: "FFFFFF" },
         ].map((color) => (
-          <Col key={color.hex} md={3} className="mb-4 d-flex">
+          <Col
+            key={color.hex}
+            lg={3}
+            md={4}
+            sm={6}
+            xs={12}
+            className="mb-4 d-flex"
+          >
             <Card
               className="h-100 w-100"
               style={{
