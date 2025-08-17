@@ -45,6 +45,18 @@ export async function GET(
     xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
     xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
     xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/${hex}?lang=vi</loc>\n`;
+    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/${hex}?lang=en</loc>\n`;
+    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
   }
 
   xml += `</urlset>\n`;
