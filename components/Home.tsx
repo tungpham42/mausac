@@ -1,5 +1,5 @@
 "use client";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Ratio } from "react-bootstrap";
 import ColorSearchForm from "@/components/ColorSearchForm";
 import ScreenColorPicker from "@/components/ScreenColorPicker";
 import ImageColorPicker from "@/components/ImageColorPicker";
@@ -25,16 +25,18 @@ export default function Home({ language }: { language: string }) {
         <li dangerouslySetInnerHTML={{ __html: t("home.instruction2") }} />
         <li>{t("home.instruction3")}</li>
       </ul>
-      <iframe
-        width="560"
-        height="315"
-        src={`https://www.youtube.com/embed/${t("home.youtubeCode")}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-      ></iframe>
+      <Ratio aspectRatio="16x9" style={{ maxWidth: 500 }}>
+        <iframe
+          src={`https://www.youtube.com/embed/${t(
+            "home.youtubeCode"
+          )}?rel=0&modestbranding=1`}
+          title="YouTube video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </Ratio>
       <hr className="my-5" />
       <h2 className="mb-4">{t("home.pickerTitle")}</h2>
       <ScreenColorPicker />
