@@ -25,7 +25,7 @@ export default function Home({ language }: { language: string }) {
         <li dangerouslySetInnerHTML={{ __html: t("home.instruction2") }} />
         <li>{t("home.instruction3")}</li>
       </ul>
-      <Ratio aspectRatio="16x9" style={{ maxWidth: 500 }}>
+      <Ratio aspectRatio="16x9" style={{ maxWidth: 640 }}>
         <iframe
           src={`https://www.youtube.com/embed/${t(
             "home.youtubeCode"
