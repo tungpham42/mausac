@@ -19,11 +19,15 @@ export default function ColorPalette({
   colors: string[];
 }) {
   const { language } = useContext(LanguageContext);
-  const hasTwelveColors = type === "shades" || type === "tints";
+  const hasTwelveColors =
+    type === "shades" ||
+    type === "tints" ||
+    type === "analogous" ||
+    type === "monochromatic";
   const hasThreeColors = type === "triadic" || type === "splitComplement";
-  const hasSixColors = type === "analogous" || type === "monochromatic";
   const hasFourColors = type === "tetradic";
   const hasOneColor = type === "complementary";
+  const hasSixColors = false;
   const [showAlert, setShowAlert] = useState<string | null>(null);
 
   const copyToClipboard = (hex: string) => {

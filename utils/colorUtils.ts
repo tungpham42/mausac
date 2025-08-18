@@ -50,13 +50,13 @@ export function getTetradic(color: string) {
 export function getAnalogous(color: string) {
   const parsedColor = parseColor(color);
   if (!parsedColor) return null;
-  return parsedColor.analogous().map((c) => c.toHexString());
+  return parsedColor.analogous(12).map((c) => c.toHexString());
 }
 
 export function getMonochromatic(color: string) {
   const parsedColor = parseColor(color);
   if (!parsedColor) return null;
-  return parsedColor.monochromatic().map((c) => c.toHexString());
+  return parsedColor.monochromatic(12).map((c) => c.toHexString());
 }
 
 export function getSplitComplement(color: string) {

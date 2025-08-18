@@ -222,6 +222,16 @@ export default async function ColorPage({
           label={getTranslation(language, "colorPage.tints") as string}
           colors={tints}
         />
+        <ColorPalette
+          type="analogous"
+          label={getTranslation(language, "colorPage.analogous") as string}
+          colors={analogous}
+        />
+        <ColorPalette
+          type="monochromatic"
+          label={getTranslation(language, "colorPage.monochromatic") as string}
+          colors={monochromatic}
+        />
         {complement && (
           <ColorPalette
             type="complementary"
@@ -235,16 +245,6 @@ export default async function ColorPage({
           type="triadic"
           label={getTranslation(language, "colorPage.triadic") as string}
           colors={triadic}
-        />
-        <ColorPalette
-          type="analogous"
-          label={getTranslation(language, "colorPage.analogous") as string}
-          colors={analogous}
-        />
-        <ColorPalette
-          type="monochromatic"
-          label={getTranslation(language, "colorPage.monochromatic") as string}
-          colors={monochromatic}
         />
         <ColorPalette
           type="splitComplement"
