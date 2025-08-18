@@ -17,6 +17,7 @@ interface Translations {
     analogous: string;
     monochromatic: string;
     complementary: string;
+    tetradic: string;
   };
   colorCard: { header: string };
   imageColorPicker: {
@@ -80,6 +81,8 @@ interface Translations {
     triadic: string;
     analogous: string;
     splitComplement: string;
+    monochromatic: string;
+    tetradic: string;
     backToHome: string;
     shareLabel: string;
     shareText: string;
@@ -109,6 +112,8 @@ export const translations: { [key: string]: Translations } = {
         "Bảng màu đơn sắc sử dụng sự thay đổi độ sáng và độ bão hòa của một màu duy nhất để tạo sự thống nhất.",
       complementary:
         "Bảng màu bổ sung sử dụng hai màu đối diện nhau trên vòng tròn màu, mang lại sự tương phản cao và sống động.",
+      tetradic:
+        "Phối hợp bốn màu gồm hai cặp màu bổ sung. Tạo bảng màu đa dạng nhưng cần chọn một màu chủ đạo để tránh rối mắt.",
     },
     colorCard: {
       header: "Màu sắc",
@@ -177,6 +182,8 @@ export const translations: { [key: string]: Translations } = {
       triadic: "Bộ ba màu",
       analogous: "Màu tương tự",
       splitComplement: "Màu bổ sung tách đôi",
+      monochromatic: "Đơn sắc",
+      tetradic: "Bộ bốn màu",
       backToHome: "Quay về trang chủ",
       shareLabel: "Chia sẻ màu này:",
       shareText: "Tra cứu mã màu này",
@@ -238,6 +245,8 @@ export const translations: { [key: string]: Translations } = {
         "Monochromatic palettes use variations in lightness and saturation of a single color for a unified look.",
       complementary:
         "Complementary palettes use two colors opposite each other on the color wheel, giving high contrast and vibrancy.",
+      tetradic:
+        "A four-color scheme using two complementary pairs. Provides rich color variety but requires careful balance by choosing one dominant color.",
     },
     colorCard: {
       header: "Color",
@@ -307,6 +316,8 @@ export const translations: { [key: string]: Translations } = {
       triadic: "Triadic",
       analogous: "Analogous",
       splitComplement: "Split Complement",
+      monochromatic: "Monochromatic",
+      tetradic: "Tetradic",
       backToHome: "Back to Home",
       shareLabel: "Share this color:",
       shareText: "Look up this color",

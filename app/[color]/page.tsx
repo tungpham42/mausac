@@ -8,6 +8,8 @@ import {
   getTriadic,
   getAnalogous,
   getSplitComplement,
+  getMonochromatic,
+  getTetradic,
 } from "@/utils/colorUtils";
 import ColorCard from "@/components/ColorCard";
 import ColorFormats from "@/components/ColorFormats";
@@ -112,7 +114,9 @@ export default async function ColorPage({
   const complement = getComplement(colorHex);
   const triadic = getTriadic(colorHex) || [];
   const analogous = getAnalogous(colorHex) || [];
+  const monochromatic = getMonochromatic(colorHex) || [];
   const splitComp = getSplitComplement(colorHex) || [];
+  const tetradic = getTetradic(colorHex) || [];
 
   const hostUrl = await getHostUrl();
   const hexClean = formats.hex.replace("#", "");
@@ -238,11 +242,21 @@ export default async function ColorPage({
           colors={analogous}
         />
         <ColorPalette
+          type="monochromatic"
+          label={getTranslation(language, "colorPage.monochromatic") as string}
+          colors={monochromatic}
+        />
+        <ColorPalette
           type="splitComplement"
           label={
             getTranslation(language, "colorPage.splitComplement") as string
           }
           colors={splitComp}
+        />
+        <ColorPalette
+          type="tetradic"
+          label={getTranslation(language, "colorPage.tetradic") as string}
+          colors={tetradic}
         />
       </div>
     </LanguageProvider>

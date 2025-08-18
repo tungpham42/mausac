@@ -21,7 +21,9 @@ export default function ColorPalette({
   const { language } = useContext(LanguageContext);
   const hasTwelveColors = type === "shades" || type === "tints";
   const hasThreeColors = type === "triadic" || type === "splitComplement";
-  const hasSixColors = type === "analogous";
+  const hasSixColors = type === "analogous" || type === "monochromatic";
+  const hasFourColors = type === "tetradic";
+  const hasOneColor = type === "complementary";
   const [showAlert, setShowAlert] = useState<string | null>(null);
 
   const copyToClipboard = (hex: string) => {
@@ -44,23 +46,67 @@ export default function ColorPalette({
           return (
             <Col
               xl={
-                hasTwelveColors ? 2 : hasSixColors ? 2 : hasThreeColors ? 4 : 12
+                hasTwelveColors
+                  ? 2
+                  : hasSixColors
+                  ? 2
+                  : hasFourColors
+                  ? 3
+                  : hasThreeColors
+                  ? 4
+                  : hasOneColor
+                  ? 12
+                  : 12
               }
               lg={
-                hasTwelveColors ? 2 : hasSixColors ? 2 : hasThreeColors ? 4 : 12
+                hasTwelveColors
+                  ? 2
+                  : hasSixColors
+                  ? 2
+                  : hasFourColors
+                  ? 3
+                  : hasThreeColors
+                  ? 4
+                  : hasOneColor
+                  ? 12
+                  : 12
               }
               md={
-                hasTwelveColors ? 4 : hasSixColors ? 4 : hasThreeColors ? 4 : 12
+                hasTwelveColors
+                  ? 4
+                  : hasSixColors
+                  ? 4
+                  : hasFourColors
+                  ? 3
+                  : hasThreeColors
+                  ? 4
+                  : hasOneColor
+                  ? 12
+                  : 12
               }
               sm={
-                hasTwelveColors ? 4 : hasSixColors ? 4 : hasThreeColors ? 4 : 12
+                hasTwelveColors
+                  ? 4
+                  : hasSixColors
+                  ? 4
+                  : hasFourColors
+                  ? 3
+                  : hasThreeColors
+                  ? 4
+                  : hasOneColor
+                  ? 12
+                  : 12
               }
               xs={
                 hasTwelveColors
                   ? 6
                   : hasSixColors
                   ? 6
+                  : hasFourColors
+                  ? 6
                   : hasThreeColors
+                  ? 12
+                  : hasOneColor
                   ? 12
                   : 12
               }
