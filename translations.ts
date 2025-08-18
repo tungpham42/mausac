@@ -9,6 +9,15 @@ interface MetadataPage {
 }
 
 interface Translations {
+  paletteDescriptions: {
+    shades: string;
+    tints: string;
+    triadic: string;
+    splitComplement: string;
+    analogous: string;
+    monochromatic: string;
+    complementary: string;
+  };
   colorCard: { header: string };
   imageColorPicker: {
     formLabel: string;
@@ -85,6 +94,22 @@ interface Metadata {
 
 export const translations: { [key: string]: Translations } = {
   vi: {
+    paletteDescriptions: {
+      shades:
+        "Sắc đậm được tạo ra bằng cách thêm màu đen vào màu gốc, làm cho nó tối hơn.",
+      tints:
+        "Sắc nhạt được tạo ra bằng cách thêm màu trắng vào màu gốc, làm cho nó sáng hơn.",
+      triadic:
+        "Bảng màu tam giác sử dụng ba màu cách đều nhau trên vòng tròn màu, mang lại sự tương phản và cân bằng mạnh mẽ.",
+      splitComplement:
+        "Bảng màu bổ sung chia đôi sử dụng một màu gốc và hai màu liền kề của màu bổ sung, tạo sự tương phản nhưng không quá gắt.",
+      analogous:
+        "Bảng màu tương đồng sử dụng các màu nằm cạnh nhau trên vòng tròn màu, tạo sự hài hòa và tự nhiên.",
+      monochromatic:
+        "Bảng màu đơn sắc sử dụng sự thay đổi độ sáng và độ bão hòa của một màu duy nhất để tạo sự thống nhất.",
+      complementary:
+        "Bảng màu bổ sung sử dụng hai màu đối diện nhau trên vòng tròn màu, mang lại sự tương phản cao và sống động.",
+    },
     colorCard: {
       header: "Màu sắc",
     },
@@ -198,6 +223,22 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   en: {
+    paletteDescriptions: {
+      shades:
+        "Shades are created by adding black to the base color, making it darker.",
+      tints:
+        "Tints are created by adding white to the base color, making it lighter.",
+      triadic:
+        "Triadic palettes use three colors evenly spaced around the color wheel, offering strong contrast and balance.",
+      splitComplement:
+        "Split complementary palettes use a base color and two adjacent complementary colors, providing contrast without harshness.",
+      analogous:
+        "Analogous palettes use colors next to each other on the color wheel, creating harmony and a natural feel.",
+      monochromatic:
+        "Monochromatic palettes use variations in lightness and saturation of a single color for a unified look.",
+      complementary:
+        "Complementary palettes use two colors opposite each other on the color wheel, giving high contrast and vibrancy.",
+    },
     colorCard: {
       header: "Color",
     },

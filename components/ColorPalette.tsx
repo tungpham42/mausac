@@ -6,6 +6,8 @@ import { hexToRgba, parseColor } from "@/utils/colorUtils";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { LanguageContext } from "@/context/LanguageContext";
+import { translations } from "@/translations";
+import { PaletteType } from "@/types/palette";
 
 export default function ColorPalette({
   label,
@@ -13,13 +15,13 @@ export default function ColorPalette({
   colors,
 }: {
   label: string;
-  type: string;
+  type: PaletteType;
   colors: string[];
 }) {
   const { language } = useContext(LanguageContext);
-  const hasTwelveColors = type === "Shades" || type === "Tints";
-  const hasThreeColors = type === "Triadic" || type === "Split Complement";
-  const hasSixColors = type === "Analogous";
+  const hasTwelveColors = type === "shades" || type === "tints";
+  const hasThreeColors = type === "triadic" || type === "splitComplement";
+  const hasSixColors = type === "analogous";
   const [showAlert, setShowAlert] = useState<string | null>(null);
 
   const copyToClipboard = (hex: string) => {
@@ -28,9 +30,12 @@ export default function ColorPalette({
     setTimeout(() => setShowAlert(null), 2000);
   };
 
+  const description = translations[language]?.paletteDescriptions?.[type] || "";
+
   return (
     <>
       <h4>{label}</h4>
+      {description && <p className="text-muted">{description}</p>}
       <Row className="mb-4">
         {colors.map((color, idx) => {
           const parsedColor = parseColor(color);

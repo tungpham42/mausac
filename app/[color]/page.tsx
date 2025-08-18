@@ -209,18 +209,18 @@ export default async function ColorPage({
           </a>
         </div>
         <ColorPalette
-          type="Shades"
+          type="shades"
           label={getTranslation(language, "colorPage.shades") as string}
           colors={shades}
         />
         <ColorPalette
-          type="Tints"
+          type="tints"
           label={getTranslation(language, "colorPage.tints") as string}
           colors={tints}
         />
         {complement && (
           <ColorPalette
-            type="Complementary"
+            type="complementary"
             label={
               getTranslation(language, "colorPage.complementary") as string
             }
@@ -228,17 +228,17 @@ export default async function ColorPage({
           />
         )}
         <ColorPalette
-          type="Triadic"
+          type="triadic"
           label={getTranslation(language, "colorPage.triadic") as string}
           colors={triadic}
         />
         <ColorPalette
-          type="Analogous"
+          type="analogous"
           label={getTranslation(language, "colorPage.analogous") as string}
           colors={analogous}
         />
         <ColorPalette
-          type="Split Complement"
+          type="splitComplement"
           label={
             getTranslation(language, "colorPage.splitComplement") as string
           }
