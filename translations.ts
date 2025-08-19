@@ -331,7 +331,7 @@ export const translations: { [key: string]: Translations } = {
         description:
           "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         keywords: ["color code", "color lookup", "color", "hex", "rgb", "hsl"],
-        ogTitle: "Color Lookup | Home",
+        ogTitle: "Color Lookup - Home",
         ogDescription:
           "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         siteName: "Color Lookup",
