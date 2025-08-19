@@ -192,7 +192,7 @@ export const translations: { [key: string]: Translations } = {
     },
     metadata: {
       home: {
-        title: "Tra cứu mã màu | Trang chủ",
+        title: "Tra cứu mã màu - Trang chủ",
         description:
           "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
         keywords: [
@@ -204,7 +204,7 @@ export const translations: { [key: string]: Translations } = {
           "rgb",
           "hsl",
         ],
-        ogTitle: "Tra cứu mã màu | Trang chủ",
+        ogTitle: "Tra cứu mã màu - Trang chủ",
         ogDescription:
           "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
         siteName: "Tra cứu mã màu",
@@ -327,7 +327,7 @@ export const translations: { [key: string]: Translations } = {
     },
     metadata: {
       home: {
-        title: "Color Lookup | Home",
+        title: "Color Lookup - Home",
         description:
           "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         keywords: ["color code", "color lookup", "color", "hex", "rgb", "hsl"],
