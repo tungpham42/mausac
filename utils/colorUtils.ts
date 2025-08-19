@@ -5,13 +5,49 @@ export function parseColor(input: string) {
   return color.isValid() ? color : null;
 }
 
+export function rgbToCmyk(r: number, g: number, b: number) {
+  const rNorm = r / 255;
+  const gNorm = g / 255;
+  const bNorm = b / 255;
+
+  const k = 1 - Math.max(rNorm, gNorm, bNorm);
+  const c = k === 1 ? 0 : (1 - rNorm - k) / (1 - k);
+  const m = k === 1 ? 0 : (1 - gNorm - k) / (1 - k);
+  const y = k === 1 ? 0 : (1 - bNorm - k) / (1 - k);
+
+  return {
+    c: Math.round(c * 100),
+    m: Math.round(m * 100),
+    y: Math.round(y * 100),
+    k: Math.round(k * 100),
+  };
+}
+
 export function getColorFormats(color: tinycolor.Instance) {
+  if (!color.isValid()) {
+    return {
+      hex: "#000000",
+      rgb: "rgb(0, 0, 0)",
+      hsl: "hsl(0, 0%, 0%)",
+      cmyk: "cmyk(0%,0%,0%,100%)",
+    };
+  }
+  const rgb = color.toRgb();
+  const cmyk = rgbToCmyk(rgb.r, rgb.g, rgb.b);
   return {
     hex: color.toHexString(),
     rgb: color.toRgbString(),
     hsl: color.toHslString(),
+    cmyk: `cmyk(${cmyk.c}%,${cmyk.m}%,${cmyk.y}%,${cmyk.k}%)`,
   };
 }
+
+export type ColorFormats = {
+  hex: string;
+  rgb: string;
+  hsl: string;
+  cmyk: string;
+};
 
 export function getShades(color: string) {
   const parsedColor = parseColor(color);

@@ -16,6 +16,8 @@ import ColorFormats from "@/components/ColorFormats";
 import ColorPalette from "@/components/ColorPalette";
 import ColorSearchForm from "@/components/ColorSearchForm";
 import LanguageToggle from "@/components/LanguageToggle";
+import RgbChart from "@/components/RgbChart";
+import CmykChart from "@/components/CmykChart";
 import Link from "next/link";
 import { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
@@ -124,6 +126,20 @@ export default async function ColorPage({
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
   const canonicalUrl = `${baseUrl}?lang=${language}`;
 
+  function parseRgbString(rgbString: string) {
+    const match = rgbString.match(/\d+/g);
+    if (!match) return { r: 0, g: 0, b: 0 };
+    const [r, g, b] = match.map(Number);
+    return { r, g, b };
+  }
+
+  function parseCmykString(cmykString: string) {
+    const match = cmykString.match(/\d+/g);
+    if (!match) return { c: 0, m: 0, y: 0, k: 0 };
+    const [c, m, y, k] = match.map(Number);
+    return { c, m, y, k };
+  }
+
   return (
     <LanguageProvider initialLanguage={language}>
       <div className="container mt-5">
@@ -147,6 +163,8 @@ export default async function ColorPage({
         </h2>
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
+        <RgbChart rgb={parseRgbString(formats.rgb)} />
+        <CmykChart cmyk={parseCmykString(formats.cmyk)} />
         <div className="my-4 text-center">
           <p>{getTranslation(language, "colorPage.shareLabel")}</p>
           <a
