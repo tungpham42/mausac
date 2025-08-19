@@ -192,7 +192,7 @@ export const translations: { [key: string]: Translations } = {
     },
     metadata: {
       home: {
-        title: "Tra cứu mã màu - Trang chủ",
+        title: "Tra cứu mã màu - color.soft.io.vn",
         description:
           "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
         keywords: [
@@ -204,14 +204,14 @@ export const translations: { [key: string]: Translations } = {
           "rgb",
           "hsl",
         ],
-        ogTitle: "Tra cứu mã màu - Trang chủ",
+        ogTitle: "Tra cứu mã màu - color.soft.io.vn",
         ogDescription:
           "Tìm mã màu nhanh với công cụ tra cứu! Nhập tên hoặc mã HEX để khám phá HEX, RGB, HSL và biến thể màu. Bắt đầu ngay!",
         siteName: "Tra cứu mã màu",
         ogImageAlt: "Tra cứu mã màu",
       },
       colorPage: {
-        title: "<hex> - Tra cứu mã màu",
+        title: "<hex> - Tra cứu mã màu - color.soft.io.vn",
         description:
           "Khám phá biến thể màu <hex> với HEX, RGB, HSL, sắc độ, và màu bổ sung. Tìm mã màu hoàn hảo ngay!",
         keywords: [
@@ -223,7 +223,7 @@ export const translations: { [key: string]: Translations } = {
           "rgb",
           "hsl",
         ],
-        ogTitle: "<hex> - Tra cứu mã màu",
+        ogTitle: "<hex> - Tra cứu mã màu - color.soft.io.vn",
         ogDescription:
           "Khám phá biến thể màu <hex> với HEX, RGB, HSL, sắc độ, và màu bổ sung. Tìm mã màu hoàn hảo ngay!",
         siteName: "Tra cứu mã màu",
@@ -327,22 +327,22 @@ export const translations: { [key: string]: Translations } = {
     },
     metadata: {
       home: {
-        title: "Color Lookup - Home",
+        title: "Color Lookup - color.soft.io.vn",
         description:
           "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         keywords: ["color code", "color lookup", "color", "hex", "rgb", "hsl"],
-        ogTitle: "Color Lookup - Home",
+        ogTitle: "Color Lookup - color.soft.io.vn",
         ogDescription:
           "Find colors fast with our lookup tool! Enter a name or HEX code to explore HEX, RGB, HSL, and variations. Start now!",
         siteName: "Color Lookup",
         ogImageAlt: "Color Lookup",
       },
       colorPage: {
-        title: "<hex> - Color Lookup",
+        title: "<hex> - Color Lookup - color.soft.io.vn",
         description:
           "Explore color <hex> variations with HEX, RGB, HSL, shades, and complements. Find your perfect color now!",
         keywords: ["color code", "<hex>", "color lookup", "hex", "rgb", "hsl"],
-        ogTitle: "<hex> - Color Lookup",
+        ogTitle: "<hex> - Color Lookup - color.soft.io.vn",
         ogDescription:
           "Explore color <hex> variations with HEX, RGB, HSL, shades, and complements. Find your perfect color now!",
         siteName: "Color Lookup",
