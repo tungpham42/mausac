@@ -71,6 +71,10 @@ p {
   background: var(--card-bg) !important;
 }
 
+footer {
+  background: var(--card-bg) !important;
+}
+
 text.recharts-text.recharts-cartesian-axis-tick-value {
   fill: var(--foreground) !important;
 }
