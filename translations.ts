@@ -39,6 +39,7 @@ interface Translations {
     hex: string;
     rgb: string;
     hsl: string;
+    cmyk: string;
   };
   colorSearchForm: {
     placeholder: string;
@@ -137,6 +138,7 @@ export const translations: { [key: string]: Translations } = {
       hex: "HEX",
       rgb: "RGB",
       hsl: "HSL",
+      cmyk: "CMYK",
     },
     colorSearchForm: {
       placeholder: "Nhập tên màu (v.d. red, #00edc3)",
@@ -270,6 +272,7 @@ export const translations: { [key: string]: Translations } = {
       hex: "HEX",
       rgb: "RGB",
       hsl: "HSL",
+      cmyk: "CMYK",
     },
     colorSearchForm: {
       placeholder: "Enter color name (e.g., red, #00edc3)",

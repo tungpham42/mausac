@@ -10,6 +10,7 @@ type Props = {
     hex: string;
     rgb: string;
     hsl: string;
+    cmyk: string;
   };
 };
 
@@ -34,6 +35,10 @@ export default function ColorFormats({ formats }: Props) {
         <ListGroup.Item>
           {t("colorFormats.hsl")}:{" "}
           <span className="color-code">{formats.hsl}</span>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          {t("colorFormats.cmyk")}:{" "}
+          <span className="color-code">{formats.cmyk}</span>
         </ListGroup.Item>
       </ListGroup>
     </Card>
