@@ -5,7 +5,7 @@
   --foreground: #1e293b;
   --primary: linear-gradient(135deg, #3b82f6, #2563eb);
   --primary-hover: linear-gradient(135deg, #2563eb, #1d4ed8);
-  --accent: #f59e0b;
+  --accent: #344765;
   --card-bg: #ffffff;
   --shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
   --shadow-hover: 0 12px 20px rgba(0, 0, 0, 0.15);
@@ -18,7 +18,7 @@
     --foreground: #e2e8f0;
     --primary: linear-gradient(135deg, #60a5fa, #3b82f6);
     --primary-hover: linear-gradient(135deg, #3b82f6, #2563eb);
-    --accent: #fbbf24;
+    --accent: #a6aab0;
     --card-bg: #1e293b;
     --shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
     --shadow-hover: 0 12px 20px rgba(0, 0, 0, 0.5);

@@ -28,6 +28,7 @@ export default function ColorSearchForm() {
             placeholder={t("colorSearchForm.placeholder")}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            autoFocus
             required
           />
         </Col>
