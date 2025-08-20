@@ -21,7 +21,7 @@ export async function GET() {
   for (let i = 0; i <= SITEMAP_COUNT; i++) {
     xml += `  <sitemap>\n`;
     xml += `    <loc>${hostUrl}/sitemaps/colors/${i}.xml</loc>\n`;
-    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
     xml += `  </sitemap>\n`;
   }
 

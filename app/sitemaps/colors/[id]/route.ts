@@ -35,19 +35,19 @@ export async function GET(
     xml += `  <!-- Generated ${now} -->\n`;
     xml += `  <url>\n`;
     xml += `    <loc>${hostUrl}</loc>\n`;
-    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
     xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
     xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
     xml += `  </url>\n`;
     xml += `  <url>\n`;
     xml += `    <loc>${hostUrl}/?lang=vi</loc>\n`;
-    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
     xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
     xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
     xml += `  </url>\n`;
     xml += `  <url>\n`;
     xml += `    <loc>${hostUrl}/?lang=en</loc>\n`;
-    xml += `    <lastmod>${now}</lastmod>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
     xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
     xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
     xml += `  </url>\n`;
@@ -64,19 +64,19 @@ export async function GET(
       const hex = padHex(i);
       xml += `  <url>\n`;
       xml += `    <loc>${hostUrl}/${hex}</loc>\n`;
-      xml += `    <lastmod>${now}</lastmod>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
       xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
       xml += `  </url>\n`;
       xml += `  <url>\n`;
       xml += `    <loc>${hostUrl}/${hex}?lang=vi</loc>\n`;
-      xml += `    <lastmod>${now}</lastmod>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
       xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
       xml += `  </url>\n`;
       xml += `  <url>\n`;
       xml += `    <loc>${hostUrl}/${hex}?lang=en</loc>\n`;
-      xml += `    <lastmod>${now}</lastmod>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
       xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
       xml += `  </url>\n`;
