@@ -72,16 +72,14 @@ export default function Home({ language }: { language: string }) {
                 border: "1px solid #f8fafc",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = color.hex;
-                e.currentTarget.style.boxShadow = `0 4px 12px ${hexToRgba(
+                e.currentTarget.style.boxShadow = `0 6px 12px ${hexToRgba(
                   color.hex,
                   0.5
                 )}`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.borderColor = "#f8fafc";
                 e.currentTarget.style.boxShadow =
-                  "0 4px 6px rgba(0, 0, 0, 0.1)";
+                  "0 6px 12px rgba(0, 0, 0, 0.5)";
               }}
             >
               <div

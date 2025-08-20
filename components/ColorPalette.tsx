@@ -119,20 +119,17 @@ export default function ColorPalette({
               <Card
                 className="mb-4"
                 style={{
-                  border: "1px solid #f8fafc",
                   position: "relative",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = hex;
-                  e.currentTarget.style.boxShadow = `0 4px 12px ${hexToRgba(
+                  e.currentTarget.style.boxShadow = `0 6px 12px ${hexToRgba(
                     hex,
                     0.5
                   )}`;
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = "#f8fafc";
                   e.currentTarget.style.boxShadow =
-                    "0 4px 6px rgba(0, 0, 0, 0.1)";
+                    "0 6px 12px rgba(0, 0, 0, 0.5)";
                 }}
               >
                 <Link href={`/${hexClean}?lang=${language}`} passHref>
