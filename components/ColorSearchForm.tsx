@@ -1,7 +1,7 @@
 "use client";
 import { useState, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, InputGroup, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { LanguageContext } from "@/context/LanguageContext";
@@ -20,24 +20,28 @@ export default function ColorSearchForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="mb-4">
-      <Row>
-        <Col md={11} sm={11} xs={9} className="d-flex justify-content-end">
-          <Form.Control
-            type="text"
-            placeholder={t("colorSearchForm.placeholder")}
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            autoFocus
-            required
-          />
-        </Col>
-        <Col md={1} sm={1} xs={3} className="d-flex justify-content-start">
-          <Button type="submit" variant="primary">
-            <FontAwesomeIcon icon={faSearch} />
-          </Button>
-        </Col>
-      </Row>
+    <Form
+      onSubmit={handleSubmit}
+      className="mb-4 d-flex justify-content-center"
+    >
+      <InputGroup className="search-bar overflow-hidden">
+        <Form.Control
+          type="text"
+          placeholder={t("colorSearchForm.placeholder")}
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          required
+          autoFocus
+          className="border-0 ps-4 py-3 search-input"
+        />
+        <Button
+          type="submit"
+          variant="primary"
+          className="d-flex align-items-center justify-content-center px-4 search-btn"
+        >
+          <FontAwesomeIcon icon={faSearch} />
+        </Button>
+      </InputGroup>
     </Form>
   );
 }
