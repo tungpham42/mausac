@@ -68,9 +68,6 @@ export default function Home({ language }: { language: string }) {
           >
             <Card
               className="h-100 w-100"
-              style={{
-                border: "1px solid #f8fafc",
-              }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = `0 6px 12px ${hexToRgba(
                   color.hex,
