@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import { Image, CloseButton } from "react-bootstrap";
 
-interface MainBrandLogoProps {
+interface ColorLogoProps {
   logoSrc: string; // Link ảnh logo
   mainDomain: string; // Ví dụ: 'soft.io.vn'
   altText?: string;
@@ -11,10 +11,10 @@ interface MainBrandLogoProps {
   dismissible?: boolean;
 }
 
-const MainBrandLogo: React.FC<MainBrandLogoProps> = ({
+const ColorLogo: React.FC<ColorLogoProps> = ({
   logoSrc,
   mainDomain,
-  altText = "Logo chính",
+  altText = "Logo Color",
   size = 40,
   dismissible = false,
 }) => {
@@ -27,11 +27,7 @@ const MainBrandLogo: React.FC<MainBrandLogoProps> = ({
       className="position-relative top-0 start-0 m-0 d-flex align-items-center bg-white rounded shadow-sm p-2"
       style={{ zIndex: 1050 }}
     >
-      <a
-        href={`https://${mainDomain}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={`https://${mainDomain}`}>
         <Image src={logoSrc} alt={altText} height={size} className="me-2" />
       </a>
       {dismissible && (
@@ -45,4 +41,4 @@ const MainBrandLogo: React.FC<MainBrandLogoProps> = ({
   );
 };
 
-export default MainBrandLogo;
+export default ColorLogo;
