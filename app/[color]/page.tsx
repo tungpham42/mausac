@@ -22,6 +22,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
 import { getTranslation } from "@/translations";
+import cssColorsTranslation, { Language } from "@/cssColorsTranslation"; // Import Language type
 import { LanguageProvider } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowAltCircleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -43,7 +44,24 @@ export async function generateMetadata({
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
   const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "en";
+  const validLanguages: Language[] = [
+    "vi",
+    "en",
+    "zh",
+    "fr",
+    "de",
+    "it",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "es",
+  ];
+  const language: Language = validLanguages.includes(
+    searchParamsResolved.lang as Language
+  )
+    ? (searchParamsResolved.lang as Language)
+    : "en"; // Default to 'en' if lang is invalid
   const color = parseColor(paramsResolved.color);
   const hex = color?.toHexString() || "#000000";
   const hexClean = hex.replace("#", "");
@@ -100,7 +118,24 @@ export default async function ColorPage({
 }) {
   const resolvedParams = await params;
   const searchParamsResolved = await searchParams;
-  const language = searchParamsResolved.lang || "en";
+  const validLanguages: Language[] = [
+    "vi",
+    "en",
+    "zh",
+    "fr",
+    "de",
+    "it",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "es",
+  ];
+  const language: Language = validLanguages.includes(
+    searchParamsResolved.lang as Language
+  )
+    ? (searchParamsResolved.lang as Language)
+    : "en"; // Default to 'en' if lang is invalid
   const color = parseColor(resolvedParams.color);
 
   if (!color) redirect(`/?lang=${language}`);
@@ -123,6 +158,9 @@ export default async function ColorPage({
   const hostUrl = await getHostUrl();
   const hexClean = formats.hex.replace("#", "");
   const colorName = color.toName();
+  const translatedColorName = colorName
+    ? cssColorsTranslation[colorName.toLowerCase()]?.[language] || colorName
+    : getTranslation(language, "colorPage.unnamedColor");
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
   const canonicalUrl = `${baseUrl}?lang=${language}`;
 
@@ -159,7 +197,7 @@ export default async function ColorPage({
         <ColorSearchForm />
         <h2>
           <span className="color-code">{formats.hex}</span> -{" "}
-          {color.toName() || getTranslation(language, "colorPage.unnamedColor")}
+          {translatedColorName}
         </h2>
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
