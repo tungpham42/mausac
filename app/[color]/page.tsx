@@ -34,7 +34,6 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 import { Ratio } from "react-bootstrap";
-import AdSenseBanner from "@/components/AdSenseBanner";
 
 export async function generateMetadata({
   params,
@@ -205,7 +204,6 @@ export default async function ColorPage({
         </h2>
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
-        <AdSenseBanner />
         <RgbChart rgb={parseRgbString(formats.rgb)} />
         <CmykChart cmyk={parseCmykString(formats.cmyk)} />
         <Ratio aspectRatio="16x9" style={{ maxWidth: 640 }} className="mx-auto">
