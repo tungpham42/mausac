@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { LanguageContext } from "@/context/LanguageContext";
 import Link from "next/link";
 import { hexToRgba } from "@/utils/colorUtils";
+import AdSenseBanner from "./AdSenseBanner";
 
 export default function Home({ language }: { language: string }) {
   const { t } = useContext(LanguageContext);
@@ -38,6 +39,7 @@ export default function Home({ language }: { language: string }) {
         />
       </Ratio>
       <hr className="my-5" />
+      <AdSenseBanner />
       <h2 className="mb-4">{t("home.pickerTitle")}</h2>
       <ScreenColorPicker />
       <ImageColorPicker />
