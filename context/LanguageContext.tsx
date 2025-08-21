@@ -4,7 +4,19 @@ import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { getTranslation } from "@/translations";
 
 // Define supported languages (adjust as per your app's needs)
-const SUPPORTED_LANGUAGES = ["en", "vi"]; // Example: Vietnamese and English
+const SUPPORTED_LANGUAGES = [
+  "en",
+  "vi",
+  "zh",
+  "fr",
+  "de",
+  "it",
+  "ja",
+  "ko",
+  "pt",
+  "ru",
+  "es",
+]; // Example: Vietnamese and English
 
 interface LanguageContextType {
   language: string;

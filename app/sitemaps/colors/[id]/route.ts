@@ -51,6 +51,60 @@ export async function GET(
     xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
     xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
     xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=zh</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=fr</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=de</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=it</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=ja</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=ko</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=pt</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=ru</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
+    xml += `  <url>\n`;
+    xml += `    <loc>${hostUrl}/?lang=es</loc>\n`;
+    xml += `    <lastmod>2025-08-19</lastmod>\n`;
+    xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+    xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+    xml += `  </url>\n`;
   } else {
     xml += `<!-- Sitemap ${id} for Color Pages (Range: ${start} to ${
       end - 1
@@ -76,6 +130,60 @@ export async function GET(
       xml += `  </url>\n`;
       xml += `  <url>\n`;
       xml += `    <loc>${hostUrl}/${hex}?lang=en</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=zh</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=fr</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=de</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=it</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=ja</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=ko</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=pt</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=ru</loc>\n`;
+      xml += `    <lastmod>2025-08-19</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
+      xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
+      xml += `  </url>\n`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${hostUrl}/${hex}?lang=es</loc>\n`;
       xml += `    <lastmod>2025-08-19</lastmod>\n`;
       xml += `    <changefreq>monthly</changefreq>\n`; // Suggest monthly updates
       xml += `    <priority>0.8</priority>\n`; // Moderate priority for color pages
