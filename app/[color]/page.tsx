@@ -33,6 +33,7 @@ import {
   faReddit,
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
+import { Ratio } from "react-bootstrap";
 
 export async function generateMetadata({
   params,
@@ -203,6 +204,19 @@ export default async function ColorPage({
         <ColorFormats formats={formats} />
         <RgbChart rgb={parseRgbString(formats.rgb)} />
         <CmykChart cmyk={parseCmykString(formats.cmyk)} />
+        <Ratio aspectRatio="16x9" style={{ maxWidth: 640 }} className="mx-auto">
+          <iframe
+            src={`https://www.youtube.com/embed/${getTranslation(
+              language,
+              "home.youtubeCode"
+            )}?rel=0&modestbranding=1`}
+            title="YouTube video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        </Ratio>
         <div className="my-4 text-center">
           <p>{getTranslation(language, "colorPage.shareLabel")}</p>
           <a
