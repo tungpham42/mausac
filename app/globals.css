@@ -301,8 +301,10 @@ span.color-code {
   border-radius: 8px;
   padding: 0.5rem 1rem !important;
   transition: all 0.2s ease;
+  color: var(--foreground) !important;
 }
 
+.lang-dropdown-item.active,
 .lang-dropdown-item:hover {
   background: var(--primary) !important;
   color: white !important;
