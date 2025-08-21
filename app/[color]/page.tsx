@@ -198,7 +198,9 @@ export default async function ColorPage({
         <ColorSearchForm />
         <h2>
           <span className="color-code">{formats.hex}</span> -{" "}
-          {translatedColorName}
+          <Link href={canonicalUrl} className="text-decoration-none">
+            {translatedColorName}
+          </Link>
         </h2>
         <ColorCard hex={formats.hex} />
         <ColorFormats formats={formats} />
