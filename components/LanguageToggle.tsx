@@ -21,8 +21,8 @@ export default function LanguageToggle() {
   };
 
   const languages = [
-    { code: "en", label: "English", flag: "🇺🇸" },
     { code: "vi", label: "Tiếng Việt", flag: "🇻🇳" },
+    { code: "en", label: "English", flag: "🇺🇸" },
     { code: "zh", label: "中文", flag: "🇨🇳" },
     { code: "fr", label: "Français", flag: "🇫🇷" },
     { code: "de", label: "Deutsch", flag: "🇩🇪" },
