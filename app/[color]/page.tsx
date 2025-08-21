@@ -142,7 +142,7 @@ export default async function ColorPage({
 
   return (
     <LanguageProvider initialLanguage={language}>
-      <div className="container mt-5">
+      <div className="container mt-0">
         <LanguageToggle />
         <h1 className="mb-4 text-center">
           <Link

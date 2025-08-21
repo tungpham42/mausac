@@ -13,7 +13,7 @@ export default function Home({ language }: { language: string }) {
   const { t } = useContext(LanguageContext);
 
   return (
-    <Container className="mt-5">
+    <Container className="mt-0">
       <LanguageToggle />
       <h1 className="mb-4 text-center">{t("home.title")}</h1>
       <p className="text-center">{t("home.description")}</p>

@@ -24,7 +24,7 @@ const MainBrandLogo: React.FC<MainBrandLogoProps> = ({
 
   return (
     <div
-      className="position-relative top-0 start-0 m-0 d-flex align-items-center bg-white rounded shadow-sm p-2"
+      className="position-relative top-0 start-0 m-3 me-2 d-flex align-items-center bg-white rounded shadow-sm p-2"
       style={{ zIndex: 1050 }}
     >
       <a

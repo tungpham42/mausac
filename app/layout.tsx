@@ -29,7 +29,7 @@ export default async function RootLayout({
           />
         </head>
         <body>
-          <div className="d-flex justify-content-start gap-1">
+          <div className="d-flex justify-content-start gap-0">
             <MainBrandLogo
               logoSrc="/soft-logo.webp"
               mainDomain="soft.io.vn"

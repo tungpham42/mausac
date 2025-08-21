@@ -24,7 +24,7 @@ const ColorLogo: React.FC<ColorLogoProps> = ({
 
   return (
     <div
-      className="position-relative top-0 start-0 m-0 d-flex align-items-center bg-white rounded shadow-sm p-2"
+      className="position-relative top-0 start-0 m-3 ms-2 d-flex align-items-center bg-white rounded shadow-sm p-2"
       style={{ zIndex: 1050 }}
     >
       <a href={`https://${mainDomain}`}>
