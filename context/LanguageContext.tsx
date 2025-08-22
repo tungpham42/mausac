@@ -1,22 +1,8 @@
-// LanguageContext.tsx
 "use client";
 
 import React, { createContext, useState, useEffect, ReactNode } from "react";
 import { getTranslation } from "@/translations";
-
-const SUPPORTED_LANGUAGES = [
-  "en",
-  "vi",
-  "zh",
-  "fr",
-  "de",
-  "it",
-  "ja",
-  "ko",
-  "pt",
-  "ru",
-  "es",
-];
+import validLanguages from "@/languages";
 
 interface LanguageContextType {
   language: string;
@@ -40,54 +26,57 @@ export const LanguageProvider = ({
   const [language, setLanguage] = useState<string>(initialLanguage);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const queryLang = urlParams.get("lang");
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    const queryLang =
+      segments[0] && validLanguages.includes(segments[0]) ? segments[0] : null;
 
-    if (queryLang && SUPPORTED_LANGUAGES.includes(queryLang)) {
+    if (queryLang) {
       setLanguage(queryLang);
       localStorage.setItem("language", queryLang);
     } else {
       const savedLanguage = localStorage.getItem("language");
       const selectedLanguage =
-        savedLanguage && SUPPORTED_LANGUAGES.includes(savedLanguage)
+        savedLanguage && validLanguages.includes(savedLanguage)
           ? savedLanguage
           : initialLanguage;
 
       setLanguage(selectedLanguage);
       localStorage.setItem("language", selectedLanguage);
 
-      // 🚨 Fix: only redirect if NOT default language
-      if (
-        selectedLanguage !== initialLanguage &&
-        (!queryLang || !SUPPORTED_LANGUAGES.includes(queryLang))
-      ) {
+      if (selectedLanguage !== initialLanguage) {
         const url = new URL(window.location.href);
-        url.searchParams.set("lang", selectedLanguage);
+        url.pathname = `/${selectedLanguage}${url.pathname}`;
         window.location.replace(url.toString());
       } else if (
         selectedLanguage === initialLanguage &&
         queryLang === initialLanguage
       ) {
-        // Remove ?lang=en if it’s the default
         const url = new URL(window.location.href);
-        url.searchParams.delete("lang");
-        window.history.replaceState({}, "", url.toString()); // no redirect flash
+        url.pathname = url.pathname.replace(/^\/en/, "");
+        window.history.replaceState({}, "", url.toString());
       }
     }
   }, [initialLanguage]);
 
   const setLanguageAndSave = (lang: string) => {
-    if (SUPPORTED_LANGUAGES.includes(lang)) {
+    if (validLanguages.includes(lang)) {
       setLanguage(lang);
       localStorage.setItem("language", lang);
 
-      // 🚨 Fix: Don’t add ?lang=en for default language
       const url = new URL(window.location.href);
-      if (lang === initialLanguage) {
-        url.searchParams.delete("lang"); // ✅ removes ?lang=en
+      const segments = url.pathname.split("/").filter(Boolean);
+      const currentLang =
+        segments[0] && validLanguages.includes(segments[0])
+          ? segments[0]
+          : null;
+
+      if (currentLang) {
+        segments[0] = lang === "en" ? "" : lang;
       } else {
-        url.searchParams.set("lang", lang);
+        segments.unshift(lang === "en" ? "" : lang);
       }
+      const newPath = `/${segments.filter(Boolean).join("/")}` || "/";
+      url.pathname = newPath;
       window.location.replace(url.toString());
     }
   };

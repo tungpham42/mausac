@@ -4,10 +4,17 @@ import { getHostUrl } from "@/utils/getHostUrl";
 import { getTranslation } from "@/translations";
 import validLanguages from "@/languages";
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
   const hostUrl = await getHostUrl();
-  const language = "en";
-  const baseUrl = hostUrl;
+  const paramsResolved = await params;
+  const language = validLanguages.includes(paramsResolved.lang)
+    ? paramsResolved.lang
+    : "en";
+  const baseUrl = language === "en" ? hostUrl : `${hostUrl}/${language}`;
 
   const hreflangs: Record<string, string> = {};
   validLanguages.forEach((lang) => {
@@ -47,7 +54,14 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default async function HomePage() {
-  const language = "en";
+export default async function HomePage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const paramsResolved = await params;
+  const language = validLanguages.includes(paramsResolved.lang)
+    ? paramsResolved.lang
+    : "en";
   return <Home language={language} />;
 }

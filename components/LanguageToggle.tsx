@@ -2,26 +2,29 @@
 
 import { useContext, useState } from "react";
 import { LanguageContext } from "@/context/LanguageContext";
-import { useRouter, usePathname, useSearchParams } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { Dropdown } from "react-bootstrap";
+import validLanguages from "@/languages";
 
 export default function LanguageToggle() {
   const { language, setLanguage } = useContext(LanguageContext);
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const [show, setShow] = useState(false);
 
   const setLanguageAndNavigate = (lang: string) => {
     setLanguage(lang);
-    const newParams = new URLSearchParams(searchParams.toString());
-    if (lang === "en") {
-      newParams.delete("lang"); // Remove lang param for English
-      router.push(pathname); // Navigate without lang query
+    const segments = pathname.split("/").filter(Boolean);
+    const currentLang =
+      segments[0] && validLanguages.includes(segments[0]) ? segments[0] : null;
+
+    if (currentLang) {
+      segments[0] = lang === "en" ? "" : lang;
     } else {
-      newParams.set("lang", lang);
-      router.push(`${pathname}?${newParams.toString()}`);
+      segments.unshift(lang === "en" ? "" : lang);
     }
+    const newPath = `/${segments.filter(Boolean).join("/")}` || "/";
+    router.push(newPath);
     setShow(false);
   };
 

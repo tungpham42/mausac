@@ -8,7 +8,7 @@ const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
 export async function GET() {
   const hostUrl = await getHostUrl();
   const now = new Date().toISOString();
-  const lastMod = "2025-08-21";
+  const lastMod = "2025-08-22";
 
   // Start XML with a stylesheet reference for human-readable rendering
   let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;

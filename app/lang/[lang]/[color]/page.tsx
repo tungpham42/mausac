@@ -38,18 +38,10 @@ import { Ratio } from "react-bootstrap";
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ color: string }>;
+  params: Promise<{ color: string; lang: string }>;
 }): Promise<Metadata> {
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
-  const language: Language = "en";
-  const color = parseColor(paramsResolved.color);
-  const hex = color?.toHexString() || "#000000";
-  const hexClean = hex.replace("#", "");
-  const colorName = color?.toName();
-  const baseUrl = `${hostUrl}/${colorName || hexClean}`;
-
-  const hreflangs: Record<string, string> = {};
   const validLanguages: Language[] = [
     "vi",
     "en",
@@ -63,6 +55,20 @@ export async function generateMetadata({
     "ru",
     "es",
   ];
+  const language: Language = validLanguages.includes(
+    paramsResolved.lang as Language
+  )
+    ? (paramsResolved.lang as Language)
+    : "en";
+  const color = parseColor(paramsResolved.color);
+  const hex = color?.toHexString() || "#000000";
+  const hexClean = hex.replace("#", "");
+  const colorName = color?.toName();
+  const baseUrl = `${hostUrl}${language === "en" ? "" : `/${language}`}/${
+    colorName || hexClean
+  }`;
+
+  const hreflangs: Record<string, string> = {};
   validLanguages.forEach((lang) => {
     hreflangs[lang] = `${hostUrl}${lang === "en" ? "" : `/${lang}`}/${
       colorName || hexClean
@@ -114,17 +120,34 @@ export async function generateMetadata({
 export default async function ColorPage({
   params,
 }: {
-  params: Promise<{ color: string }>;
+  params: Promise<{ color: string; lang: string }>;
 }) {
   const resolvedParams = await params;
-  const language: Language = "en";
+  const validLanguages: Language[] = [
+    "vi",
+    "en",
+    "zh",
+    "fr",
+    "de",
+    "it",
+    "ja",
+    "ko",
+    "pt",
+    "ru",
+    "es",
+  ];
+  const language: Language = validLanguages.includes(
+    resolvedParams.lang as Language
+  )
+    ? (resolvedParams.lang as Language)
+    : "en";
   const color = parseColor(resolvedParams.color);
 
-  if (!color) redirect("/");
+  if (!color) redirect(language === "en" ? "/" : `/${language}`);
 
   const formats = getColorFormats(color);
 
-  if (!formats) redirect("/");
+  if (!formats) redirect(language === "en" ? "/" : `/${language}`);
 
   const colorHex = formats.hex;
 
@@ -143,7 +166,9 @@ export default async function ColorPage({
   const translatedColorName = colorName
     ? cssColorsTranslation[colorName.toLowerCase()]?.[language] || colorName
     : getTranslation(language, "colorPage.unnamedColor");
-  const baseUrl = `${hostUrl}/${colorName || hexClean}`;
+  const baseUrl = `${hostUrl}${language === "en" ? "" : `/${language}`}/${
+    colorName || hexClean
+  }`;
 
   function parseRgbString(rgbString: string) {
     const match = rgbString.match(/\d+/g);
@@ -164,7 +189,10 @@ export default async function ColorPage({
       <div className="container mt-0">
         <LanguageToggle />
         <h1 className="mb-4 text-center">
-          <Link href="/" className="btn btn-link btn-lg text-decoration-none">
+          <Link
+            href={language === "en" ? "/" : `/${language}`}
+            className="btn btn-link btn-lg text-decoration-none"
+          >
             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />
           </Link>
           {(getTranslation(language, "colorPage.header") as string).replace(
