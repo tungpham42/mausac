@@ -12,7 +12,8 @@ export async function generateMetadata({
   const hostUrl = await getHostUrl();
   const params = await searchParams;
   const language = params.lang || "en";
-  const canonicalUrl = `${hostUrl}?lang=${language}`;
+  const canonicalUrl =
+    language == "en" ? hostUrl : `${hostUrl}?lang=${language}`;
 
   const hreflangs: Record<string, string> = {};
   validLanguages.forEach((lang) => {

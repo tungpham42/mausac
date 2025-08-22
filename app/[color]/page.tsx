@@ -68,7 +68,8 @@ export async function generateMetadata({
   const hexClean = hex.replace("#", "");
   const colorName = color?.toName();
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
-  const canonicalUrl = `${baseUrl}?lang=${language}`;
+  const canonicalUrl =
+    language == "en" ? baseUrl : `${baseUrl}?lang=${language}`;
 
   const hreflangs: Record<string, string> = {};
   validLanguages.forEach((lang) => {
