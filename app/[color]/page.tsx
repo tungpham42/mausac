@@ -171,7 +171,8 @@ export default async function ColorPage({
     ? cssColorsTranslation[colorName.toLowerCase()]?.[language] || colorName
     : getTranslation(language, "colorPage.unnamedColor");
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
-  const canonicalUrl = `${baseUrl}?lang=${language}`;
+  const canonicalUrl =
+    language == "en" ? baseUrl : `${baseUrl}?lang=${language}`;
 
   function parseRgbString(rgbString: string) {
     const match = rgbString.match(/\d+/g);
@@ -188,7 +189,7 @@ export default async function ColorPage({
   }
 
   return (
-    <LanguageProvider initialLanguage={language}>
+    <LanguageProvider initialLanguage="en">
       <div className="container mt-0">
         <LanguageToggle />
         <h1 className="mb-4 text-center">

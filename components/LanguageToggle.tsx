@@ -15,14 +15,19 @@ export default function LanguageToggle() {
   const setLanguageAndNavigate = (lang: string) => {
     setLanguage(lang);
     const newParams = new URLSearchParams(searchParams.toString());
-    newParams.set("lang", lang);
-    router.push(lang == "en" ? pathname : `${pathname}?lang=${lang}`);
+    if (lang === "en") {
+      newParams.delete("lang"); // Remove lang param for English
+      router.push(pathname); // Navigate without lang query
+    } else {
+      newParams.set("lang", lang);
+      router.push(`${pathname}?${newParams.toString()}`);
+    }
     setShow(false);
   };
 
   const languages = [
-    { code: "vi", label: "Tiếng Việt", flag: "🇻🇳" },
     { code: "en", label: "English", flag: "🇺🇸" },
+    { code: "vi", label: "Tiếng Việt", flag: "🇻🇳" },
     { code: "zh", label: "中文", flag: "🇨🇳" },
     { code: "fr", label: "Français", flag: "🇫🇷" },
     { code: "de", label: "Deutsch", flag: "🇩🇪" },

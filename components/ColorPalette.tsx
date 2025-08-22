@@ -192,7 +192,14 @@ export default function ColorPalette({
                   </div>
                 )}
                 <Card.Footer className="text-center">
-                  <Link href={`/${hexClean}?lang=${language}`} passHref>
+                  <Link
+                    href={
+                      language == "en"
+                        ? `/${hexClean}`
+                        : `/${hexClean}?lang=${language}`
+                    }
+                    passHref
+                  >
                     <span className="color-code text-decoration-none">
                       {hex}
                     </span>

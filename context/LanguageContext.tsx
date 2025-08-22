@@ -58,12 +58,20 @@ export const LanguageProvider = ({
 
       // 🚨 Fix: only redirect if NOT default language
       if (
-        selectedLanguage !== initialLanguage && // e.g. "vi"
+        selectedLanguage !== initialLanguage &&
         (!queryLang || !SUPPORTED_LANGUAGES.includes(queryLang))
       ) {
         const url = new URL(window.location.href);
         url.searchParams.set("lang", selectedLanguage);
         window.location.replace(url.toString());
+      } else if (
+        selectedLanguage === initialLanguage &&
+        queryLang === initialLanguage
+      ) {
+        // Remove ?lang=en if it’s the default
+        const url = new URL(window.location.href);
+        url.searchParams.delete("lang");
+        window.history.replaceState({}, "", url.toString()); // no redirect flash
       }
     }
   }, [initialLanguage]);
@@ -76,7 +84,7 @@ export const LanguageProvider = ({
       // 🚨 Fix: Don’t add ?lang=en for default language
       const url = new URL(window.location.href);
       if (lang === initialLanguage) {
-        url.searchParams.delete("lang");
+        url.searchParams.delete("lang"); // ✅ removes ?lang=en
       } else {
         url.searchParams.set("lang", lang);
       }
