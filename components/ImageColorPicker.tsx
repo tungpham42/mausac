@@ -129,18 +129,14 @@ export default function ImageColorPicker() {
           <strong>{t("imageColorPicker.selectedColor")}</strong>{" "}
           <Link
             href={
-              language === "en"
-                ? `/${hexClean}`
-                : `/${hexClean}?lang=${language}`
+              language === "en" ? `/${hexClean}` : `/${language}/${hexClean}`
             }
           >
             <span className="color-code">{pickedColor}</span>
           </Link>
           <Link
             href={
-              language === "en"
-                ? `/${hexClean}`
-                : `/${hexClean}?lang=${language}`
+              language === "en" ? `/${hexClean}` : `/${language}/${hexClean}`
             }
             style={{ display: "block", width: "fit-content" }}
           >

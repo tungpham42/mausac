@@ -18,7 +18,7 @@ export default function ColorSearchForm() {
       router.push(
         language === "en"
           ? `/${encodeURIComponent(cleanedQuery)}`
-          : `/${encodeURIComponent(cleanedQuery)}?lang=${language}`
+          : `/${language}/${encodeURIComponent(cleanedQuery)}`
       );
     }
   };

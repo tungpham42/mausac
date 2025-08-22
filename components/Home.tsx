@@ -100,7 +100,7 @@ export default function Home({ language }: { language: string }) {
                     href={
                       language === "en"
                         ? `/${color.clean}`
-                        : `/${color.clean}?lang=${language}`
+                        : `/${language}/${color.clean}`
                     }
                     passHref
                   >

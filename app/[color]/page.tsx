@@ -34,6 +34,7 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 import { Ratio } from "react-bootstrap";
+import validLanguages from "@/languages";
 
 export async function generateMetadata({
   params,
@@ -50,19 +51,7 @@ export async function generateMetadata({
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
 
   const hreflangs: Record<string, string> = {};
-  const validLanguages: Language[] = [
-    "vi",
-    "en",
-    "zh",
-    "fr",
-    "de",
-    "it",
-    "ja",
-    "ko",
-    "pt",
-    "ru",
-    "es",
-  ];
+
   validLanguages.forEach((lang) => {
     hreflangs[lang] = `${hostUrl}${lang === "en" ? "" : `/${lang}`}/${
       colorName || hexClean

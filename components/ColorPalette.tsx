@@ -136,7 +136,7 @@ export default function ColorPalette({
                   href={
                     language === "en"
                       ? `/${hexClean}`
-                      : `/${hexClean}?lang=${language}`
+                      : `/${language}/${hexClean}`
                   }
                   passHref
                 >
@@ -194,9 +194,9 @@ export default function ColorPalette({
                 <Card.Footer className="text-center">
                   <Link
                     href={
-                      language == "en"
+                      language === "en"
                         ? `/${hexClean}`
-                        : `/${hexClean}?lang=${language}`
+                        : `/${language}/${hexClean}`
                     }
                     passHref
                   >

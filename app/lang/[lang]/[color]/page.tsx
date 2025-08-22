@@ -34,6 +34,7 @@ import {
   faPinterest,
 } from "@fortawesome/free-brands-svg-icons";
 import { Ratio } from "react-bootstrap";
+import validLanguages from "@/languages";
 
 export async function generateMetadata({
   params,
@@ -42,19 +43,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const hostUrl = await getHostUrl();
   const paramsResolved = await params;
-  const validLanguages: Language[] = [
-    "vi",
-    "en",
-    "zh",
-    "fr",
-    "de",
-    "it",
-    "ja",
-    "ko",
-    "pt",
-    "ru",
-    "es",
-  ];
+
   const language: Language = validLanguages.includes(
     paramsResolved.lang as Language
   )
