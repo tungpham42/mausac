@@ -132,7 +132,14 @@ export default function ColorPalette({
                     "0 6px 12px rgba(0, 0, 0, 0.5)";
                 }}
               >
-                <Link href={`/${hexClean}?lang=${language}`} passHref>
+                <Link
+                  href={
+                    language === "en"
+                      ? `/${hexClean}`
+                      : `/${hexClean}?lang=${language}`
+                  }
+                  passHref
+                >
                   <Card.Body
                     style={{
                       backgroundColor: hex,

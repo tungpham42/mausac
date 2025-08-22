@@ -18,7 +18,7 @@ export async function generateMetadata({
   validLanguages.forEach((lang) => {
     hreflangs[lang] = `${hostUrl}?lang=${lang}`;
   });
-  hreflangs["x-default"] = `${hostUrl}?lang=en`;
+  hreflangs["x-default"] = `${hostUrl}`;
 
   return {
     title: getTranslation(language, "metadata.home.title") as string,

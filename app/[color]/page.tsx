@@ -74,7 +74,7 @@ export async function generateMetadata({
   validLanguages.forEach((lang) => {
     hreflangs[lang] = `${baseUrl}?lang=${lang}`;
   });
-  hreflangs["x-default"] = `${baseUrl}?lang=en`;
+  hreflangs["x-default"] = `${baseUrl}`;
 
   return {
     title: (
@@ -192,7 +192,7 @@ export default async function ColorPage({
         <LanguageToggle />
         <h1 className="mb-4 text-center">
           <Link
-            href={`/?lang=${language}`}
+            href={language == "en" ? `/` : `/?lang=${language}`}
             className="btn btn-link btn-lg text-decoration-none"
           >
             <FontAwesomeIcon icon={faArrowAltCircleLeft} className="me-2" />

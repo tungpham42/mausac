@@ -96,7 +96,14 @@ export default function Home({ language }: { language: string }) {
                   <span className="color-code">{color.hex}</span>
                 </Card.Text>
                 <div className="mt-auto">
-                  <Link href={`/${color.clean}?lang=${language}`} passHref>
+                  <Link
+                    href={
+                      language === "en"
+                        ? `/${color.clean}`
+                        : `/${color.clean}?lang=${language}`
+                    }
+                    passHref
+                  >
                     <Button variant="primary">{t("home.viewDetails")}</Button>
                   </Link>
                 </div>

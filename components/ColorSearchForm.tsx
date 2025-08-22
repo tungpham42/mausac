@@ -15,7 +15,11 @@ export default function ColorSearchForm() {
     e.preventDefault();
     if (query) {
       const cleanedQuery = query.replace("#", "");
-      router.push(`/${encodeURIComponent(cleanedQuery)}?lang=${language}`);
+      router.push(
+        language === "en"
+          ? `/${encodeURIComponent(cleanedQuery)}`
+          : `/${encodeURIComponent(cleanedQuery)}?lang=${language}`
+      );
     }
   };
 
