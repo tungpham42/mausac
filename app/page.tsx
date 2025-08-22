@@ -2,6 +2,7 @@ import Home from "@/components/Home";
 import type { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
 import { getTranslation } from "@/translations";
+import validLanguages from "@/languages";
 
 export async function generateMetadata({
   searchParams,
@@ -13,6 +14,12 @@ export async function generateMetadata({
   const language = params.lang || "en";
   const canonicalUrl = `${hostUrl}?lang=${language}`;
 
+  const hreflangs: Record<string, string> = {};
+  validLanguages.forEach((lang) => {
+    hreflangs[lang] = `${hostUrl}?lang=${lang}`;
+  });
+  hreflangs["x-default"] = `${hostUrl}?lang=en`;
+
   return {
     title: getTranslation(language, "metadata.home.title") as string,
     description: getTranslation(
@@ -22,6 +29,7 @@ export async function generateMetadata({
     keywords: getTranslation(language, "metadata.home.keywords") as string[],
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflangs,
     },
     openGraph: {
       title: getTranslation(language, "metadata.home.ogTitle") as string,

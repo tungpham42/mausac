@@ -70,6 +70,12 @@ export async function generateMetadata({
   const baseUrl = `${hostUrl}/${colorName || hexClean}`;
   const canonicalUrl = `${baseUrl}?lang=${language}`;
 
+  const hreflangs: Record<string, string> = {};
+  validLanguages.forEach((lang) => {
+    hreflangs[lang] = `${baseUrl}?lang=${lang}`;
+  });
+  hreflangs["x-default"] = `${baseUrl}?lang=en`;
+
   return {
     title: (
       getTranslation(language, "metadata.colorPage.title") as string
@@ -82,6 +88,7 @@ export async function generateMetadata({
     ).map((kw) => kw.replace("<hex>", hex)),
     alternates: {
       canonical: canonicalUrl,
+      languages: hreflangs,
     },
     openGraph: {
       title: (
