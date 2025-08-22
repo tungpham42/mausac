@@ -16,7 +16,7 @@ export default function LanguageToggle() {
     setLanguage(lang);
     const newParams = new URLSearchParams(searchParams.toString());
     newParams.set("lang", lang);
-    router.push(`${pathname}?lang=${lang}`);
+    router.push(lang == "en" ? pathname : `${pathname}?lang=${lang}`);
     setShow(false);
   };
 
