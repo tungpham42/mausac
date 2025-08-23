@@ -1,16 +1,12 @@
-import Script from "next/script";
-
 const AdSenseBanner = () => {
   return (
     <>
-      <Script
+      <script
+        async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3585118770961536"
-        strategy="afterInteractive"
         crossOrigin="anonymous"
-        onLoad={() => {
-          (window.adsbygoogle = window.adsbygoogle || []).push({});
-        }}
-      />
+      ></script>
+
       <ins
         className="adsbygoogle"
         style={{ display: "block" }}
@@ -18,6 +14,12 @@ const AdSenseBanner = () => {
         data-ad-slot="6125104736"
         data-ad-format="auto"
         data-full-width-responsive="true"
+      />
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `(adsbygoogle = window.adsbygoogle || []).push({});`,
+        }}
       />
     </>
   );
