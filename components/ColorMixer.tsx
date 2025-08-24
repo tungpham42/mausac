@@ -4,6 +4,7 @@ import { Row, Col, Button, Form, Card, Stack } from "react-bootstrap";
 import { LanguageContext } from "@/context/LanguageContext";
 import tinycolor from "tinycolor2";
 import Link from "next/link";
+import AdSenseBanner from "./AdSenseBanner";
 
 type BlendMode =
   | "normal"
@@ -183,183 +184,44 @@ export default function ColorMixer() {
   const mixedColorClean = mixedColor.replace("#", "").toLowerCase();
 
   return (
-    <Card className="p-4 shadow-lg border-0">
-      <div className="color-mixer">
-        <Row className="mb-4">
-          <Col md={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body className="p-3">
-                <Form.Group>
-                  <Form.Label className="fw-bold mb-3 d-block">
-                    {t("colorMixer.color1")}
-                  </Form.Label>
-                  <div className="d-flex align-items-center gap-3">
-                    <div
-                      className="color-picker-wrapper rounded-circle shadow"
-                      style={{
-                        backgroundColor: color1,
-                        height: "60px",
-                        width: "66px",
-                        border: "3px solid #fff",
-                        boxShadow: "0 0 0 2px #dee2e6",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Form.Control
-                        type="color"
-                        value={color1}
-                        onChange={(e) => setColor1(e.target.value)}
-                        className="opacity-0 w-100 h-100"
-                        style={{ cursor: "pointer" }}
-                      />
-                    </div>
-                    <Form.Control
-                      type="text"
-                      value={color1}
-                      onChange={(e) => setColor1(e.target.value)}
-                      placeholder="#FF0000"
-                      className="fw-bold"
-                    />
-                  </div>
-                </Form.Group>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col md={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body className="p-3">
-                <Form.Group>
-                  <Form.Label className="fw-bold mb-3 d-block">
-                    {t("colorMixer.color2")}
-                  </Form.Label>
-                  <div className="d-flex align-items-center gap-3">
-                    <div
-                      className="color-picker-wrapper rounded-circle shadow"
-                      style={{
-                        backgroundColor: color2,
-                        height: "60px",
-                        width: "66px",
-                        border: "3px solid #fff",
-                        boxShadow: "0 0 0 2px #dee2e6",
-                        cursor: "pointer",
-                      }}
-                    >
-                      <Form.Control
-                        type="color"
-                        value={color2}
-                        onChange={(e) => setColor2(e.target.value)}
-                        className="opacity-0 w-100 h-100"
-                        style={{ cursor: "pointer" }}
-                      />
-                    </div>
-                    <Form.Control
-                      type="text"
-                      value={color2}
-                      onChange={(e) => setColor2(e.target.value)}
-                      placeholder="#0000FF"
-                      className="fw-bold"
-                    />
-                  </div>
-                </Form.Group>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        <Row className="mb-4">
-          <Col md={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body className="p-3">
-                <Form.Group>
-                  <Form.Label className="fw-bold mb-3 d-block">
-                    {t("colorMixer.mixRatio")}:{" "}
-                    <span className="text-primary">{ratio}%</span>
-                  </Form.Label>
-                  <Form.Range
-                    min="0"
-                    max="100"
-                    value={ratio}
-                    onChange={(e) => setRatio(parseInt(e.target.value))}
-                    className="custom-range"
-                  />
-                  <div className="d-flex justify-content-between mt-2">
-                    <small className="text-muted">
-                      {t("colorMixer.moreColor1")}
-                    </small>
-                    <small className="text-muted">
-                      {t("colorMixer.moreColor2")}
-                    </small>
-                  </div>
-                </Form.Group>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          <Col md={6}>
-            <Card className="border-0 shadow-sm">
-              <Card.Body className="p-3">
-                <Form.Group>
-                  <Form.Label className="fw-bold mb-3 d-block">
-                    {t("colorMixer.blendMode")}
-                  </Form.Label>
-                  <Form.Select
-                    value={blendMode}
-                    onChange={(e) => setBlendMode(e.target.value as BlendMode)}
-                    className="fw-semibold"
-                  >
-                    {blendModes.map((mode) => (
-                      <option key={mode.value} value={mode.value}>
-                        {mode.label}
-                      </option>
-                    ))}
-                  </Form.Select>
-                </Form.Group>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-
-        <div className="text-center mb-4">
-          <Button
-            variant="outline-secondary"
-            size="sm"
-            className="me-2"
-            onClick={() => setShowAdvanced(!showAdvanced)}
-          >
-            {showAdvanced
-              ? t("colorMixer.hideAdvanced")
-              : t("colorMixer.showAdvanced")}
-            <i
-              className={`ms-2 fas ${
-                showAdvanced ? "fa-chevron-up" : "fa-chevron-down"
-              }`}
-            ></i>
-          </Button>
-        </div>
-
-        {showAdvanced && (
+    <>
+      <Card className="p-4 shadow-lg border-0">
+        <div className="color-mixer">
           <Row className="mb-4">
             <Col md={6}>
               <Card className="border-0 shadow-sm">
-                <Card.Body className="p-3 text-center">
+                <Card.Body className="p-3">
                   <Form.Group>
                     <Form.Label className="fw-bold mb-3 d-block">
-                      {t("colorMixer.swapColors")}
+                      {t("colorMixer.color1")}
                     </Form.Label>
-                    <div>
-                      <Button
-                        variant="outline-primary"
-                        onClick={() => {
-                          const temp = color1;
-                          setColor1(color2);
-                          setColor2(temp);
+                    <div className="d-flex align-items-center gap-3">
+                      <div
+                        className="color-picker-wrapper rounded-circle shadow"
+                        style={{
+                          backgroundColor: color1,
+                          height: "60px",
+                          width: "66px",
+                          border: "3px solid #fff",
+                          boxShadow: "0 0 0 2px #dee2e6",
+                          cursor: "pointer",
                         }}
-                        className="px-4"
                       >
-                        <i className="fas fa-exchange-alt me-2"></i>
-                        {t("colorMixer.swap")}
-                      </Button>
+                        <Form.Control
+                          type="color"
+                          value={color1}
+                          onChange={(e) => setColor1(e.target.value)}
+                          className="opacity-0 w-100 h-100"
+                          style={{ cursor: "pointer" }}
+                        />
+                      </div>
+                      <Form.Control
+                        type="text"
+                        value={color1}
+                        onChange={(e) => setColor1(e.target.value)}
+                        placeholder="#FF0000"
+                        className="fw-bold"
+                      />
                     </div>
                   </Form.Group>
                 </Card.Body>
@@ -367,168 +229,302 @@ export default function ColorMixer() {
             </Col>
             <Col md={6}>
               <Card className="border-0 shadow-sm">
-                <Card.Body className="p-3 text-center">
+                <Card.Body className="p-3">
                   <Form.Group>
                     <Form.Label className="fw-bold mb-3 d-block">
-                      {t("colorMixer.randomColors")}
+                      {t("colorMixer.color2")}
                     </Form.Label>
-                    <div>
-                      <Button
-                        variant="outline-info"
-                        onClick={() => {
-                          setColor1(tinycolor.random().toHexString());
-                          setColor2(tinycolor.random().toHexString());
+                    <div className="d-flex align-items-center gap-3">
+                      <div
+                        className="color-picker-wrapper rounded-circle shadow"
+                        style={{
+                          backgroundColor: color2,
+                          height: "60px",
+                          width: "66px",
+                          border: "3px solid #fff",
+                          boxShadow: "0 0 0 2px #dee2e6",
+                          cursor: "pointer",
                         }}
-                        className="px-4"
                       >
-                        <i className="fas fa-dice me-2"></i>
-                        {t("colorMixer.randomize")}
-                      </Button>
+                        <Form.Control
+                          type="color"
+                          value={color2}
+                          onChange={(e) => setColor2(e.target.value)}
+                          className="opacity-0 w-100 h-100"
+                          style={{ cursor: "pointer" }}
+                        />
+                      </div>
+                      <Form.Control
+                        type="text"
+                        value={color2}
+                        onChange={(e) => setColor2(e.target.value)}
+                        placeholder="#0000FF"
+                        className="fw-bold"
+                      />
                     </div>
                   </Form.Group>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
-        )}
-
-        <div className="text-center mb-4">
-          <Button
-            variant="primary"
-            size="lg"
-            onClick={mixColors}
-            className="px-5 py-2 fw-bold"
-          >
-            <i className="fas fa-palette me-2"></i>
-            {t("home.mixButton")}
-          </Button>
-        </div>
-
-        {mixedColor && (
-          <Card className="border-0 shadow-lg mt-4">
-            <Card.Body className="p-4">
-              <h3 className="text-center mb-4">{t("home.mixedColor")}</h3>
-
-              <div className="d-flex justify-content-center align-items-center gap-4 mb-4 flex-wrap">
-                <div className="d-flex flex-column align-items-center">
-                  <div
-                    className="color-preview shadow"
-                    style={{
-                      backgroundColor: color1,
-                      height: "80px",
-                      width: "80px",
-                      borderRadius: "12px",
-                      border: "3px solid #fff",
-                      boxShadow: "0 0 0 2px #dee2e6",
-                    }}
-                  ></div>
-                  <small className="mt-2 fw-semibold">{color1}</small>
-                </div>
-
-                <div className="mix-arrow fs-2 text-muted">
-                  <i className="fas fa-plus"></i>
-                </div>
-
-                <div className="d-flex flex-column align-items-center">
-                  <div
-                    className="color-preview shadow"
-                    style={{
-                      backgroundColor: color2,
-                      height: "80px",
-                      width: "80px",
-                      borderRadius: "12px",
-                      border: "3px solid #fff",
-                      boxShadow: "0 0 0 2px #dee2e6",
-                    }}
-                  ></div>
-                  <small className="mt-2 fw-semibold">{color2}</small>
-                </div>
-
-                <div className="mix-arrow fs-2 text-muted">
-                  <i className="fas fa-arrow-right"></i>
-                </div>
-
-                <div className="d-flex flex-column align-items-center">
-                  <div
-                    className="mixed-color-preview shadow-lg"
-                    style={{
-                      backgroundColor: mixedColor,
-                      height: "100px",
-                      width: "100px",
-                      borderRadius: "16px",
-                      border: "4px solid #fff",
-                      boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
-                    }}
-                  ></div>
-                  <small className="mt-2 fw-bold">{mixedColor}</small>
-                </div>
-              </div>
-
-              <div className="color-info">
-                <Row className="justify-content-center">
-                  <Col md={10}>
-                    <Card className="border-0 bg-light">
-                      <Card.Body className="p-4">
-                        <Row>
-                          <Col md={6} className="mb-2">
-                            <strong>{t("colorFormats.hex")}:</strong>{" "}
-                            <span className="text-primary fw-bold">
-                              {mixedColor}
-                            </span>
-                          </Col>
-                          <Col md={6} className="mb-2">
-                            <strong>{t("colorFormats.rgb")}:</strong>{" "}
-                            <span className="text-primary fw-bold">
-                              {mixedTc?.toRgbString()}
-                            </span>
-                          </Col>
-                          <Col md={6} className="mb-2">
-                            <strong>{t("colorFormats.hsl")}:</strong>{" "}
-                            <span className="text-primary fw-bold">
-                              {mixedTc?.toHslString()}
-                            </span>
-                          </Col>
-                          <Col md={6} className="mb-2">
-                            {mixedTc && (
-                              <>
-                                <strong>{t("colorFormats.cmyk")}:</strong>{" "}
-                                <span className="text-primary fw-bold">
-                                  {getCmykString(mixedTc)}
-                                </span>
-                              </>
-                            )}
-                          </Col>
-                        </Row>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
-
-                <div className="text-center mt-4">
-                  <Stack
-                    direction="horizontal"
-                    gap={3}
-                    className="justify-content-center"
-                  >
-                    <Link
-                      href={
-                        language === "en"
-                          ? `/${mixedColorClean}`
-                          : `/${language}/${mixedColorClean}`
+          <Row className="mb-4">
+            <Col md={6}>
+              <Card className="border-0 shadow-sm">
+                <Card.Body className="p-3">
+                  <Form.Group>
+                    <Form.Label className="fw-bold mb-3 d-block">
+                      {t("colorMixer.mixRatio")}:{" "}
+                      <span className="text-primary">{ratio}%</span>
+                    </Form.Label>
+                    <Form.Range
+                      min="0"
+                      max="100"
+                      value={ratio}
+                      onChange={(e) => setRatio(parseInt(e.target.value))}
+                      className="custom-range"
+                    />
+                    <div className="d-flex justify-content-between mt-2">
+                      <small className="text-muted">
+                        {t("colorMixer.moreColor1")}
+                      </small>
+                      <small className="text-muted">
+                        {t("colorMixer.moreColor2")}
+                      </small>
+                    </div>
+                  </Form.Group>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={6}>
+              <Card className="border-0 shadow-sm">
+                <Card.Body className="p-3">
+                  <Form.Group>
+                    <Form.Label className="fw-bold mb-3 d-block">
+                      {t("colorMixer.blendMode")}
+                    </Form.Label>
+                    <Form.Select
+                      value={blendMode}
+                      onChange={(e) =>
+                        setBlendMode(e.target.value as BlendMode)
                       }
-                      passHref
+                      className="fw-semibold"
                     >
-                      <Button variant="primary" className="px-4">
-                        {t("home.viewDetails")}
-                      </Button>
-                    </Link>
-                  </Stack>
+                      {blendModes.map((mode) => (
+                        <option key={mode.value} value={mode.value}>
+                          {mode.label}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Form.Group>
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+          <div className="text-center mb-4">
+            <Button
+              variant="outline-secondary"
+              size="sm"
+              className="me-2"
+              onClick={() => setShowAdvanced(!showAdvanced)}
+            >
+              {showAdvanced
+                ? t("colorMixer.hideAdvanced")
+                : t("colorMixer.showAdvanced")}
+              <i
+                className={`ms-2 fas ${
+                  showAdvanced ? "fa-chevron-up" : "fa-chevron-down"
+                }`}
+              ></i>
+            </Button>
+          </div>
+          {showAdvanced && (
+            <Row className="mb-4">
+              <Col md={6}>
+                <Card className="border-0 shadow-sm">
+                  <Card.Body className="p-3 text-center">
+                    <Form.Group>
+                      <Form.Label className="fw-bold mb-3 d-block">
+                        {t("colorMixer.swapColors")}
+                      </Form.Label>
+                      <div>
+                        <Button
+                          variant="outline-primary"
+                          onClick={() => {
+                            const temp = color1;
+                            setColor1(color2);
+                            setColor2(temp);
+                          }}
+                          className="px-4"
+                        >
+                          <i className="fas fa-exchange-alt me-2"></i>
+                          {t("colorMixer.swap")}
+                        </Button>
+                      </div>
+                    </Form.Group>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col md={6}>
+                <Card className="border-0 shadow-sm">
+                  <Card.Body className="p-3 text-center">
+                    <Form.Group>
+                      <Form.Label className="fw-bold mb-3 d-block">
+                        {t("colorMixer.randomColors")}
+                      </Form.Label>
+                      <div>
+                        <Button
+                          variant="outline-info"
+                          onClick={() => {
+                            setColor1(tinycolor.random().toHexString());
+                            setColor2(tinycolor.random().toHexString());
+                          }}
+                          className="px-4"
+                        >
+                          <i className="fas fa-dice me-2"></i>
+                          {t("colorMixer.randomize")}
+                        </Button>
+                      </div>
+                    </Form.Group>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          )}
+          <div className="text-center mb-4">
+            <Button
+              variant="primary"
+              size="lg"
+              onClick={mixColors}
+              className="px-5 py-2 fw-bold"
+            >
+              <i className="fas fa-palette me-2"></i>
+              {t("home.mixButton")}
+            </Button>
+          </div>
+          {mixedColor && (
+            <Card className="border-0 shadow-lg mt-4">
+              <Card.Body className="p-4">
+                <h3 className="text-center mb-4">{t("home.mixedColor")}</h3>
+
+                <div className="d-flex justify-content-center align-items-center gap-4 mb-4 flex-wrap">
+                  <div className="d-flex flex-column align-items-center">
+                    <div
+                      className="color-preview shadow"
+                      style={{
+                        backgroundColor: color1,
+                        height: "80px",
+                        width: "80px",
+                        borderRadius: "12px",
+                        border: "3px solid #fff",
+                        boxShadow: "0 0 0 2px #dee2e6",
+                      }}
+                    ></div>
+                    <small className="mt-2 fw-semibold">{color1}</small>
+                  </div>
+
+                  <div className="mix-arrow fs-2 text-muted">
+                    <i className="fas fa-plus"></i>
+                  </div>
+
+                  <div className="d-flex flex-column align-items-center">
+                    <div
+                      className="color-preview shadow"
+                      style={{
+                        backgroundColor: color2,
+                        height: "80px",
+                        width: "80px",
+                        borderRadius: "12px",
+                        border: "3px solid #fff",
+                        boxShadow: "0 0 0 2px #dee2e6",
+                      }}
+                    ></div>
+                    <small className="mt-2 fw-semibold">{color2}</small>
+                  </div>
+
+                  <div className="mix-arrow fs-2 text-muted">
+                    <i className="fas fa-arrow-right"></i>
+                  </div>
+                  <div className="d-flex flex-column align-items-center">
+                    <div
+                      className="mixed-color-preview shadow-lg"
+                      style={{
+                        backgroundColor: mixedColor,
+                        height: "100px",
+                        width: "100px",
+                        borderRadius: "16px",
+                        border: "4px solid #fff",
+                        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+                      }}
+                    ></div>
+                    <small className="mt-2 fw-bold">{mixedColor}</small>
+                  </div>
                 </div>
-              </div>
-            </Card.Body>
-          </Card>
-        )}
-      </div>
-    </Card>
+                <div className="color-info">
+                  <Row className="justify-content-center">
+                    <Col md={10}>
+                      <Card className="border-0 bg-light">
+                        <Card.Body className="p-4">
+                          <Row>
+                            <Col md={6} className="mb-2">
+                              <strong>{t("colorFormats.hex")}:</strong>{" "}
+                              <span className="text-primary fw-bold">
+                                {mixedColor}
+                              </span>
+                            </Col>
+                            <Col md={6} className="mb-2">
+                              <strong>{t("colorFormats.rgb")}:</strong>{" "}
+                              <span className="text-primary fw-bold">
+                                {mixedTc?.toRgbString()}
+                              </span>
+                            </Col>
+                            <Col md={6} className="mb-2">
+                              <strong>{t("colorFormats.hsl")}:</strong>{" "}
+                              <span className="text-primary fw-bold">
+                                {mixedTc?.toHslString()}
+                              </span>
+                            </Col>
+                            <Col md={6} className="mb-2">
+                              {mixedTc && (
+                                <>
+                                  <strong>{t("colorFormats.cmyk")}:</strong>{" "}
+                                  <span className="text-primary fw-bold">
+                                    {getCmykString(mixedTc)}
+                                  </span>
+                                </>
+                              )}
+                            </Col>
+                          </Row>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                  <div className="text-center mt-4">
+                    <Stack
+                      direction="horizontal"
+                      gap={3}
+                      className="justify-content-center"
+                    >
+                      <Link
+                        href={
+                          language === "en"
+                            ? `/${mixedColorClean}`
+                            : `/${language}/${mixedColorClean}`
+                        }
+                        passHref
+                      >
+                        <Button variant="primary" className="px-4">
+                          {t("home.viewDetails")}
+                        </Button>
+                      </Link>
+                    </Stack>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          )}
+        </div>
+      </Card>
+      <AdSenseBanner />
+    </>
   );
 }
