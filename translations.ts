@@ -10,6 +10,7 @@ interface MetadataPage {
 
 interface Translations {
   colorMixer: {
+    colorMixerTitle: string;
     color1: string;
     color2: string;
     mixRatio: string;
@@ -126,17 +127,24 @@ interface Translations {
     shareLabel: string;
     shareText: string;
   };
+  tools: {
+    toolsLabel: string;
+    colorPicker: string;
+    colorMixer: string;
+  };
   metadata: Metadata;
 }
 
 interface Metadata {
   home: MetadataPage;
   colorPage: MetadataPage;
+  colorMixer: MetadataPage;
 }
 
 export const translations: { [key: string]: Translations } = {
   vi: {
     colorMixer: {
+      colorMixerTitle: "Trộn màu",
       color1: "Màu thứ nhất",
       color2: "Màu thứ hai",
       mixRatio: "Tỷ lệ trộn",
@@ -266,6 +274,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Chia sẻ màu này:",
       shareText: "Tra cứu mã màu này",
     },
+    tools: {
+      toolsLabel: "Công cụ",
+      colorPicker: "Chọn màu",
+      colorMixer: "Trộn màu",
+    },
     metadata: {
       home: {
         title: "Tra cứu mã màu - color.soft.io.vn",
@@ -305,10 +318,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Tra cứu mã màu",
         ogImageAlt: "Xem trước <hex> - Tra cứu mã màu",
       },
+      colorMixer: {
+        title: "Trộn màu - color.soft.io.vn",
+        description:
+          "Trộn hai màu với tỷ lệ và chế độ pha trộn tùy chọn. Tạo màu sắc độc đáo và khám phá các biến thể ngay!",
+        keywords: [
+          "trộn màu",
+          "màu sắc",
+          "tỷ lệ trộn",
+          "chế độ pha trộn",
+          "mã màu",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Trộn màu - color.soft.io.vn",
+        ogDescription:
+          "Trộn hai màu với tỷ lệ và chế độ pha trộn tùy chọn. Tạo màu sắc độc đáo và khám phá các biến thể ngay!",
+        siteName: "Tra cứu mã màu",
+        ogImageAlt: "Trộn màu - color.soft.io.vn",
+      },
     },
   },
   en: {
     colorMixer: {
+      colorMixerTitle: "Color Mixer",
       color1: "First Color",
       color2: "Second Color",
       mixRatio: "Mix Ratio",
@@ -439,6 +473,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Share this color:",
       shareText: "Look up this color",
     },
+    tools: {
+      toolsLabel: "Tools",
+      colorPicker: "Color Picker",
+      colorMixer: "Color Mixer",
+    },
     metadata: {
       home: {
         title: "Color Lookup - color.soft.io.vn",
@@ -462,11 +501,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Color Lookup",
         ogImageAlt: "Preview <hex> - Color Lookup",
       },
+      colorMixer: {
+        title: "Color Mixer - color.soft.io.vn",
+        description:
+          "Mix two colors with customizable ratio and blend mode. Create unique colors and explore variations now!",
+        keywords: [
+          "color mixer",
+          "colors",
+          "mix ratio",
+          "blend mode",
+          "color code",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Color Mixer - color.soft.io.vn",
+        ogDescription:
+          "Mix two colors with customizable ratio and blend mode. Create unique colors and explore variations now!",
+        siteName: "Color Lookup",
+        ogImageAlt: "Color Mixer - color.soft.io.vn",
+      },
     },
   },
-
   zh: {
     colorMixer: {
+      colorMixerTitle: "颜色混合器",
       color1: "第一种颜色",
       color2: "第二种颜色",
       mixRatio: "混合比例",
@@ -592,6 +651,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "分享此颜色：",
       shareText: "查询此颜色",
     },
+    tools: {
+      toolsLabel: "工具",
+      colorPicker: "颜色选择器",
+      colorMixer: "颜色混合器",
+    },
     metadata: {
       home: {
         title: "颜色查询 - color.soft.io.vn",
@@ -615,10 +679,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "颜色查询",
         ogImageAlt: "预览 <hex> - 颜色查询",
       },
+      colorMixer: {
+        title: "颜色混合器 - color.soft.io.vn",
+        description:
+          "使用可自定义的比例和混合模式混合两种颜色。创建独特的颜色并立即探索变化！",
+        keywords: [
+          "颜色混合器",
+          "颜色",
+          "混合比例",
+          "混合模式",
+          "颜色代码",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "颜色混合器 - color.soft.io.vn",
+        ogDescription:
+          "使用可自定义的比例和混合模式混合两种颜色。创建独特的颜色并立即探索变化！",
+        siteName: "颜色查询",
+        ogImageAlt: "颜色混合器 - color.soft.io.vn",
+      },
     },
   },
   fr: {
     colorMixer: {
+      colorMixerTitle: "Mélangeur de couleurs",
       color1: "Première couleur",
       color2: "Deuxième couleur",
       mixRatio: "Ratio de mélange",
@@ -753,6 +838,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Partager cette couleur :",
       shareText: "Rechercher cette couleur",
     },
+    tools: {
+      toolsLabel: "Outils",
+      colorPicker: "Sélecteur de couleur",
+      colorMixer: "Mélangeur de couleurs",
+    },
     metadata: {
       home: {
         title: "Recherche de couleur - color.soft.io.vn",
@@ -790,10 +880,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Recherche de couleur",
         ogImageAlt: "Aperçu <hex> - Recherche de couleur",
       },
+      colorMixer: {
+        title: "Mélangeur de couleurs - color.soft.io.vn",
+        description:
+          "Mélangez deux couleurs avec un ratio et un mode de fusion personnalisables. Créez des couleurs uniques et explorez les variations maintenant !",
+        keywords: [
+          "mélangeur de couleurs",
+          "couleurs",
+          "ratio de mélange",
+          "mode de fusion",
+          "code couleur",
+          "hex",
+          "rvb",
+          "tsl",
+        ],
+        ogTitle: "Mélangeur de couleurs - color.soft.io.vn",
+        ogDescription:
+          "Mélangez deux couleurs avec un ratio et un mode de fusion personnalisables. Créez des couleurs uniques et explorez les variations maintenant !",
+        siteName: "Recherche de couleur",
+        ogImageAlt: "Mélangeur de couleurs - color.soft.io.vn",
+      },
     },
   },
   de: {
     colorMixer: {
+      colorMixerTitle: "Farbmixer",
       color1: "Erste Farbe",
       color2: "Zweite Farbe",
       mixRatio: "Mischverhältnis",
@@ -926,6 +1037,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Diese Farbe teilen:",
       shareText: "Diese Farbe nachschlagen",
     },
+    tools: {
+      toolsLabel: "Werkzeuge",
+      colorPicker: "Farbwähler",
+      colorMixer: "Farbmixer",
+    },
     metadata: {
       home: {
         title: "Farbsuche - color.soft.io.vn",
@@ -949,10 +1065,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Farbsuche",
         ogImageAlt: "Vorschau <hex> - Farbsuche",
       },
+      colorMixer: {
+        title: "Farbmixer - color.soft.io.vn",
+        description:
+          "Mischen Sie zwei Farben mit anpassbarem Verhältnis und Mischmodus. Erstellen Sie einzigartige Farben und erkunden Sie jetzt Variationen!",
+        keywords: [
+          "Farbmixer",
+          "Farben",
+          "Mischverhältnis",
+          "Mischmodus",
+          "Farbcode",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Farbmixer - color.soft.io.vn",
+        ogDescription:
+          "Mischen Sie zwei Farben mit anpassbarem Verhältnis und Mischmodus. Erstellen Sie einzigartige Farben und erkunden Sie jetzt Variationen!",
+        siteName: "Farbsuche",
+        ogImageAlt: "Farbmixer - color.soft.io.vn",
+      },
     },
   },
   it: {
     colorMixer: {
+      colorMixerTitle: "Miscelatore di colori",
       color1: "Primo colore",
       color2: "Secondo colore",
       mixRatio: "Rapporto di miscelazione",
@@ -1083,6 +1220,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Condividi questo colore:",
       shareText: "Cerca questo colore",
     },
+    tools: {
+      toolsLabel: "Strumenti",
+      colorPicker: "Selettore di colori",
+      colorMixer: "Miscelatore di colori",
+    },
     metadata: {
       home: {
         title: "Ricerca colore - color.soft.io.vn",
@@ -1120,10 +1262,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Ricerca colore",
         ogImageAlt: "Anteprima <hex> - Ricerca colore",
       },
+      colorMixer: {
+        title: "Miscelatore di colori - color.soft.io.vn",
+        description:
+          "Miscela due colori con un rapporto e una modalità di fusione personalizzabili. Crea colori unici ed esplora le variazioni ora!",
+        keywords: [
+          "miscelatore di colori",
+          "colori",
+          "rapporto di miscelazione",
+          "modalità di fusione",
+          "codice colore",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Miscelatore di colori - color.soft.io.vn",
+        ogDescription:
+          "Miscela due colori con un rapporto e una modalità di fusione personalizzabili. Crea colori unici ed esplora le variazioni ora!",
+        siteName: "Ricerca colore",
+        ogImageAlt: "Miscelatore di colori - color.soft.io.vn",
+      },
     },
   },
   ja: {
     colorMixer: {
+      colorMixerTitle: "カラーミキサー",
       color1: "最初の色",
       color2: "2番目の色",
       mixRatio: "混合比率",
@@ -1255,6 +1418,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "この色を共有：",
       shareText: "この色を検索",
     },
+    tools: {
+      toolsLabel: "ツール",
+      colorPicker: "カラーピッカー",
+      colorMixer: "カラー混合器",
+    },
     metadata: {
       home: {
         title: "カラー検索 - color.soft.io.vn",
@@ -1278,10 +1446,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "カラー検索",
         ogImageAlt: "<hex> のプレビュー - カラー検索",
       },
+      colorMixer: {
+        title: "カラー混合器 - color.soft.io.vn",
+        description:
+          "カスタマイズ可能な比率とブレンドモードで2つの色を混合します。ユニークな色を作成し、今すぐバリエーションを探索してください！",
+        keywords: [
+          "カラー混合器",
+          "色",
+          "混合比率",
+          "ブレンドモード",
+          "カラーコード",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "カラー混合器 - color.soft.io.vn",
+        ogDescription:
+          "カスタマイズ可能な比率とブレンドモードで2つの色を混合します。ユニークな色を作成し、今すぐバリエーションを探索してください！",
+        siteName: "カラー検索",
+        ogImageAlt: "カラー混合器 - color.soft.io.vn",
+      },
     },
   },
   ko: {
     colorMixer: {
+      colorMixerTitle: "색상 혼합기",
       color1: "첫 번째 색상",
       color2: "두 번째 색상",
       mixRatio: "혼합 비율",
@@ -1411,6 +1600,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "이 색상 공유:",
       shareText: "이 색상 검색",
     },
+    tools: {
+      toolsLabel: "도구",
+      colorPicker: "색상 선택기",
+      colorMixer: "색상 혼합기",
+    },
     metadata: {
       home: {
         title: "색상 검색 - color.soft.io.vn",
@@ -1434,10 +1628,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "색상 검색",
         ogImageAlt: "<hex> 미리보기 - 색상 검색",
       },
+      colorMixer: {
+        title: "색상 혼합기 - color.soft.io.vn",
+        description:
+          "사용자 정의 가능한 비율과 블렌드 모드로 두 가지 색상을 혼합하세요. 독특한 색상을 만들고 지금 변화를 탐색하세요!",
+        keywords: [
+          "색상 혼합기",
+          "색상",
+          "혼합 비율",
+          "블렌드 모드",
+          "색상 코드",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "색상 혼합기 - color.soft.io.vn",
+        ogDescription:
+          "사용자 정의 가능한 비율과 블렌드 모드로 두 가지 색상을 혼합하세요. 독특한 색상을 만들고 지금 변화를 탐색하세요!",
+        siteName: "색상 검색",
+        ogImageAlt: "색상 혼합기 - color.soft.io.vn",
+      },
     },
   },
   pt: {
     colorMixer: {
+      colorMixerTitle: "Misturador de cores",
       color1: "Primeira cor",
       color2: "Segunda cor",
       mixRatio: "Proporção de mistura",
@@ -1570,6 +1785,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Compartilhar esta cor:",
       shareText: "Pesquisar esta cor",
     },
+    tools: {
+      toolsLabel: "Ferramentas",
+      colorPicker: "Seletor de cores",
+      colorMixer: "Misturador de cores",
+    },
     metadata: {
       home: {
         title: "Pesquisa de cores - color.soft.io.vn",
@@ -1607,10 +1827,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Pesquisa de cores",
         ogImageAlt: "Visualização <hex> - Pesquisa de cores",
       },
+      colorMixer: {
+        title: "Misturador de cores - color.soft.io.vn",
+        description:
+          "Misture duas cores com uma proporção e modo de mesclagem personalizáveis. Crie cores únicas e explore variações agora!",
+        keywords: [
+          "misturador de cores",
+          "cores",
+          "proporção de mistura",
+          "modo de mesclagem",
+          "código de cor",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Misturador de cores - color.soft.io.vn",
+        ogDescription:
+          "Misture duas cores com uma proporção e modo de mesclagem personalizáveis. Crie cores únicas e explore variações agora!",
+        siteName: "Pesquisa de cores",
+        ogImageAlt: "Misturador de cores - color.soft.io.vn",
+      },
     },
   },
   ru: {
     colorMixer: {
+      colorMixerTitle: "Смеситель цветов",
       color1: "Первый цвет",
       color2: "Второй цвет",
       mixRatio: "Соотношение смешивания",
@@ -1743,6 +1984,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Поделиться этим цветом:",
       shareText: "Найти этот цвет",
     },
+    tools: {
+      toolsLabel: "Инструменты",
+      colorPicker: "Пипетка",
+      colorMixer: "Смеситель цветов",
+    },
     metadata: {
       home: {
         title: "Поиск цвета - color.soft.io.vn",
@@ -1766,10 +2012,31 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Поиск цвета",
         ogImageAlt: "Предпросмотр <hex> - Поиск цвета",
       },
+      colorMixer: {
+        title: "Смеситель цветов - color.soft.io.vn",
+        description:
+          "Смешивайте два цвета с настраиваемым соотношением и режимом смешивания. Создавайте уникальные цвета и исследуйте вариации прямо сейчас!",
+        keywords: [
+          "смеситель цветов",
+          "цвета",
+          "соотношение смешивания",
+          "режим смешивания",
+          "код цвета",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Смеситель цветов - color.soft.io.vn",
+        ogDescription:
+          "Смешивайте два цвета с настраиваемым соотношением и режимом смешивания. Создавайте уникальные цвета и исследуйте вариации прямо сейчас!",
+        siteName: "Поиск цвета",
+        ogImageAlt: "Смеситель цветов - color.soft.io.vn",
+      },
     },
   },
   es: {
     colorMixer: {
+      colorMixerTitle: "Mezclador de colores",
       color1: "Primer color",
       color2: "Segundo color",
       mixRatio: "Proporción de mezcla",
@@ -1902,6 +2169,11 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Compartir este color:",
       shareText: "Buscar este color",
     },
+    tools: {
+      toolsLabel: "Herramientas",
+      colorPicker: "Selector de color",
+      colorMixer: "Mezclador de colores",
+    },
     metadata: {
       home: {
         title: "Búsqueda de colores - color.soft.io.vn",
@@ -1938,6 +2210,26 @@ export const translations: { [key: string]: Translations } = {
           "Explora las variaciones del color <hex> con HEX, RGB, HSL, sombras y complementarios. ¡Encuentra tu color perfecto ahora!",
         siteName: "Búsqueda de colores",
         ogImageAlt: "Vista previa <hex> - Búsqueda de colores",
+      },
+      colorMixer: {
+        title: "Mezclador de colores - color.soft.io.vn",
+        description:
+          "Mezcla dos colores con una proporción y modo de mezcla personalizables. ¡Crea colores únicos y explora variaciones ahora!",
+        keywords: [
+          "mezclador de colores",
+          "colores",
+          "proporción de mezcla",
+          "modo de mezcla",
+          "código de color",
+          "hex",
+          "rgb",
+          "hsl",
+        ],
+        ogTitle: "Mezclador de colores - color.soft.io.vn",
+        ogDescription:
+          "Mezcla dos colores con una proporción y modo de mezcla personalizables. ¡Crea colores únicos y explora variaciones ahora!",
+        siteName: "Búsqueda de colores",
+        ogImageAlt: "Mezclador de colores - color.soft.io.vn",
       },
     },
   },

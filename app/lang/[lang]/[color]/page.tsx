@@ -15,7 +15,6 @@ import ColorCard from "@/components/ColorCard";
 import ColorFormats from "@/components/ColorFormats";
 import ColorPalette from "@/components/ColorPalette";
 import ColorSearchForm from "@/components/ColorSearchForm";
-import LanguageToggle from "@/components/LanguageToggle";
 import RgbChart from "@/components/RgbChart";
 import CmykChart from "@/components/CmykChart";
 import Link from "next/link";
@@ -35,6 +34,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { Ratio } from "react-bootstrap";
 import validLanguages from "@/languages";
+import TopMenu from "@/components/TopMenu";
 
 export async function generateMetadata({
   params,
@@ -112,19 +112,6 @@ export default async function ColorPage({
   params: Promise<{ color: string; lang: string }>;
 }) {
   const resolvedParams = await params;
-  const validLanguages: Language[] = [
-    "vi",
-    "en",
-    "zh",
-    "fr",
-    "de",
-    "it",
-    "ja",
-    "ko",
-    "pt",
-    "ru",
-    "es",
-  ];
   const language: Language = validLanguages.includes(
     resolvedParams.lang as Language
   )
@@ -176,7 +163,7 @@ export default async function ColorPage({
   return (
     <LanguageProvider initialLanguage={language}>
       <div className="container mt-0">
-        <LanguageToggle />
+        <TopMenu />
         <h1 className="mb-4 text-center">
           <Link
             href={language === "en" ? "/" : `/${language}`}

@@ -1,3 +1,4 @@
+"use client";
 import { useContext, useState } from "react";
 import { Row, Col, Button, Form, Card, Stack } from "react-bootstrap";
 import { LanguageContext } from "@/context/LanguageContext";
