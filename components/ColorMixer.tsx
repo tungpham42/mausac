@@ -5,6 +5,16 @@ import { LanguageContext } from "@/context/LanguageContext";
 import tinycolor from "tinycolor2";
 import Link from "next/link";
 import AdSenseBanner from "./AdSenseBanner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronUp,
+  faChevronDown,
+  faDice,
+  faPalette,
+  faPlus,
+  faTimes,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 
 type BlendMode =
   | "normal"
@@ -24,11 +34,17 @@ type BlendMode =
   | "color"
   | "luminosity";
 
+interface ColorWithRatio {
+  color: string;
+  ratio: number;
+}
+
 export default function ColorMixer() {
   const { t, language } = useContext(LanguageContext);
-  const [color1, setColor1] = useState("#FF0000");
-  const [color2, setColor2] = useState("#0000FF");
-  const [ratio, setRatio] = useState(50);
+  const [colors, setColors] = useState<ColorWithRatio[]>([
+    { color: "#FF0000", ratio: 50 },
+    { color: "#0000FF", ratio: 50 },
+  ]);
   const [blendMode, setBlendMode] = useState<BlendMode>("normal");
   const [mixedColor, setMixedColor] = useState("");
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -136,31 +152,100 @@ export default function ColorMixer() {
   }
 
   function mixColors() {
-    const tc1 = tinycolor(color1);
-    const tc2 = tinycolor(color2);
+    if (colors.length < 2) return;
 
     let mixed: tinycolor.Instance;
 
     if (blendMode === "normal") {
+      // Calculate total ratio for normalization
+      const totalRatio = colors.reduce((sum, color) => sum + color.ratio, 0);
+
       // Simple ratio-based mixing for normal mode
-      const weight1 = ratio / 100;
-      const weight2 = 1 - weight1;
+      let r = 0,
+        g = 0,
+        b = 0;
 
-      const rgb1 = tc1.toRgb();
-      const rgb2 = tc2.toRgb();
+      colors.forEach(({ color, ratio }) => {
+        const tc = tinycolor(color);
+        const rgb = tc.toRgb();
+        const weight = ratio / totalRatio;
 
-      const r = Math.round(rgb1.r * weight1 + rgb2.r * weight2);
-      const g = Math.round(rgb1.g * weight1 + rgb2.g * weight2);
-      const b = Math.round(rgb1.b * weight1 + rgb2.b * weight2);
+        r += rgb.r * weight;
+        g += rgb.g * weight;
+        b += rgb.b * weight;
+      });
 
-      mixed = tinycolor({ r, g, b });
+      mixed = tinycolor({
+        r: Math.round(r),
+        g: Math.round(g),
+        b: Math.round(b),
+      });
     } else {
-      // Apply blend mode
-      mixed = applyBlendMode(tc1, tc2, blendMode);
+      // For blend modes, we need to apply them sequentially
+      // Start with the first color
+      mixed = tinycolor(colors[0].color);
+
+      // Apply blend mode with each subsequent color
+      for (let i = 1; i < colors.length; i++) {
+        mixed = applyBlendMode(mixed, tinycolor(colors[i].color), blendMode);
+      }
     }
 
     setMixedColor(mixed.toHexString());
   }
+
+  const updateColor = (index: number, value: string) => {
+    const newColors = [...colors];
+    newColors[index].color = value;
+    setColors(newColors);
+  };
+
+  const updateRatio = (index: number, value: number) => {
+    const newColors = [...colors];
+    newColors[index].ratio = value;
+    setColors(newColors);
+  };
+
+  const addColor = () => {
+    setColors([
+      ...colors,
+      {
+        color: tinycolor.random().toHexString(),
+        ratio: 100 / (colors.length + 1),
+      },
+    ]);
+  };
+
+  const removeColor = (index: number) => {
+    if (colors.length <= 2) return; // Keep at least 2 colors
+    const newColors = [...colors];
+    newColors.splice(index, 1);
+
+    // Redistribute ratios
+    const totalRatio = newColors.reduce((sum, color) => sum + color.ratio, 0);
+    newColors.forEach((color) => {
+      color.ratio = Math.round((color.ratio / totalRatio) * 100);
+    });
+
+    setColors(newColors);
+  };
+
+  const swapColors = (index1: number, index2: number) => {
+    const newColors = [...colors];
+    [newColors[index1], newColors[index2]] = [
+      newColors[index2],
+      newColors[index1],
+    ];
+    setColors(newColors);
+  };
+
+  const randomizeColors = () => {
+    const newColors = colors.map(() => ({
+      color: tinycolor.random().toHexString(),
+      ratio: 100 / colors.length,
+    }));
+    setColors(newColors);
+  };
 
   const mixedTc = mixedColor ? tinycolor(mixedColor) : null;
 
@@ -188,114 +273,102 @@ export default function ColorMixer() {
       <Card className="p-4 shadow-lg border-0">
         <div className="color-mixer">
           <Row className="mb-4">
-            <Col md={6}>
-              <Card className="border-0 shadow-sm">
-                <Card.Body className="p-3">
-                  <Form.Group>
-                    <Form.Label className="fw-bold mb-3 d-block">
-                      {t("colorMixer.color1")}
-                    </Form.Label>
-                    <div className="d-flex align-items-center gap-3">
-                      <div
-                        className="color-picker-wrapper rounded-circle shadow"
-                        style={{
-                          backgroundColor: color1,
-                          height: "60px",
-                          width: "66px",
-                          border: "3px solid #fff",
-                          boxShadow: "0 0 0 2px #dee2e6",
-                          cursor: "pointer",
-                        }}
-                      >
+            {colors.map((colorObj, index) => (
+              <Col key={index} md={6} lg={4} className="mb-3">
+                <Card className="border-0 shadow-sm">
+                  <Card.Body className="p-3">
+                    <Form.Group>
+                      <div className="d-flex justify-content-between align-items-center mb-2">
+                        <Form.Label
+                          className="fw-bold mb-0"
+                          htmlFor={`color-code-${index + 1}`}
+                        >
+                          {t("colorMixer.color")} {index + 1}
+                        </Form.Label>
+                        {colors.length > 2 && (
+                          <Button
+                            variant="outline-danger"
+                            size="sm"
+                            onClick={() => removeColor(index)}
+                            className="px-2 py-1 pb-0"
+                            title={t("colorMixer.removeColor")}
+                          >
+                            <FontAwesomeIcon icon={faTimes} />
+                          </Button>
+                        )}
+                      </div>
+                      <div className="d-flex align-items-center gap-3">
+                        <div
+                          className="color-picker-wrapper shadow"
+                          style={{
+                            backgroundColor: colorObj.color,
+                            height: "60px",
+                            width: "72px",
+                            border: "3px solid #fff",
+                            boxShadow: "0 0 0 2px #dee2e6",
+                            cursor: "pointer",
+                          }}
+                        >
+                          <Form.Control
+                            type="color"
+                            id={`color-picker-${index + 1}`}
+                            value={colorObj.color}
+                            onChange={(e) => updateColor(index, e.target.value)}
+                            className="opacity-0 w-100 h-100"
+                            style={{ cursor: "pointer" }}
+                          />
+                        </div>
                         <Form.Control
-                          type="color"
-                          value={color1}
-                          onChange={(e) => setColor1(e.target.value)}
-                          className="opacity-0 w-100 h-100"
-                          style={{ cursor: "pointer" }}
+                          type="text"
+                          id={`color-code-${index + 1}`}
+                          value={colorObj.color}
+                          onChange={(e) => updateColor(index, e.target.value)}
+                          placeholder="#FF0000"
+                          className="fw-bold"
                         />
                       </div>
-                      <Form.Control
-                        type="text"
-                        value={color1}
-                        onChange={(e) => setColor1(e.target.value)}
-                        placeholder="#FF0000"
-                        className="fw-bold"
-                      />
-                    </div>
-                  </Form.Group>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
-              <Card className="border-0 shadow-sm">
-                <Card.Body className="p-3">
-                  <Form.Group>
-                    <Form.Label className="fw-bold mb-3 d-block">
-                      {t("colorMixer.color2")}
-                    </Form.Label>
-                    <div className="d-flex align-items-center gap-3">
-                      <div
-                        className="color-picker-wrapper rounded-circle shadow"
-                        style={{
-                          backgroundColor: color2,
-                          height: "60px",
-                          width: "66px",
-                          border: "3px solid #fff",
-                          boxShadow: "0 0 0 2px #dee2e6",
-                          cursor: "pointer",
-                        }}
+                      <Form.Label
+                        className="fw-bold mt-3 d-block"
+                        htmlFor={`color-ratio-${index + 1}`}
                       >
-                        <Form.Control
-                          type="color"
-                          value={color2}
-                          onChange={(e) => setColor2(e.target.value)}
-                          className="opacity-0 w-100 h-100"
-                          style={{ cursor: "pointer" }}
-                        />
-                      </div>
-                      <Form.Control
-                        type="text"
-                        value={color2}
-                        onChange={(e) => setColor2(e.target.value)}
-                        placeholder="#0000FF"
-                        className="fw-bold"
+                        {t("colorMixer.mixRatio")}:{" "}
+                        <span className="text-primary">{colorObj.ratio}%</span>
+                      </Form.Label>
+                      <Form.Range
+                        min="0"
+                        max="100"
+                        id={`color-ratio-${index + 1}`}
+                        value={colorObj.ratio}
+                        onChange={(e) =>
+                          updateRatio(index, parseInt(e.target.value))
+                        }
+                        className="custom-range"
                       />
-                    </div>
-                  </Form.Group>
+                    </Form.Group>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
+
+            {/* Add Color Button */}
+            <Col md={6} lg={4} className="mb-3">
+              <Card className="border-0 shadow-sm h-100">
+                <Card.Body className="p-3 d-flex align-items-center justify-content-center">
+                  <Button
+                    variant="outline-success"
+                    onClick={addColor}
+                    className="w-100 h-100 py-4"
+                  >
+                    <FontAwesomeIcon icon={faPlus} className="me-2" />
+                    {t("colorMixer.addColor")}
+                  </Button>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
+
           <Row className="mb-4">
-            <Col md={6}>
-              <Card className="border-0 shadow-sm">
-                <Card.Body className="p-3">
-                  <Form.Group>
-                    <Form.Label className="fw-bold mb-3 d-block">
-                      {t("colorMixer.mixRatio")}:{" "}
-                      <span className="text-primary">{ratio}%</span>
-                    </Form.Label>
-                    <Form.Range
-                      min="0"
-                      max="100"
-                      value={ratio}
-                      onChange={(e) => setRatio(parseInt(e.target.value))}
-                      className="custom-range"
-                    />
-                    <div className="d-flex justify-content-between mt-2">
-                      <small className="text-muted">
-                        {t("colorMixer.moreColor1")}
-                      </small>
-                      <small className="text-muted">
-                        {t("colorMixer.moreColor2")}
-                      </small>
-                    </div>
-                  </Form.Group>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6}>
+            <Col md={12}>
               <Card className="border-0 shadow-sm">
                 <Card.Body className="p-3">
                   <Form.Group>
@@ -320,6 +393,7 @@ export default function ColorMixer() {
               </Card>
             </Col>
           </Row>
+
           <div className="text-center mb-4">
             <Button
               variant="outline-secondary"
@@ -330,13 +404,13 @@ export default function ColorMixer() {
               {showAdvanced
                 ? t("colorMixer.hideAdvanced")
                 : t("colorMixer.showAdvanced")}
-              <i
-                className={`ms-2 fas ${
-                  showAdvanced ? "fa-chevron-up" : "fa-chevron-down"
-                }`}
-              ></i>
+              <FontAwesomeIcon
+                icon={showAdvanced ? faChevronUp : faChevronDown}
+                className="ms-2"
+              />
             </Button>
           </div>
+
           {showAdvanced && (
             <Row className="mb-4">
               <Col md={6}>
@@ -346,19 +420,21 @@ export default function ColorMixer() {
                       <Form.Label className="fw-bold mb-3 d-block">
                         {t("colorMixer.swapColors")}
                       </Form.Label>
-                      <div>
-                        <Button
-                          variant="outline-primary"
-                          onClick={() => {
-                            const temp = color1;
-                            setColor1(color2);
-                            setColor2(temp);
-                          }}
-                          className="px-4"
-                        >
-                          <i className="fas fa-exchange-alt me-2"></i>
-                          {t("colorMixer.swap")}
-                        </Button>
+                      <div className="d-flex gap-2 justify-content-center flex-wrap">
+                        {colors.map(
+                          (_, index) =>
+                            index < colors.length - 1 && (
+                              <Button
+                                key={index}
+                                variant="outline-primary"
+                                size="sm"
+                                onClick={() => swapColors(index, index + 1)}
+                                className="px-3"
+                              >
+                                {index + 1} ↔ {index + 2}
+                              </Button>
+                            )
+                        )}
                       </div>
                     </Form.Group>
                   </Card.Body>
@@ -374,13 +450,10 @@ export default function ColorMixer() {
                       <div>
                         <Button
                           variant="outline-info"
-                          onClick={() => {
-                            setColor1(tinycolor.random().toHexString());
-                            setColor2(tinycolor.random().toHexString());
-                          }}
+                          onClick={randomizeColors}
                           className="px-4"
                         >
-                          <i className="fas fa-dice me-2"></i>
+                          <FontAwesomeIcon icon={faDice} className="me-2" />
                           {t("colorMixer.randomize")}
                         </Button>
                       </div>
@@ -390,6 +463,7 @@ export default function ColorMixer() {
               </Col>
             </Row>
           )}
+
           <div className="text-center mb-4">
             <Button
               variant="primary"
@@ -397,53 +471,48 @@ export default function ColorMixer() {
               onClick={mixColors}
               className="px-5 py-2 fw-bold"
             >
-              <i className="fas fa-palette me-2"></i>
+              <FontAwesomeIcon icon={faPalette} className="me-2" />
               {t("home.mixButton")}
             </Button>
           </div>
+
           {mixedColor && (
             <Card className="border-0 shadow-lg mt-4">
               <Card.Body className="p-4">
                 <h3 className="text-center mb-4">{t("home.mixedColor")}</h3>
 
-                <div className="d-flex justify-content-center align-items-center gap-4 mb-4 flex-wrap">
-                  <div className="d-flex flex-column align-items-center">
-                    <div
-                      className="color-preview shadow"
-                      style={{
-                        backgroundColor: color1,
-                        height: "80px",
-                        width: "80px",
-                        borderRadius: "12px",
-                        border: "3px solid #fff",
-                        boxShadow: "0 0 0 2px #dee2e6",
-                      }}
-                    ></div>
-                    <small className="mt-2 fw-semibold">{color1}</small>
+                <div className="d-flex justify-content-center align-items-center gap-3 mb-4 flex-wrap">
+                  {colors.map((colorObj, index) => (
+                    <div key={index} className="d-flex align-items-center">
+                      <div className="d-flex flex-column align-items-center">
+                        <div
+                          className="color-preview shadow"
+                          style={{
+                            backgroundColor: colorObj.color,
+                            height: "60px",
+                            width: "60px",
+                            borderRadius: "8px",
+                            border: "2px solid #fff",
+                            boxShadow: "0 0 0 1px #dee2e6",
+                          }}
+                        ></div>
+                        <small className="mt-2 fw-semibold">
+                          {colorObj.color}
+                        </small>
+                        <small className="text-muted">{colorObj.ratio}%</small>
+                      </div>
+                      {index < colors.length - 1 && (
+                        <div className="mix-arrow fs-4 text-muted mx-2">
+                          <FontAwesomeIcon icon={faPlus} />
+                        </div>
+                      )}
+                    </div>
+                  ))}
+
+                  <div className="mix-arrow fs-2 text-muted mx-3">
+                    <FontAwesomeIcon icon={faArrowRight} />
                   </div>
 
-                  <div className="mix-arrow fs-2 text-muted">
-                    <i className="fas fa-plus"></i>
-                  </div>
-
-                  <div className="d-flex flex-column align-items-center">
-                    <div
-                      className="color-preview shadow"
-                      style={{
-                        backgroundColor: color2,
-                        height: "80px",
-                        width: "80px",
-                        borderRadius: "12px",
-                        border: "3px solid #fff",
-                        boxShadow: "0 0 0 2px #dee2e6",
-                      }}
-                    ></div>
-                    <small className="mt-2 fw-semibold">{color2}</small>
-                  </div>
-
-                  <div className="mix-arrow fs-2 text-muted">
-                    <i className="fas fa-arrow-right"></i>
-                  </div>
                   <div className="d-flex flex-column align-items-center">
                     <div
                       className="mixed-color-preview shadow-lg"
@@ -459,6 +528,7 @@ export default function ColorMixer() {
                     <small className="mt-2 fw-bold">{mixedColor}</small>
                   </div>
                 </div>
+
                 <div className="color-info">
                   <Row className="justify-content-center">
                     <Col md={10}>

@@ -11,8 +11,11 @@ interface MetadataPage {
 interface Translations {
   colorMixer: {
     colorMixerTitle: string;
+    color: string;
     color1: string;
     color2: string;
+    addColor: string;
+    removeColor: string;
     mixRatio: string;
     moreColor1: string;
     moreColor2: string;
@@ -145,9 +148,12 @@ export const translations: { [key: string]: Translations } = {
   vi: {
     colorMixer: {
       colorMixerTitle: "Trộn màu",
+      color: "Màu",
       color1: "Màu thứ nhất",
       color2: "Màu thứ hai",
       mixRatio: "Tỷ lệ trộn",
+      addColor: "Thêm màu",
+      removeColor: "Xóa màu",
       moreColor1: "Màu 1",
       moreColor2: "Màu 2",
       blendMode: "Chế độ pha trộn",
@@ -343,9 +349,12 @@ export const translations: { [key: string]: Translations } = {
   en: {
     colorMixer: {
       colorMixerTitle: "Color Mixer",
+      color: "Color",
       color1: "First Color",
       color2: "Second Color",
       mixRatio: "Mix Ratio",
+      addColor: "Add Color",
+      removeColor: "Remove Color",
       moreColor1: "More Color 1",
       moreColor2: "More Color 2",
       blendMode: "Blend Mode",
@@ -526,9 +535,12 @@ export const translations: { [key: string]: Translations } = {
   zh: {
     colorMixer: {
       colorMixerTitle: "颜色混合器",
+      color: "颜色",
       color1: "第一种颜色",
       color2: "第二种颜色",
       mixRatio: "混合比例",
+      addColor: "添加颜色",
+      removeColor: "移除颜色",
       moreColor1: "更多颜色1",
       moreColor2: "更多颜色2",
       blendMode: "混合模式",
@@ -704,9 +716,12 @@ export const translations: { [key: string]: Translations } = {
   fr: {
     colorMixer: {
       colorMixerTitle: "Mélangeur de couleurs",
+      color: "Couleur",
       color1: "Première couleur",
       color2: "Deuxième couleur",
       mixRatio: "Ratio de mélange",
+      addColor: "Ajouter une couleur",
+      removeColor: "Supprimer une couleur",
       moreColor1: "Plus de couleur 1",
       moreColor2: "Plus de couleur 2",
       blendMode: "Mode de fusion",
@@ -905,9 +920,12 @@ export const translations: { [key: string]: Translations } = {
   de: {
     colorMixer: {
       colorMixerTitle: "Farbmixer",
+      color: "Farbe",
       color1: "Erste Farbe",
       color2: "Zweite Farbe",
       mixRatio: "Mischverhältnis",
+      addColor: "Farbe hinzufügen",
+      removeColor: "Farbe entfernen",
       moreColor1: "Mehr Farbe 1",
       moreColor2: "Mehr Farbe 2",
       blendMode: "Mischmodus",
@@ -1090,9 +1108,12 @@ export const translations: { [key: string]: Translations } = {
   it: {
     colorMixer: {
       colorMixerTitle: "Miscelatore di colori",
+      color: "Colore",
       color1: "Primo colore",
       color2: "Secondo colore",
       mixRatio: "Rapporto di miscelazione",
+      addColor: "Aggiungi colore",
+      removeColor: "Rimuovi colore",
       moreColor1: "Più colore 1",
       moreColor2: "Più colore 2",
       blendMode: "Modalità di fusione",
@@ -1287,9 +1308,12 @@ export const translations: { [key: string]: Translations } = {
   ja: {
     colorMixer: {
       colorMixerTitle: "カラーミキサー",
+      color: "色",
       color1: "最初の色",
       color2: "2番目の色",
       mixRatio: "混合比率",
+      addColor: "色を追加",
+      removeColor: "色を削除",
       moreColor1: "もっと色1",
       moreColor2: "もっと色2",
       blendMode: "ブレンドモード",
@@ -1471,9 +1495,12 @@ export const translations: { [key: string]: Translations } = {
   ko: {
     colorMixer: {
       colorMixerTitle: "색상 혼합기",
+      color: "색상",
       color1: "첫 번째 색상",
       color2: "두 번째 색상",
       mixRatio: "혼합 비율",
+      addColor: "색상 추가",
+      removeColor: "색상 제거",
       moreColor1: "첫 번째 색상 더하기",
       moreColor2: "두 번째 색상 더하기",
       blendMode: "블렌드 모드",
@@ -1653,9 +1680,12 @@ export const translations: { [key: string]: Translations } = {
   pt: {
     colorMixer: {
       colorMixerTitle: "Misturador de cores",
+      color: "Cor",
       color1: "Primeira cor",
       color2: "Segunda cor",
       mixRatio: "Proporção de mistura",
+      addColor: "Adicionar cor",
+      removeColor: "Remover cor",
       moreColor1: "Mais cor 1",
       moreColor2: "Mais cor 2",
       blendMode: "Modo de mesclagem",
@@ -1852,9 +1882,12 @@ export const translations: { [key: string]: Translations } = {
   ru: {
     colorMixer: {
       colorMixerTitle: "Смеситель цветов",
+      color: "Цвет",
       color1: "Первый цвет",
       color2: "Второй цвет",
       mixRatio: "Соотношение смешивания",
+      addColor: "Добавить цвет",
+      removeColor: "Удалить цвет",
       moreColor1: "Больше цвета 1",
       moreColor2: "Больше цвета 2",
       blendMode: "Режим смешивания",
@@ -2037,9 +2070,12 @@ export const translations: { [key: string]: Translations } = {
   es: {
     colorMixer: {
       colorMixerTitle: "Mezclador de colores",
+      color: "Color",
       color1: "Primer color",
       color2: "Segundo color",
       mixRatio: "Proporción de mezcla",
+      addColor: "Agregar color",
+      removeColor: "Eliminar color",
       moreColor1: "Más color 1",
       moreColor2: "Más color 2",
       blendMode: "Modo de mezcla",
