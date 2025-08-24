@@ -23,9 +23,7 @@ export default function ToolsDropdown() {
       <Dropdown.Menu align="end" className="lang-dropdown-menu">
         <Dropdown.Item
           as={Link}
-          href={
-            language === "en" ? "/color-picker" : `/${language}/color-picker`
-          }
+          href={language === "en" ? "/" : `/${language}`}
           className="lang-dropdown-item d-flex align-items-center gap-2"
         >
           <FontAwesomeIcon icon={faEyeDropper} />
