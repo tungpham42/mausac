@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
+import validLanguages from "@/languages";
 
 const TOTAL_COLORS = 16777216; // 256^3 (total possible hex colors)
 const MAX_PER_SITEMAP = 4096; // Maximum URLs per sitemap file
@@ -182,7 +183,7 @@ export async function GET(
   xml += `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>\n`;
 
   if (idNum === 0) {
-    xml += `<!-- Sitemap for Color Home Pages and CSS Colors -->\n`;
+    xml += `<!-- Sitemap for Color Home Pages, Color Mixer, and CSS Colors -->\n`;
     xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
     xml += `  <!-- Generated ${now} -->\n`;
     xml += `  <url>\n`;
@@ -191,146 +192,45 @@ export async function GET(
     xml += `    <changefreq>monthly</changefreq>\n`;
     xml += `    <priority>0.8</priority>\n`;
     xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/vi</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/en</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/zh</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/fr</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/de</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/it</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/ja</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/ko</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/pt</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/ru</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}/es</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
+
+    // Add language home pages
+    for (const lang of validLanguages) {
+      if (lang !== "en") {
+        xml += `  <url>\n`;
+        xml += `    <loc>${hostUrl}/${lang}</loc>\n`;
+        xml += `    <lastmod>${lastMod}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `  </url>\n`;
+      }
+    }
+
+    // Add color-mixer URLs
+    for (const lang of validLanguages) {
+      const loc =
+        lang === "en"
+          ? `${hostUrl}/color-mixer`
+          : `${hostUrl}/${lang}/color-mixer`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${loc}</loc>\n`;
+      xml += `    <lastmod>${lastMod}</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    }
+
     // Add CSS color URLs
     for (const color of cssColors) {
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/vi/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/en/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/zh/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/fr/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/de/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/it/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ja/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ko/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/pt/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ru/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/es/${color}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
+      for (const lang of validLanguages) {
+        const loc =
+          lang === "en" ? `${hostUrl}/${color}` : `${hostUrl}/${lang}/${color}`;
+        xml += `  <url>\n`;
+        xml += `    <loc>${loc}</loc>\n`;
+        xml += `    <lastmod>${lastMod}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `  </url>\n`;
+      }
     }
   } else {
     xml += `<!-- Sitemap ${id} for Color Pages (Range: ${start} to ${
@@ -343,78 +243,16 @@ export async function GET(
     // Generate URL entries with additional metadata
     for (let i = start; i < end; i++) {
       const hex = padHex(i);
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `159    <loc>${hostUrl}/vi/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/en/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/zh/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/fr/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/de/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/it/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ja/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ko/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/pt/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/ru/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${hostUrl}/es/${hex}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.monday</priority>\n`;
-      xml += `  </url>\n`;
+      for (const lang of validLanguages) {
+        const loc =
+          lang === "en" ? `${hostUrl}/${hex}` : `${hostUrl}/${lang}/${hex}`;
+        xml += `  <url>\n`;
+        xml += `    <loc>${loc}</loc>\n`;
+        xml += `    <lastmod>${lastMod}</lastmod>\n`;
+        xml += `    <changefreq>monthly</changefreq>\n`;
+        xml += `    <priority>0.8</priority>\n`;
+        xml += `  </url>\n`;
+      }
     }
   }
   xml += `</urlset>\n`;
