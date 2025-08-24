@@ -40,7 +40,7 @@ export default function Home({ language }: { language: string }) {
       </Ratio>
       <hr className="my-5" />
       <AdSenseBanner />
-      <hr className="my-5" />
+      <h2 className="mb-4">{t("home.pickerTitle")}</h2>
       <ScreenColorPicker />
       <ImageColorPicker />
       <hr className="my-5" />
