@@ -314,3 +314,31 @@ span.color-code {
 .globe-icon {
   font-size: 1.2rem;
 }
+/* Custom Range Slider Styling */
+.custom-range::-webkit-slider-thumb {
+  background: linear-gradient(135deg, var(--primary), #9333ea);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-range::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.custom-range::-moz-range-thumb {
+  background: linear-gradient(135deg, var(--primary), #9333ea);
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.custom-range::-moz-range-thumb:hover {
+  transform: scale(1.2);
+}

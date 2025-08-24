@@ -9,6 +9,39 @@ interface MetadataPage {
 }
 
 interface Translations {
+  colorMixer: {
+    color1: string;
+    color2: string;
+    mixRatio: string;
+    moreColor1: string;
+    moreColor2: string;
+    blendMode: string;
+    showAdvanced: string;
+    hideAdvanced: string;
+    swapColors: string;
+    swap: string;
+    randomColors: string;
+    randomize: string;
+    copyColor: string;
+    blendModes: {
+      normal: string;
+      multiply: string;
+      screen: string;
+      overlay: string;
+      darken: string;
+      lighten: string;
+      colorDodge: string;
+      colorBurn: string;
+      hardLight: string;
+      softLight: string;
+      difference: string;
+      exclusion: string;
+      hue: string;
+      saturation: string;
+      color: string;
+      luminosity: string;
+    };
+  };
   paletteDescriptions: {
     shades: string;
     tints: string;
@@ -68,6 +101,11 @@ interface Translations {
     magenta: string;
     viewDetails: string;
     youtubeCode: string;
+    colorMixerTitle: string;
+    mixColor1: string;
+    mixColor2: string;
+    mixButton: string;
+    mixedColor: string;
   };
   colorPage: {
     title: string;
@@ -98,6 +136,39 @@ interface Metadata {
 
 export const translations: { [key: string]: Translations } = {
   vi: {
+    colorMixer: {
+      color1: "Màu thứ nhất",
+      color2: "Màu thứ hai",
+      mixRatio: "Tỷ lệ trộn",
+      moreColor1: "Màu 1",
+      moreColor2: "Màu 2",
+      blendMode: "Chế độ pha trộn",
+      showAdvanced: "Hiện tùy chọn nâng cao",
+      hideAdvanced: "Ẩn tùy chọn nâng cao",
+      swapColors: "Đổi màu",
+      swap: "Đổi",
+      randomColors: "Màu ngẫu nhiên",
+      randomize: "Ngẫu nhiên",
+      copyColor: "Sao chép màu",
+      blendModes: {
+        normal: "Bình thường",
+        multiply: "Nhân",
+        screen: "Màn hình",
+        overlay: "Phủ lên",
+        darken: "Tối hơn",
+        lighten: "Sáng hơn",
+        colorDodge: "Làm sáng màu",
+        colorBurn: "Làm tối màu",
+        hardLight: "Ánh sáng mạnh",
+        softLight: "Ánh sáng mềm",
+        difference: "Khác biệt",
+        exclusion: "Loại trừ",
+        hue: "Màu sắc",
+        saturation: "Độ bão hòa",
+        color: "Màu",
+        luminosity: "Độ sáng",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Sắc đậm được tạo ra bằng cách thêm màu đen vào màu gốc, làm cho nó tối hơn.",
@@ -169,6 +240,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Cánh sen",
       viewDetails: "Xem chi tiết",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Trộn màu",
+      mixColor1: "Màu thứ nhất",
+      mixColor2: "Màu thứ hai",
+      mixButton: "Trộn màu",
+      mixedColor: "Màu đã trộn",
     },
     colorPage: {
       title: "<hex> - Tra cứu mã màu",
@@ -232,6 +308,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   en: {
+    colorMixer: {
+      color1: "First Color",
+      color2: "Second Color",
+      mixRatio: "Mix Ratio",
+      moreColor1: "More Color 1",
+      moreColor2: "More Color 2",
+      blendMode: "Blend Mode",
+      showAdvanced: "Show Advanced Options",
+      hideAdvanced: "Hide Advanced Options",
+      swapColors: "Swap Colors",
+      swap: "Swap",
+      randomColors: "Random Colors",
+      randomize: "Randomize",
+      copyColor: "Copy Color",
+      blendModes: {
+        normal: "Normal",
+        multiply: "Multiply",
+        screen: "Screen",
+        overlay: "Overlay",
+        darken: "Darken",
+        lighten: "Lighten",
+        colorDodge: "Color Dodge",
+        colorBurn: "Color Burn",
+        hardLight: "Hard Light",
+        softLight: "Soft Light",
+        difference: "Difference",
+        exclusion: "Exclusion",
+        hue: "Hue",
+        saturation: "Saturation",
+        color: "Color",
+        luminosity: "Luminosity",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Shades are created by adding black to the base color, making it darker.",
@@ -304,6 +413,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "View Details",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Color Mixer",
+      mixColor1: "First Color",
+      mixColor2: "Second Color",
+      mixButton: "Mix Colors",
+      mixedColor: "Mixed Color",
     },
     colorPage: {
       title: "<hex> - Color Lookup",
@@ -352,6 +466,39 @@ export const translations: { [key: string]: Translations } = {
   },
 
   zh: {
+    colorMixer: {
+      color1: "第一种颜色",
+      color2: "第二种颜色",
+      mixRatio: "混合比例",
+      moreColor1: "更多颜色1",
+      moreColor2: "更多颜色2",
+      blendMode: "混合模式",
+      showAdvanced: "显示高级选项",
+      hideAdvanced: "隐藏高级选项",
+      swapColors: "交换颜色",
+      swap: "交换",
+      randomColors: "随机颜色",
+      randomize: "随机化",
+      copyColor: "复制颜色",
+      blendModes: {
+        normal: "正常",
+        multiply: "正片叠底",
+        screen: "滤色",
+        overlay: "叠加",
+        darken: "变暗",
+        lighten: "变亮",
+        colorDodge: "颜色减淡",
+        colorBurn: "颜色加深",
+        hardLight: "强光",
+        softLight: "柔光",
+        difference: "差值",
+        exclusion: "排除",
+        hue: "色相",
+        saturation: "饱和度",
+        color: "颜色",
+        luminosity: "明度",
+      },
+    },
     paletteDescriptions: {
       shades: "色调通过向基础颜色添加黑色，使其更深。",
       tints: "色调通过向基础颜色添加白色，使其更浅。",
@@ -419,6 +566,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "品红色",
       viewDetails: "查看详情",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "颜色混合器",
+      mixColor1: "第一种颜色",
+      mixColor2: "第二种颜色",
+      mixButton: "混合颜色",
+      mixedColor: "混合后的颜色",
     },
     colorPage: {
       title: "<hex> - 颜色查询",
@@ -466,6 +618,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   fr: {
+    colorMixer: {
+      color1: "Première couleur",
+      color2: "Deuxième couleur",
+      mixRatio: "Ratio de mélange",
+      moreColor1: "Plus de couleur 1",
+      moreColor2: "Plus de couleur 2",
+      blendMode: "Mode de fusion",
+      showAdvanced: "Afficher les options avancées",
+      hideAdvanced: "Masquer les options avancées",
+      swapColors: "Inverser les couleurs",
+      swap: "Inverser",
+      randomColors: "Couleurs aléatoires",
+      randomize: "Aléatoire",
+      copyColor: "Copier la couleur",
+      blendModes: {
+        normal: "Normal",
+        multiply: "Produit",
+        screen: "Écran",
+        overlay: "Superposition",
+        darken: "Assombrir",
+        lighten: "Éclaircir",
+        colorDodge: "Densité couleur - éclaircir",
+        colorBurn: "Densité couleur - assombrir",
+        hardLight: "Lumière crue",
+        softLight: "Lumière tamisée",
+        difference: "Différence",
+        exclusion: "Exclusion",
+        hue: "Teinte",
+        saturation: "Saturation",
+        color: "Couleur",
+        luminosity: "Luminosité",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Les teintes sont créées en ajoutant du noir à la couleur de base, la rendant plus sombre.",
@@ -542,6 +727,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "Voir les détails",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Mélangeur de couleurs",
+      mixColor1: "Première couleur",
+      mixColor2: "Deuxième couleur",
+      mixButton: "Mélanger les couleurs",
+      mixedColor: "Couleur mélangée",
     },
     colorPage: {
       title: "<hex> - Recherche de couleur",
@@ -603,6 +793,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   de: {
+    colorMixer: {
+      color1: "Erste Farbe",
+      color2: "Zweite Farbe",
+      mixRatio: "Mischverhältnis",
+      moreColor1: "Mehr Farbe 1",
+      moreColor2: "Mehr Farbe 2",
+      blendMode: "Mischmodus",
+      showAdvanced: "Erweiterte Optionen anzeigen",
+      hideAdvanced: "Erweiterte Optionen ausblenden",
+      swapColors: "Farben tauschen",
+      swap: "Tauschen",
+      randomColors: "Zufällige Farben",
+      randomize: "Zufällig",
+      copyColor: "Farbe kopieren",
+      blendModes: {
+        normal: "Normal",
+        multiply: "Multiplizieren",
+        screen: "Negativ multiplizieren",
+        overlay: "Überlagern",
+        darken: "Abdunkeln",
+        lighten: "Aufhellen",
+        colorDodge: "Farbig abwedeln",
+        colorBurn: "Farbig nachbelichten",
+        hardLight: "Hartes Licht",
+        softLight: "Weiches Licht",
+        difference: "Differenz",
+        exclusion: "Ausschluss",
+        hue: "Farbton",
+        saturation: "Sättigung",
+        color: "Farbe",
+        luminosity: "Luminanz",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Schattierungen entstehen durch Hinzufügen von Schwarz zur Grundfarbe, wodurch sie dunkler wird.",
@@ -677,6 +900,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "Details anzeigen",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Farbmixer",
+      mixColor1: "Erste Farbe",
+      mixColor2: "Zweite Farbe",
+      mixButton: "Farben mischen",
+      mixedColor: "Gemischte Farbe",
     },
     colorPage: {
       title: "<hex> - Farbsuche",
@@ -724,6 +952,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   it: {
+    colorMixer: {
+      color1: "Primo colore",
+      color2: "Secondo colore",
+      mixRatio: "Rapporto di miscelazione",
+      moreColor1: "Più colore 1",
+      moreColor2: "Più colore 2",
+      blendMode: "Modalità di fusione",
+      showAdvanced: "Mostra opzioni avanzate",
+      hideAdvanced: "Nascondi opzioni avanzate",
+      swapColors: "Scambia colori",
+      swap: "Scambia",
+      randomColors: "Colori casuali",
+      randomize: "Casualizza",
+      copyColor: "Copia colore",
+      blendModes: {
+        normal: "Normale",
+        multiply: "Moltiplica",
+        screen: "Schermo",
+        overlay: "Sovrapponi",
+        darken: "Scurisci",
+        lighten: "Schiarisci",
+        colorDodge: "Scherma colore",
+        colorBurn: "Brucia colore",
+        hardLight: "Luce intensa",
+        softLight: "Luce soffusa",
+        difference: "Differenza",
+        exclusion: "Esclusione",
+        hue: "Tonalità",
+        saturation: "Saturazione",
+        color: "Colore",
+        luminosity: "Luminosità",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Le sfumature si creano aggiungendo nero al colore di base, rendendolo più scuro.",
@@ -796,6 +1057,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "Visualizza dettagli",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Miscelatore di colori",
+      mixColor1: "Primo colore",
+      mixColor2: "Secondo colore",
+      mixButton: "Mischia colori",
+      mixedColor: "Colore miscelato",
     },
     colorPage: {
       title: "<hex> - Ricerca colore",
@@ -857,6 +1123,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   ja: {
+    colorMixer: {
+      color1: "最初の色",
+      color2: "2番目の色",
+      mixRatio: "混合比率",
+      moreColor1: "もっと色1",
+      moreColor2: "もっと色2",
+      blendMode: "ブレンドモード",
+      showAdvanced: "高度なオプションを表示",
+      hideAdvanced: "高度なオプションを非表示",
+      swapColors: "色を交換",
+      swap: "交換",
+      randomColors: "ランダムカラー",
+      randomize: "ランダム化",
+      copyColor: "色をコピー",
+      blendModes: {
+        normal: "通常",
+        multiply: "乗算",
+        screen: "スクリーン",
+        overlay: "オーバーレイ",
+        darken: "暗くする",
+        lighten: "明るくする",
+        colorDodge: "カラー・ドッジ",
+        colorBurn: "カラー・バーン",
+        hardLight: "ハードライト",
+        softLight: "ソフトライト",
+        difference: "差分",
+        exclusion: "除外",
+        hue: "色相",
+        saturation: "彩度",
+        color: "カラー",
+        luminosity: "輝度",
+      },
+    },
     paletteDescriptions: {
       shades: "シェードは、基本色に黒を加えることで作られ、暗くなります。",
       tints: "ティントは、基本色に白を加えることで作られ、明るくなります。",
@@ -930,6 +1229,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "マゼンタ",
       viewDetails: "詳細を表示",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "カラー混合器",
+      mixColor1: "最初の色",
+      mixColor2: "2番目の色",
+      mixButton: "色を混合",
+      mixedColor: "混合された色",
     },
     colorPage: {
       title: "<hex> - カラー検索",
@@ -977,6 +1281,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   ko: {
+    colorMixer: {
+      color1: "첫 번째 색상",
+      color2: "두 번째 색상",
+      mixRatio: "혼합 비율",
+      moreColor1: "첫 번째 색상 더하기",
+      moreColor2: "두 번째 색상 더하기",
+      blendMode: "블렌드 모드",
+      showAdvanced: "고급 옵션 표시",
+      hideAdvanced: "고급 옵션 숨기기",
+      swapColors: "색상 교체",
+      swap: "교체",
+      randomColors: "랜덤 색상",
+      randomize: "랜덤화",
+      copyColor: "색상 복사",
+      blendModes: {
+        normal: "일반",
+        multiply: "곱하기",
+        screen: "스크린",
+        overlay: "오버레이",
+        darken: "어둡게",
+        lighten: "밝게",
+        colorDodge: "컬러 닷지",
+        colorBurn: "컬러 번",
+        hardLight: "하드 라이트",
+        softLight: "소프트 라이트",
+        difference: "차이",
+        exclusion: "제외",
+        hue: "색조",
+        saturation: "채도",
+        color: "색상",
+        luminosity: "명도",
+      },
+    },
     paletteDescriptions: {
       shades: "셰이드는 기본 색상에 검은색을 추가하여 더 어두워집니다.",
       tints: "틴트는 기본 색상에 흰색을 추가하여 더 밝아집니다.",
@@ -1048,6 +1385,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "마젠타",
       viewDetails: "자세히 보기",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "색상 혼합기",
+      mixColor1: "첫 번째 색상",
+      mixColor2: "두 번째 색상",
+      mixButton: "색상 혼합",
+      mixedColor: "혼합된 색상",
     },
     colorPage: {
       title: "<hex> - 색상 검색",
@@ -1095,6 +1437,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   pt: {
+    colorMixer: {
+      color1: "Primeira cor",
+      color2: "Segunda cor",
+      mixRatio: "Proporção de mistura",
+      moreColor1: "Mais cor 1",
+      moreColor2: "Mais cor 2",
+      blendMode: "Modo de mesclagem",
+      showAdvanced: "Mostrar opções avançadas",
+      hideAdvanced: "Ocultar opções avançadas",
+      swapColors: "Trocar cores",
+      swap: "Trocar",
+      randomColors: "Cores aleatórias",
+      randomize: "Aleatorizar",
+      copyColor: "Copiar cor",
+      blendModes: {
+        normal: "Normal",
+        multiply: "Multiplicar",
+        screen: "Tela",
+        overlay: "Sobreposição",
+        darken: "Escurecer",
+        lighten: "Clarear",
+        colorDodge: "Esquivar cor",
+        colorBurn: "Queimar cor",
+        hardLight: "Luz intensa",
+        softLight: "Luz suave",
+        difference: "Diferença",
+        exclusion: "Exclusão",
+        hue: "Matiz",
+        saturation: "Saturação",
+        color: "Cor",
+        luminosity: "Luminosidade",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Tons são criados ao adicionar preto à cor base, tornando-a mais escura.",
@@ -1169,6 +1544,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "Ver detalhes",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Misturador de cores",
+      mixColor1: "Primeira cor",
+      mixColor2: "Segunda cor",
+      mixButton: "Misturar cores",
+      mixedColor: "Cor misturada",
     },
     colorPage: {
       title: "<hex> - Pesquisa de cores",
@@ -1230,6 +1610,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   ru: {
+    colorMixer: {
+      color1: "Первый цвет",
+      color2: "Второй цвет",
+      mixRatio: "Соотношение смешивания",
+      moreColor1: "Больше цвета 1",
+      moreColor2: "Больше цвета 2",
+      blendMode: "Режим смешивания",
+      showAdvanced: "Показать расширенные параметры",
+      hideAdvanced: "Скрыть расширенные параметры",
+      swapColors: "Поменять цвета местами",
+      swap: "Поменять",
+      randomColors: "Случайные цвета",
+      randomize: "Случайный выбор",
+      copyColor: "Копировать цвет",
+      blendModes: {
+        normal: "Нормальный",
+        multiply: "Умножение",
+        screen: "Экран",
+        overlay: "Перекрытие",
+        darken: "Затемнение",
+        lighten: "Осветление",
+        colorDodge: "Осветление цвета",
+        colorBurn: "Затемнение цвета",
+        hardLight: "Жесткий свет",
+        softLight: "Мягкий свет",
+        difference: "Разница",
+        exclusion: "Исключение",
+        hue: "Оттенок",
+        saturation: "Насыщенность",
+        color: "Цвет",
+        luminosity: "Яркость",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Оттенки создаются добавлением черного к базовому цвету, что делает его темнее.",
@@ -1304,6 +1717,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Маджента",
       viewDetails: "Посмотреть подробности",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Смеситель цветов",
+      mixColor1: "Первый цвет",
+      mixColor2: "Второй цвет",
+      mixButton: "Смешать цвета",
+      mixedColor: "Смешанный цвет",
     },
     colorPage: {
       title: "<hex> - Поиск цвета",
@@ -1351,6 +1769,39 @@ export const translations: { [key: string]: Translations } = {
     },
   },
   es: {
+    colorMixer: {
+      color1: "Primer color",
+      color2: "Segundo color",
+      mixRatio: "Proporción de mezcla",
+      moreColor1: "Más color 1",
+      moreColor2: "Más color 2",
+      blendMode: "Modo de mezcla",
+      showAdvanced: "Mostrar opciones avanzadas",
+      hideAdvanced: "Ocultar opciones avanzadas",
+      swapColors: "Intercambiar colores",
+      swap: "Intercambiar",
+      randomColors: "Colores aleatorios",
+      randomize: "Aleatorizar",
+      copyColor: "Copiar color",
+      blendModes: {
+        normal: "Normal",
+        multiply: "Multiplicar",
+        screen: "Pantalla",
+        overlay: "Superposición",
+        darken: "Oscurecer",
+        lighten: "Aclarar",
+        colorDodge: "Esquivar color",
+        colorBurn: "Quemar color",
+        hardLight: "Luz intensa",
+        softLight: "Luz suave",
+        difference: "Diferencia",
+        exclusion: "Exclusión",
+        hue: "Tono",
+        saturation: "Saturación",
+        color: "Color",
+        luminosity: "Luminosidad",
+      },
+    },
     paletteDescriptions: {
       shades:
         "Las sombras se crean añadiendo negro al color base, haciéndolo más oscuro.",
@@ -1425,6 +1876,11 @@ export const translations: { [key: string]: Translations } = {
       magenta: "Magenta",
       viewDetails: "Ver detalles",
       youtubeCode: "ULDRwd5dLLg",
+      colorMixerTitle: "Mezclador de colores",
+      mixColor1: "Primer color",
+      mixColor2: "Segundo color",
+      mixButton: "Mezclar colores",
+      mixedColor: "Color mezclado",
     },
     colorPage: {
       title: "<hex> - Búsqueda de colores",
