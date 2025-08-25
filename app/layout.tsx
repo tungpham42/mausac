@@ -6,6 +6,7 @@ import MainBrandLogo from "@/components/MainBrandLogo";
 import ColorLogo from "@/components/ColorLogo";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
+
 export default async function RootLayout({
   children,
   params,
@@ -18,7 +19,7 @@ export default async function RootLayout({
 
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
-      <html lang={initialLanguage}>
+      <html lang={initialLanguage} suppressHydrationWarning>
         <head>
           <Script
             id="adsense-script"
@@ -46,6 +47,14 @@ export default async function RootLayout({
           {children}
           <Footer />
           <GoogleAnalytics ga_id="G-HHXZSNQ65X" />
+          <Script id="update-lang" strategy="afterInteractive">
+            {`
+              const lang = localStorage.getItem('language') || '${initialLanguage}';
+              if (lang !== document.documentElement.lang) {
+                document.documentElement.lang = lang;
+              }
+            `}
+          </Script>
         </body>
       </html>
     </LanguageProvider>

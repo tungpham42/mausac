@@ -33,6 +33,7 @@ export const LanguageProvider = ({
     if (queryLang) {
       setLanguage(queryLang);
       localStorage.setItem("language", queryLang);
+      document.documentElement.lang = queryLang; // Update HTML lang attribute
     } else {
       const savedLanguage = localStorage.getItem("language");
       const selectedLanguage =
@@ -42,6 +43,7 @@ export const LanguageProvider = ({
 
       setLanguage(selectedLanguage);
       localStorage.setItem("language", selectedLanguage);
+      document.documentElement.lang = selectedLanguage; // Update HTML lang attribute
 
       if (selectedLanguage !== initialLanguage) {
         const url = new URL(window.location.href);
@@ -62,6 +64,7 @@ export const LanguageProvider = ({
     if (validLanguages.includes(lang)) {
       setLanguage(lang);
       localStorage.setItem("language", lang);
+      document.documentElement.lang = lang; // Update HTML lang attribute
 
       const url = new URL(window.location.href);
       const segments = url.pathname.split("/").filter(Boolean);
