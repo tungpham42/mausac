@@ -35,28 +35,10 @@ export const LanguageProvider = ({
       localStorage.setItem("language", queryLang);
       document.documentElement.lang = queryLang; // Update HTML lang attribute
     } else {
-      const savedLanguage = localStorage.getItem("language");
-      const selectedLanguage =
-        savedLanguage && validLanguages.includes(savedLanguage)
-          ? savedLanguage
-          : initialLanguage;
-
-      setLanguage(selectedLanguage);
-      localStorage.setItem("language", selectedLanguage);
-      document.documentElement.lang = selectedLanguage; // Update HTML lang attribute
-
-      if (selectedLanguage !== initialLanguage) {
-        const url = new URL(window.location.href);
-        url.pathname = `/${selectedLanguage}${url.pathname}`;
-        window.location.replace(url.toString());
-      } else if (
-        selectedLanguage === initialLanguage &&
-        queryLang === initialLanguage
-      ) {
-        const url = new URL(window.location.href);
-        url.pathname = url.pathname.replace(/^\/en/, "");
-        window.history.replaceState({}, "", url.toString());
-      }
+      // No language subfolder → always English
+      setLanguage("en");
+      localStorage.setItem("language", "en");
+      document.documentElement.lang = "en";
     }
   }, [initialLanguage]);
 
@@ -73,10 +55,18 @@ export const LanguageProvider = ({
           ? segments[0]
           : null;
 
-      if (currentLang) {
-        segments[0] = lang === "en" ? "" : lang;
+      if (lang === "en") {
+        // English → remove subfolder completely
+        if (currentLang) {
+          segments.shift(); // remove first segment (the language)
+        }
       } else {
-        segments.unshift(lang === "en" ? "" : lang);
+        // Other languages → keep subfolder
+        if (currentLang) {
+          segments[0] = lang;
+        } else {
+          segments.unshift(lang);
+        }
       }
       const newPath = `/${segments.filter(Boolean).join("/")}` || "/";
       url.pathname = newPath;
