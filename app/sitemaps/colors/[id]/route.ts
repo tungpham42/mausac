@@ -219,6 +219,20 @@ export async function GET(
       xml += `  </url>\n`;
     }
 
+    // Add image-palette-extractor URLs
+    for (const lang of validLanguages) {
+      const loc =
+        lang === "en"
+          ? `${hostUrl}/image-palette-extractor`
+          : `${hostUrl}/${lang}/image-palette-extractor`;
+      xml += `  <url>\n`;
+      xml += `    <loc>${loc}</loc>\n`;
+      xml += `    <lastmod>${lastMod}</lastmod>\n`;
+      xml += `    <changefreq>monthly</changefreq>\n`;
+      xml += `    <priority>0.8</priority>\n`;
+      xml += `  </url>\n`;
+    }
+
     // Add CSS color URLs
     for (const color of cssColors) {
       for (const lang of validLanguages) {

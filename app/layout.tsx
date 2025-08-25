@@ -40,7 +40,7 @@ export default async function RootLayout({
             crossOrigin="anonymous"
           />
         </head>
-        <body>
+        <body suppressHydrationWarning={true}>
           <div className="d-flex justify-content-start gap-0">
             <MainBrandLogo
               logoSrc="/soft-logo.webp"

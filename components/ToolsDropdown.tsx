@@ -4,7 +4,7 @@ import { LanguageContext } from "@/context/LanguageContext";
 import { Dropdown } from "react-bootstrap";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEyeDropper, faPalette } from "@fortawesome/free-solid-svg-icons";
+import { faEyeDropper, faPalette, faImage } from "@fortawesome/free-solid-svg-icons";
 
 export default function ToolsDropdown() {
   const { t, language } = useContext(LanguageContext);
@@ -36,6 +36,14 @@ export default function ToolsDropdown() {
         >
           <FontAwesomeIcon icon={faPalette} />
           {t("tools.colorMixer")}
+        </Dropdown.Item>
+        <Dropdown.Item
+          as={Link}
+          href={language === "en" ? "/image-palette-extractor" : `/${language}/image-palette-extractor`}
+          className="lang-dropdown-item d-flex align-items-center gap-2"
+        >
+          <FontAwesomeIcon icon={faImage} />
+          {t("tools.imagePaletteExtractor") || "Image Palette Extractor"}
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>

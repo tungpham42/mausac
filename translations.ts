@@ -46,6 +46,47 @@ interface Translations {
       luminosity: string;
     };
   };
+  imagePaletteExtractor?: {
+    title: string;
+    description: string;
+    uploadImage: string;
+    selectFile: string;
+    dragDrop: string;
+    supportedFormats: string;
+    maxFileSize: string;
+    extractPalette: string;
+    extracting: string;
+    colorCount: string;
+    downloadPalette: string;
+    copyAllColors: string;
+    noImageSelected: string;
+    extractionError: string;
+    imagePreview: string;
+    extractedColors: string;
+    colorInfo: string;
+    percentage: string;
+    copyHex: string;
+    copyRgb: string;
+    copyHsl: string;
+    clearImage: string;
+    browseImage: string;
+    clickOrDrop: string;
+    extractedColorPalette: string;
+    ofImage: string;
+    noImageSelectedDesc: string;
+    uploadImageDesc: string;
+    downloadJson: string;
+    viewColorPage: string;
+    clickToViewColor: string;
+    clickToView: string;
+    colorPage: string;
+    colors: string;
+    invalidFileType: string;
+    fileTooLarge: string;
+    exportPalette: string;
+    downloadJSON: string;
+    uploadPrompt: string;
+  };
   paletteDescriptions: {
     shades: string;
     tints: string;
@@ -134,6 +175,7 @@ interface Translations {
     toolsLabel: string;
     colorPicker: string;
     colorMixer: string;
+    imagePaletteExtractor?: string;
   };
   metadata: Metadata;
 }
@@ -280,10 +322,52 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Chia sẻ màu này:",
       shareText: "Tra cứu mã màu này",
     },
+    imagePaletteExtractor: {
+      title: "Trích xuất màu từ ảnh",
+      description: "Trích xuất palette màu chủ đạo từ ảnh. Upload ảnh và nhận các màu HEX, RGB, và HSL với tỷ lệ.",
+      uploadImage: "Tải ảnh lên",
+      selectFile: "Chọn tệp",
+      dragDrop: "Kéo và thả ảnh vào đây, hoặc nhấp để chọn",
+      supportedFormats: "Định dạng hỗ trợ: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Kích thước tối đa: 10MB",
+      extractPalette: "Trích xuất màu",
+      extracting: "Đang trích xuất...",
+      colorCount: "Số lượng màu",
+      downloadPalette: "Tải palette",
+      copyAllColors: "Sao chép tất cả",
+      noImageSelected: "Vui lòng chọn ảnh trước",
+      extractionError: "Lỗi khi trích xuất màu",
+      imagePreview: "Xem trước ảnh",
+      extractedColors: "Màu đã trích xuất",
+      colorInfo: "Thông tin màu",
+      percentage: "Tỷ lệ",
+      copyHex: "Sao chép HEX",
+      copyRgb: "Sao chép RGB",
+      copyHsl: "Sao chép HSL",
+      clearImage: "Xóa ảnh",
+      browseImage: "Duyệt ảnh",
+      clickOrDrop: "Nhấp hoặc thả ảnh",
+      extractedColorPalette: "Bảng màu đã trích xuất",
+      ofImage: "của ảnh",
+      noImageSelectedDesc: "Chưa chọn ảnh",
+      uploadImageDesc: "Tải lên ảnh để trích xuất bảng màu",
+      downloadJson: "Tải xuống JSON",
+      viewColorPage: "Xem trang màu",
+      clickToViewColor: "Nhấp để xem trang màu",
+      clickToView: "Nhấp để xem",
+      colorPage: "trang màu",
+      colors: "màu",
+      invalidFileType: "Vui lòng chọn tệp ảnh hợp lệ",
+      fileTooLarge: "Tệp quá lớn. Vui lòng chọn ảnh dưới 10MB",
+      exportPalette: "Xuất bảng màu",
+      downloadJSON: "Tải xuống JSON",
+      uploadPrompt: "Tải lên ảnh để trích xuất bảng màu",
+    },
     tools: {
       toolsLabel: "Công cụ",
       colorPicker: "Chọn màu",
       colorMixer: "Trộn màu",
+      imagePaletteExtractor: "Trích xuất màu từ ảnh",
     },
     metadata: {
       home: {
@@ -482,10 +566,52 @@ export const translations: { [key: string]: Translations } = {
       shareLabel: "Share this color:",
       shareText: "Look up this color",
     },
+    imagePaletteExtractor: {
+      title: "Image Palette Extractor",
+      description: "Extract dominant color palettes from images. Upload an image and get HEX, RGB, and HSL values with percentages.",
+      uploadImage: "Upload Image",
+      selectFile: "Select File",
+      dragDrop: "Drag & drop an image here, or click to select",
+      supportedFormats: "Supported formats: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Max file size: 10MB",
+      extractPalette: "Extract Palette",
+      extracting: "Extracting...",
+      colorCount: "Number of colors",
+      downloadPalette: "Download Palette",
+      copyAllColors: "Copy All Colors",
+      noImageSelected: "Please select an image first",
+      extractionError: "Error extracting colors",
+      imagePreview: "Image Preview",
+      extractedColors: "Extracted Colors",
+      colorInfo: "Color Information",
+      percentage: "Percentage",
+      copyHex: "Copy HEX",
+      copyRgb: "Copy RGB",
+      copyHsl: "Copy HSL",
+      clearImage: "Clear Image",
+      browseImage: "Browse Image",
+      clickOrDrop: "Click or drop image",
+      extractedColorPalette: "Extracted Color Palette",
+      ofImage: "of image",
+      noImageSelectedDesc: "No image selected",
+      uploadImageDesc: "Upload an image to extract its color palette",
+      downloadJson: "Download JSON",
+      viewColorPage: "View Color Page",
+      clickToViewColor: "Click to view color page",
+      clickToView: "Click to view",
+      colorPage: "color page",
+      colors: "colors",
+      invalidFileType: "Please select a valid image file",
+      fileTooLarge: "File too large. Please select an image under 10MB",
+      exportPalette: "Export Palette",
+      downloadJSON: "Download JSON",
+      uploadPrompt: "Upload an image to extract its color palette",
+    },
     tools: {
       toolsLabel: "Tools",
       colorPicker: "Color Picker",
       colorMixer: "Color Mixer",
+      imagePaletteExtractor: "Image Palette Extractor",
     },
     metadata: {
       home: {
@@ -569,6 +695,47 @@ export const translations: { [key: string]: Translations } = {
         color: "颜色",
         luminosity: "明度",
       },
+    },
+    imagePaletteExtractor: {
+      title: "图像调色板提取器",
+      description: "从图像中提取调色板。上传图像并获取主要颜色及其HEX、RGB和HSL值。",
+      uploadImage: "上传图像",
+      selectFile: "选择文件",
+      dragDrop: "将图像拖放到此处，或点击选择",
+      supportedFormats: "支持格式：JPG、PNG、GIF、WEBP",
+      maxFileSize: "最大文件大小：10MB",
+      extractPalette: "提取调色板",
+      extracting: "正在提取颜色...",
+      colorCount: "颜色数量",
+      downloadPalette: "下载调色板",
+      copyAllColors: "复制所有颜色",
+      noImageSelected: "请先选择图像",
+      extractionError: "无法从图像中提取颜色",
+      imagePreview: "图像预览",
+      extractedColors: "提取的颜色",
+      colorInfo: "颜色信息",
+      percentage: "百分比",
+      copyHex: "复制HEX",
+      copyRgb: "复制RGB",
+      copyHsl: "复制HSL",
+      clearImage: "清除图像",
+      browseImage: "浏览图像",
+      clickOrDrop: "点击或拖放图像",
+      extractedColorPalette: "提取的调色板",
+      ofImage: "的图像",
+      noImageSelectedDesc: "未选择图像",
+      uploadImageDesc: "上传图像以提取其调色板",
+      downloadJson: "下载JSON",
+      viewColorPage: "查看颜色页面",
+      clickToViewColor: "点击查看颜色",
+      clickToView: "点击查看",
+      colorPage: "颜色页面",
+      colors: "颜色",
+      invalidFileType: "请选择有效的图像文件",
+      fileTooLarge: "文件太大。请选择小于10MB的图像",
+      exportPalette: "导出调色板",
+      downloadJSON: "下载JSON",
+      uploadPrompt: "上传图像以提取其调色板",
     },
     paletteDescriptions: {
       shades: "色调通过向基础颜色添加黑色，使其更深。",
@@ -667,6 +834,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "工具",
       colorPicker: "颜色选择器",
       colorMixer: "颜色混合器",
+      imagePaletteExtractor: "图像调色板提取器",
     },
     metadata: {
       home: {
@@ -750,6 +918,47 @@ export const translations: { [key: string]: Translations } = {
         color: "Couleur",
         luminosity: "Luminosité",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Extracteur de palette d'image",
+      description: "Extraire des palettes de couleurs des images. Téléchargez une image et obtenez les couleurs dominantes avec leurs valeurs HEX, RVB et TSL.",
+      uploadImage: "Télécharger une image",
+      selectFile: "Sélectionner un fichier",
+      dragDrop: "Glissez-déposez une image ici, ou cliquez pour sélectionner",
+      supportedFormats: "Formats supportés : JPG, PNG, GIF, WEBP",
+      maxFileSize: "Taille de fichier maximale : 10 Mo",
+      extractPalette: "Extraire la palette",
+      extracting: "Extraction des couleurs...",
+      colorCount: "Nombre de couleurs",
+      downloadPalette: "Télécharger la palette",
+      copyAllColors: "Copier toutes les couleurs",
+      noImageSelected: "Veuillez d'abord sélectionner une image",
+      extractionError: "Impossible d'extraire les couleurs de l'image",
+      imagePreview: "Aperçu de l'image",
+      extractedColors: "Couleurs extraites",
+      colorInfo: "Informations sur la couleur",
+      percentage: "Pourcentage",
+      copyHex: "Copier HEX",
+      copyRgb: "Copier RVB",
+      copyHsl: "Copier TSL",
+      clearImage: "Effacer l'image",
+      browseImage: "Parcourir l'image",
+      clickOrDrop: "Cliquer ou déposer l'image",
+      extractedColorPalette: "Palette de couleurs extraite",
+      ofImage: "de l'image",
+      noImageSelectedDesc: "Aucune image sélectionnée",
+      uploadImageDesc: "Téléchargez une image pour extraire sa palette de couleurs",
+      downloadJson: "Télécharger JSON",
+      viewColorPage: "Voir la page couleur",
+      clickToViewColor: "Cliquer pour voir la couleur",
+      clickToView: "Cliquer pour voir",
+      colorPage: "page couleur",
+      colors: "couleurs",
+      invalidFileType: "Veuillez sélectionner un fichier image valide",
+      fileTooLarge: "Fichier trop volumineux. Veuillez sélectionner une image de moins de 10 Mo",
+      exportPalette: "Exporter la palette",
+      downloadJSON: "Télécharger JSON",
+      uploadPrompt: "Téléchargez une image pour extraire sa palette de couleurs",
     },
     paletteDescriptions: {
       shades:
@@ -857,6 +1066,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Outils",
       colorPicker: "Sélecteur de couleur",
       colorMixer: "Mélangeur de couleurs",
+      imagePaletteExtractor: "Extracteur de palette d'image",
     },
     metadata: {
       home: {
@@ -954,6 +1164,47 @@ export const translations: { [key: string]: Translations } = {
         color: "Farbe",
         luminosity: "Luminanz",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Bild-Palette-Extraktor",
+      description: "Extrahieren Sie dominante Farbpaletten aus Bildern. Laden Sie ein Bild hoch und erhalten Sie HEX-, RGB- und HSL-Werte mit Prozentsätzen.",
+      uploadImage: "Bild hochladen",
+      selectFile: "Datei auswählen",
+      dragDrop: "Ziehen Sie ein Bild hierher oder klicken Sie zum Auswählen",
+      supportedFormats: "Unterstützte Formate: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Maximale Dateigröße: 10MB",
+      extractPalette: "Palette extrahieren",
+      extracting: "Extrahiere...",
+      colorCount: "Anzahl der Farben",
+      downloadPalette: "Palette herunterladen",
+      copyAllColors: "Alle Farben kopieren",
+      noImageSelected: "Bitte wählen Sie zuerst ein Bild aus",
+      extractionError: "Fehler beim Extrahieren der Farben",
+      imagePreview: "Bildvorschau",
+      extractedColors: "Extrahierte Farben",
+      colorInfo: "Farbinformationen",
+      percentage: "Prozentsatz",
+      copyHex: "HEX kopieren",
+      copyRgb: "RGB kopieren",
+      copyHsl: "HSL kopieren",
+      clearImage: "Bild löschen",
+      browseImage: "Bild durchsuchen",
+      clickOrDrop: "Klicken oder Bild ablegen",
+      extractedColorPalette: "Extrahierte Farbpalette",
+      ofImage: "des Bildes",
+      noImageSelectedDesc: "Kein Bild ausgewählt",
+      uploadImageDesc: "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
+      downloadJson: "JSON herunterladen",
+      viewColorPage: "Farbseite anzeigen",
+      clickToViewColor: "Klicken Sie, um die Farbseite anzuzeigen",
+      clickToView: "Klicken zum Anzeigen",
+      colorPage: "Farbseite",
+      colors: "Farben",
+      invalidFileType: "Bitte wählen Sie eine gültige Bilddatei aus",
+      fileTooLarge: "Datei zu groß. Bitte wählen Sie ein Bild unter 10MB aus",
+      exportPalette: "Palette exportieren",
+      downloadJSON: "JSON herunterladen",
+      uploadPrompt: "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
     },
     paletteDescriptions: {
       shades:
@@ -1059,6 +1310,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Werkzeuge",
       colorPicker: "Farbwähler",
       colorMixer: "Farbmixer",
+      imagePaletteExtractor: "Bild-Palette-Extraktor",
     },
     metadata: {
       home: {
@@ -1142,6 +1394,47 @@ export const translations: { [key: string]: Translations } = {
         color: "Colore",
         luminosity: "Luminosità",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Estrattore di palette da immagini",
+      description: "Estrai palette di colori dominanti dalle immagini. Carica un'immagine e ottieni valori HEX, RGB e HSL con percentuali.",
+      uploadImage: "Carica immagine",
+      selectFile: "Seleziona file",
+      dragDrop: "Trascina e rilascia un'immagine qui, o clicca per selezionare",
+      supportedFormats: "Formati supportati: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Dimensione massima file: 10MB",
+      extractPalette: "Estrai palette",
+      extracting: "Estrazione...",
+      colorCount: "Numero di colori",
+      downloadPalette: "Scarica palette",
+      copyAllColors: "Copia tutti i colori",
+      noImageSelected: "Seleziona prima un'immagine",
+      extractionError: "Errore nell'estrazione dei colori",
+      imagePreview: "Anteprima immagine",
+      extractedColors: "Colori estratti",
+      colorInfo: "Informazioni colore",
+      percentage: "Percentuale",
+      copyHex: "Copia HEX",
+      copyRgb: "Copia RGB",
+      copyHsl: "Copia HSL",
+      clearImage: "Cancella immagine",
+      browseImage: "Sfoglia immagine",
+      clickOrDrop: "Clicca o rilascia immagine",
+      extractedColorPalette: "Palette di colori estratta",
+      ofImage: "dell'immagine",
+      noImageSelectedDesc: "Nessuna immagine selezionata",
+      uploadImageDesc: "Carica un'immagine per estrarre la sua palette di colori",
+      downloadJson: "Scarica JSON",
+      viewColorPage: "Visualizza pagina colore",
+      clickToViewColor: "Clicca per visualizzare la pagina del colore",
+      clickToView: "Clicca per visualizzare",
+      colorPage: "pagina colore",
+      colors: "colori",
+      invalidFileType: "Seleziona un file immagine valido",
+      fileTooLarge: "File troppo grande. Seleziona un'immagine sotto i 10MB",
+      exportPalette: "Esporta palette",
+      downloadJSON: "Scarica JSON",
+      uploadPrompt: "Carica un'immagine per estrarre la sua palette di colori",
     },
     paletteDescriptions: {
       shades:
@@ -1245,6 +1538,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Strumenti",
       colorPicker: "Selettore di colori",
       colorMixer: "Miscelatore di colori",
+      imagePaletteExtractor: "Estrattore di palette da immagini",
     },
     metadata: {
       home: {
@@ -1342,6 +1636,47 @@ export const translations: { [key: string]: Translations } = {
         color: "カラー",
         luminosity: "輝度",
       },
+    },
+    imagePaletteExtractor: {
+      title: "画像パレット抽出器",
+      description: "画像から主要なカラーパレットを抽出します。画像をアップロードして、HEX、RGB、HSL値をパーセンテージ付きで取得します。",
+      uploadImage: "画像をアップロード",
+      selectFile: "ファイルを選択",
+      dragDrop: "ここに画像をドラッグ＆ドロップするか、クリックして選択",
+      supportedFormats: "対応フォーマット: JPG, PNG, GIF, WEBP",
+      maxFileSize: "最大ファイルサイズ: 10MB",
+      extractPalette: "パレットを抽出",
+      extracting: "抽出中...",
+      colorCount: "色の数",
+      downloadPalette: "パレットをダウンロード",
+      copyAllColors: "すべての色をコピー",
+      noImageSelected: "まず画像を選択してください",
+      extractionError: "色の抽出エラー",
+      imagePreview: "画像プレビュー",
+      extractedColors: "抽出された色",
+      colorInfo: "色情報",
+      percentage: "パーセンテージ",
+      copyHex: "HEXをコピー",
+      copyRgb: "RGBをコピー",
+      copyHsl: "HSLをコピー",
+      clearImage: "画像をクリア",
+      browseImage: "画像を参照",
+      clickOrDrop: "クリックまたは画像をドロップ",
+      extractedColorPalette: "抽出されたカラーパレット",
+      ofImage: "の画像",
+      noImageSelectedDesc: "画像が選択されていません",
+      uploadImageDesc: "画像をアップロードしてカラーパレットを抽出",
+      downloadJson: "JSONをダウンロード",
+      viewColorPage: "カラーページを表示",
+      clickToViewColor: "クリックしてカラーページを表示",
+      clickToView: "クリックして表示",
+      colorPage: "カラーページ",
+      colors: "色",
+      invalidFileType: "有効な画像ファイルを選択してください",
+      fileTooLarge: "ファイルが大きすぎます。10MB以下の画像を選択してください",
+      exportPalette: "パレットをエクスポート",
+      downloadJSON: "JSONをダウンロード",
+      uploadPrompt: "画像をアップロードしてカラーパレットを抽出",
     },
     paletteDescriptions: {
       shades: "シェードは、基本色に黒を加えることで作られ、暗くなります。",
@@ -1446,6 +1781,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "ツール",
       colorPicker: "カラーピッカー",
       colorMixer: "カラー混合器",
+      imagePaletteExtractor: "画像パレット抽出器",
     },
     metadata: {
       home: {

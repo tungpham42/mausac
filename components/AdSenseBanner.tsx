@@ -65,6 +65,8 @@ const AdSenseBanner = () => {
           <Image
             src="/soft-banner.jpg"
             alt="Fallback Banner"
+            width={728}
+            height={90}
             style={{ maxWidth: "100%", height: "auto" }}
           />
         </Link>
