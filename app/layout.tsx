@@ -6,6 +6,8 @@ import MainBrandLogo from "@/components/MainBrandLogo";
 import ColorLogo from "@/components/ColorLogo";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
+import { headers } from "next/headers";
+import validLanguages from "@/languages";
 
 export default async function RootLayout({
   children,
@@ -15,7 +17,16 @@ export default async function RootLayout({
   params: Promise<{ lang?: string }>;
 }) {
   const resolvedParams = await params;
-  const initialLanguage = resolvedParams.lang || "en";
+  const headersList = await headers();
+  const langFromHeader =
+    headersList.get("x-lang") || resolvedParams.lang || "en";
+  const initialLanguage = validLanguages.includes(langFromHeader.toLowerCase())
+    ? langFromHeader.toLowerCase()
+    : "en";
+
+  console.log("resolvedParams:", resolvedParams);
+  console.log("langFromHeader:", langFromHeader);
+  console.log("initialLanguage:", initialLanguage);
 
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
@@ -52,6 +63,7 @@ export default async function RootLayout({
               const lang = localStorage.getItem('language') || '${initialLanguage}';
               if (lang !== document.documentElement.lang) {
                 document.documentElement.lang = lang;
+                console.log('Client - Updated lang to:', lang);
               }
             `}
           </Script>
