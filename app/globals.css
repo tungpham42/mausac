@@ -64,7 +64,6 @@ p.text-muted,
 p,
 label,
 li,
-span,
 .text-muted,
 small.text-muted {
   color: var(--foreground) !important;
