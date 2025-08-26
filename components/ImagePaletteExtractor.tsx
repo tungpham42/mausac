@@ -333,7 +333,7 @@ export default function ImagePaletteExtractor({
           <Card className="mb-4">
             <Card.Body>
               <div
-                className={`border-2 border-dashed p-3 text-center mb-3 ${
+                className={`border-2 border-dashed p-3 text-center mb-3 palette-placeholder ${
                   dragOver ? "border-primary bg-light" : "border-secondary"
                 }`}
                 onDrop={handleDrop}
@@ -492,7 +492,7 @@ export default function ImagePaletteExtractor({
             </Card>
           ) : (
             <Card className="h-100 d-flex align-items-center justify-content-center">
-              <Card.Body className="text-center text-muted">
+              <Card.Body className="text-center text-muted palette-placeholder">
                 <FontAwesomeIcon icon={faImage} size="3x" className="mb-3" />
                 <h5>{t("imagePaletteExtractor.noImageSelected")}</h5>
                 <p>{t("imagePaletteExtractor.uploadPrompt")}</p>

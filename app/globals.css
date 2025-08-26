@@ -69,8 +69,8 @@ small.text-muted {
   color: var(--foreground) !important;
 }
 
-.image-palette-extractor svg,
-.image-palette-extractor svg * {
+.image-palette-extractor .palette-placeholder svg,
+.image-palette-extractor .palette-placeholder svg * {
   fill: var(--foreground) !important;
   stroke: var(--foreground) !important;
 }
