@@ -46,7 +46,7 @@ interface Translations {
       luminosity: string;
     };
   };
-  imagePaletteExtractor?: {
+  imagePaletteExtractor: {
     title: string;
     description: string;
     uploadImage: string;
@@ -79,13 +79,13 @@ interface Translations {
     viewColorPage: string;
     clickToViewColor: string;
     clickToView: string;
-    colorPage: string;
     colors: string;
     invalidFileType: string;
     fileTooLarge: string;
     exportPalette: string;
     downloadJSON: string;
     uploadPrompt: string;
+    notification: string;
   };
   paletteDescriptions: {
     shades: string;
@@ -184,6 +184,7 @@ interface Metadata {
   home: MetadataPage;
   colorPage: MetadataPage;
   colorMixer: MetadataPage;
+  imagePaletteExtractor: MetadataPage;
 }
 
 export const translations: { [key: string]: Translations } = {
@@ -324,7 +325,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "Trích xuất màu từ ảnh",
-      description: "Trích xuất palette màu chủ đạo từ ảnh. Upload ảnh và nhận các màu HEX, RGB, và HSL với tỷ lệ.",
+      description:
+        "Trích xuất palette màu chủ đạo từ ảnh. Upload ảnh và nhận các màu HEX, RGB, và HSL với tỷ lệ.",
       uploadImage: "Tải ảnh lên",
       selectFile: "Chọn tệp",
       dragDrop: "Kéo và thả ảnh vào đây, hoặc nhấp để chọn",
@@ -355,13 +357,13 @@ export const translations: { [key: string]: Translations } = {
       viewColorPage: "Xem trang màu",
       clickToViewColor: "Nhấp để xem trang màu",
       clickToView: "Nhấp để xem",
-      colorPage: "trang màu",
       colors: "màu",
       invalidFileType: "Vui lòng chọn tệp ảnh hợp lệ",
       fileTooLarge: "Tệp quá lớn. Vui lòng chọn ảnh dưới 10MB",
       exportPalette: "Xuất bảng màu",
       downloadJSON: "Tải xuống JSON",
       uploadPrompt: "Tải lên ảnh để trích xuất bảng màu",
+      notification: "Đã sao chép vào clipboard",
     },
     tools: {
       toolsLabel: "Công cụ",
@@ -427,6 +429,27 @@ export const translations: { [key: string]: Translations } = {
           "Trộn hai màu với tỷ lệ và chế độ pha trộn tùy chọn. Tạo màu sắc độc đáo và khám phá các biến thể ngay!",
         siteName: "Tra cứu mã màu",
         ogImageAlt: "Trộn màu - color.soft.io.vn",
+      },
+      imagePaletteExtractor: {
+        title: "Trích xuất màu từ ảnh - color.soft.io.vn",
+        description:
+          "Trích xuất bảng màu chủ đạo từ ảnh. Tải lên ảnh và nhận các màu HEX, RGB, và HSL với tỷ lệ phần trăm.",
+        keywords: [
+          "trích xuất bảng màu ảnh",
+          "trích xuất màu",
+          "màu ảnh",
+          "tạo bảng màu",
+          "màu chủ đạo",
+          "phân tích màu",
+          "màu hex",
+          "màu rgb",
+          "chọn màu từ ảnh",
+        ],
+        ogTitle: "Trích xuất màu từ ảnh - color.soft.io.vn",
+        ogDescription:
+          "Trích xuất bảng màu chủ đạo từ ảnh. Tải lên ảnh và nhận các màu HEX, RGB, và HSL với tỷ lệ phần trăm.",
+        siteName: "Tra cứu mã màu",
+        ogImageAlt: "Trích xuất màu từ ảnh - color.soft.io.vn",
       },
     },
   },
@@ -568,7 +591,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "Image Palette Extractor",
-      description: "Extract dominant color palettes from images. Upload an image and get HEX, RGB, and HSL values with percentages.",
+      description:
+        "Extract dominant color palettes from images. Upload an image and get HEX, RGB, and HSL values with percentages.",
       uploadImage: "Upload Image",
       selectFile: "Select File",
       dragDrop: "Drag & drop an image here, or click to select",
@@ -599,13 +623,13 @@ export const translations: { [key: string]: Translations } = {
       viewColorPage: "View Color Page",
       clickToViewColor: "Click to view color page",
       clickToView: "Click to view",
-      colorPage: "color page",
       colors: "colors",
       invalidFileType: "Please select a valid image file",
       fileTooLarge: "File too large. Please select an image under 10MB",
       exportPalette: "Export Palette",
       downloadJSON: "Download JSON",
       uploadPrompt: "Upload an image to extract its color palette",
+      notification: "Copied to clipboard",
     },
     tools: {
       toolsLabel: "Tools",
@@ -656,6 +680,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Color Lookup",
         ogImageAlt: "Color Mixer - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Image Palette Extractor - color.soft.io.vn",
+        description:
+          "Extract dominant color palettes from images. Upload an image and get HEX, RGB, and HSL values with percentages.",
+        keywords: [
+          "image palette extractor",
+          "color extraction",
+          "image colors",
+          "color palette generator",
+          "dominant colors",
+          "color analysis",
+          "hex colors",
+          "rgb colors",
+          "image color picker",
+        ],
+        ogTitle: "Image Palette Extractor - color.soft.io.vn",
+        ogDescription:
+          "Extract dominant color palettes from images. Upload an image and get HEX, RGB, and HSL values with percentages.",
+        siteName: "Color Lookup",
+        ogImageAlt: "Image Palette Extractor - color.soft.io.vn",
+      },
     },
   },
   zh: {
@@ -698,7 +743,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "图像调色板提取器",
-      description: "从图像中提取调色板。上传图像并获取主要颜色及其HEX、RGB和HSL值。",
+      description:
+        "从图像中提取调色板。上传图像并获取主要颜色及其HEX、RGB和HSL值。",
       uploadImage: "上传图像",
       selectFile: "选择文件",
       dragDrop: "将图像拖放到此处，或点击选择",
@@ -729,13 +775,13 @@ export const translations: { [key: string]: Translations } = {
       viewColorPage: "查看颜色页面",
       clickToViewColor: "点击查看颜色",
       clickToView: "点击查看",
-      colorPage: "颜色页面",
       colors: "颜色",
       invalidFileType: "请选择有效的图像文件",
       fileTooLarge: "文件太大。请选择小于10MB的图像",
       exportPalette: "导出调色板",
       downloadJSON: "下载JSON",
       uploadPrompt: "上传图像以提取其调色板",
+      notification: "已复制到剪贴板",
     },
     paletteDescriptions: {
       shades: "色调通过向基础颜色添加黑色，使其更深。",
@@ -879,6 +925,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "颜色查询",
         ogImageAlt: "颜色混合器 - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "图像调色板提取器 - color.soft.io.vn",
+        description:
+          "从图像中提取调色板。上传图像并获取主要颜色及其HEX、RGB和HSL值。",
+        keywords: [
+          "图像调色板提取器",
+          "颜色提取",
+          "图像颜色",
+          "调色板生成器",
+          "主要颜色",
+          "颜色分析",
+          "hex颜色",
+          "rgb颜色",
+          "图像取色器",
+        ],
+        ogTitle: "图像调色板提取器 - color.soft.io.vn",
+        ogDescription:
+          "从图像中提取调色板。上传图像并获取主要颜色及其HEX、RGB和HSL值。",
+        siteName: "颜色查询",
+        ogImageAlt: "图像调色板提取器 - color.soft.io.vn",
+      },
     },
   },
   fr: {
@@ -921,7 +988,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "Extracteur de palette d'image",
-      description: "Extraire des palettes de couleurs des images. Téléchargez une image et obtenez les couleurs dominantes avec leurs valeurs HEX, RVB et TSL.",
+      description:
+        "Extraire des palettes de couleurs des images. Téléchargez une image et obtenez les couleurs dominantes avec leurs valeurs HEX, RVB et TSL.",
       uploadImage: "Télécharger une image",
       selectFile: "Sélectionner un fichier",
       dragDrop: "Glissez-déposez une image ici, ou cliquez pour sélectionner",
@@ -947,18 +1015,21 @@ export const translations: { [key: string]: Translations } = {
       extractedColorPalette: "Palette de couleurs extraite",
       ofImage: "de l'image",
       noImageSelectedDesc: "Aucune image sélectionnée",
-      uploadImageDesc: "Téléchargez une image pour extraire sa palette de couleurs",
+      uploadImageDesc:
+        "Téléchargez une image pour extraire sa palette de couleurs",
       downloadJson: "Télécharger JSON",
       viewColorPage: "Voir la page couleur",
       clickToViewColor: "Cliquer pour voir la couleur",
       clickToView: "Cliquer pour voir",
-      colorPage: "page couleur",
       colors: "couleurs",
       invalidFileType: "Veuillez sélectionner un fichier image valide",
-      fileTooLarge: "Fichier trop volumineux. Veuillez sélectionner une image de moins de 10 Mo",
+      fileTooLarge:
+        "Fichier trop volumineux. Veuillez sélectionner une image de moins de 10 Mo",
       exportPalette: "Exporter la palette",
       downloadJSON: "Télécharger JSON",
-      uploadPrompt: "Téléchargez une image pour extraire sa palette de couleurs",
+      uploadPrompt:
+        "Téléchargez une image pour extraire sa palette de couleurs",
+      notification: "Copié dans le presse-papiers",
     },
     paletteDescriptions: {
       shades:
@@ -1125,6 +1196,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Recherche de couleur",
         ogImageAlt: "Mélangeur de couleurs - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Extracteur de palette d'image - color.soft.io.vn",
+        description:
+          "Extraire des palettes de couleurs des images. Téléchargez une image et obtenez les couleurs dominantes avec leurs valeurs HEX, RVB et TSL.",
+        keywords: [
+          "extracteur de palette d'image",
+          "extraction de couleurs",
+          "couleurs d'image",
+          "générateur de palette de couleurs",
+          "couleurs dominantes",
+          "analyse des couleurs",
+          "couleurs hex",
+          "couleurs rvb",
+          "sélecteur de couleur d'image",
+        ],
+        ogTitle: "Extracteur de palette d'image - color.soft.io.vn",
+        ogDescription:
+          "Extraire des palettes de couleurs des images. Téléchargez une image et obtenez les couleurs dominantes avec leurs valeurs HEX, RVB et TSL.",
+        siteName: "Recherche de couleur",
+        ogImageAlt: "Extracteur de palette d'image - color.soft.io.vn",
+      },
     },
   },
   de: {
@@ -1167,7 +1259,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "Bild-Palette-Extraktor",
-      description: "Extrahieren Sie dominante Farbpaletten aus Bildern. Laden Sie ein Bild hoch und erhalten Sie HEX-, RGB- und HSL-Werte mit Prozentsätzen.",
+      description:
+        "Extrahieren Sie dominante Farbpaletten aus Bildern. Laden Sie ein Bild hoch und erhalten Sie HEX-, RGB- und HSL-Werte mit Prozentsätzen.",
       uploadImage: "Bild hochladen",
       selectFile: "Datei auswählen",
       dragDrop: "Ziehen Sie ein Bild hierher oder klicken Sie zum Auswählen",
@@ -1193,18 +1286,20 @@ export const translations: { [key: string]: Translations } = {
       extractedColorPalette: "Extrahierte Farbpalette",
       ofImage: "des Bildes",
       noImageSelectedDesc: "Kein Bild ausgewählt",
-      uploadImageDesc: "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
+      uploadImageDesc:
+        "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
       downloadJson: "JSON herunterladen",
       viewColorPage: "Farbseite anzeigen",
       clickToViewColor: "Klicken Sie, um die Farbseite anzuzeigen",
       clickToView: "Klicken zum Anzeigen",
-      colorPage: "Farbseite",
       colors: "Farben",
       invalidFileType: "Bitte wählen Sie eine gültige Bilddatei aus",
       fileTooLarge: "Datei zu groß. Bitte wählen Sie ein Bild unter 10MB aus",
       exportPalette: "Palette exportieren",
       downloadJSON: "JSON herunterladen",
-      uploadPrompt: "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
+      uploadPrompt:
+        "Laden Sie ein Bild hoch, um seine Farbpalette zu extrahieren",
+      notification: "In die Zwischenablage kopiert",
     },
     paletteDescriptions: {
       shades:
@@ -1355,6 +1450,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Farbsuche",
         ogImageAlt: "Farbmixer - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Bild-Palette-Extraktor - color.soft.io.vn",
+        description:
+          "Extrahieren Sie dominante Farbpaletten aus Bildern. Laden Sie ein Bild hoch und erhalten Sie HEX-, RGB- und HSL-Werte mit Prozentsätzen.",
+        keywords: [
+          "Bild-Palette-Extraktor",
+          "Farbextraktion",
+          "Bildfarben",
+          "Farbpalettengenerator",
+          "dominante Farben",
+          "Farbanalyse",
+          "hex Farben",
+          "rgb Farben",
+          "Bild-Farbwähler",
+        ],
+        ogTitle: "Bild-Palette-Extraktor - color.soft.io.vn",
+        ogDescription:
+          "Extrahieren Sie dominante Farbpaletten aus Bildern. Laden Sie ein Bild hoch und erhalten Sie HEX-, RGB- und HSL-Werte mit Prozentsätzen.",
+        siteName: "Farbsuche",
+        ogImageAlt: "Bild-Palette-Extraktor - color.soft.io.vn",
+      },
     },
   },
   it: {
@@ -1397,7 +1513,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "Estrattore di palette da immagini",
-      description: "Estrai palette di colori dominanti dalle immagini. Carica un'immagine e ottieni valori HEX, RGB e HSL con percentuali.",
+      description:
+        "Estrai palette di colori dominanti dalle immagini. Carica un'immagine e ottieni valori HEX, RGB e HSL con percentuali.",
       uploadImage: "Carica immagine",
       selectFile: "Seleziona file",
       dragDrop: "Trascina e rilascia un'immagine qui, o clicca per selezionare",
@@ -1423,18 +1540,19 @@ export const translations: { [key: string]: Translations } = {
       extractedColorPalette: "Palette di colori estratta",
       ofImage: "dell'immagine",
       noImageSelectedDesc: "Nessuna immagine selezionata",
-      uploadImageDesc: "Carica un'immagine per estrarre la sua palette di colori",
+      uploadImageDesc:
+        "Carica un'immagine per estrarre la sua palette di colori",
       downloadJson: "Scarica JSON",
       viewColorPage: "Visualizza pagina colore",
       clickToViewColor: "Clicca per visualizzare la pagina del colore",
       clickToView: "Clicca per visualizzare",
-      colorPage: "pagina colore",
       colors: "colori",
       invalidFileType: "Seleziona un file immagine valido",
       fileTooLarge: "File troppo grande. Seleziona un'immagine sotto i 10MB",
       exportPalette: "Esporta palette",
       downloadJSON: "Scarica JSON",
       uploadPrompt: "Carica un'immagine per estrarre la sua palette di colori",
+      notification: "Copiato negli appunti",
     },
     paletteDescriptions: {
       shades:
@@ -1597,6 +1715,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Ricerca colore",
         ogImageAlt: "Miscelatore di colori - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Estrattore di palette da immagini - color.soft.io.vn",
+        description:
+          "Estrai palette di colori dominanti dalle immagini. Carica un'immagine e ottieni valori HEX, RGB e HSL con percentuali.",
+        keywords: [
+          "estrattore di palette da immagini",
+          "estrazione colori",
+          "colori immagine",
+          "generatore di palette di colori",
+          "colori dominanti",
+          "analisi dei colori",
+          "colori hex",
+          "colori rgb",
+          "selettore di colori immagine",
+        ],
+        ogTitle: "Estrattore di palette da immagini - color.soft.io.vn",
+        ogDescription:
+          "Estrai palette di colori dominanti dalle immagini. Carica un'immagine e ottieni valori HEX, RGB e HSL con percentuali.",
+        siteName: "Ricerca colore",
+        ogImageAlt: "Estrattore di palette da immagini - color.soft.io.vn",
+      },
     },
   },
   ja: {
@@ -1639,7 +1778,8 @@ export const translations: { [key: string]: Translations } = {
     },
     imagePaletteExtractor: {
       title: "画像パレット抽出器",
-      description: "画像から主要なカラーパレットを抽出します。画像をアップロードして、HEX、RGB、HSL値をパーセンテージ付きで取得します。",
+      description:
+        "画像から主要なカラーパレットを抽出します。画像をアップロードして、HEX、RGB、HSL値をパーセンテージ付きで取得します。",
       uploadImage: "画像をアップロード",
       selectFile: "ファイルを選択",
       dragDrop: "ここに画像をドラッグ＆ドロップするか、クリックして選択",
@@ -1670,13 +1810,13 @@ export const translations: { [key: string]: Translations } = {
       viewColorPage: "カラーページを表示",
       clickToViewColor: "クリックしてカラーページを表示",
       clickToView: "クリックして表示",
-      colorPage: "カラーページ",
       colors: "色",
       invalidFileType: "有効な画像ファイルを選択してください",
       fileTooLarge: "ファイルが大きすぎます。10MB以下の画像を選択してください",
       exportPalette: "パレットをエクスポート",
       downloadJSON: "JSONをダウンロード",
       uploadPrompt: "画像をアップロードしてカラーパレットを抽出",
+      notification: "クリップボードにコピーされました",
     },
     paletteDescriptions: {
       shades: "シェードは、基本色に黒を加えることで作られ、暗くなります。",
@@ -1826,6 +1966,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "カラー検索",
         ogImageAlt: "カラー混合器 - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "画像パレット抽出器 - color.soft.io.vn",
+        description:
+          "画像から主要なカラーパレットを抽出します。画像をアップロードして、HEX、RGB、HSL値をパーセンテージ付きで取得します。",
+        keywords: [
+          "画像パレット抽出器",
+          "色の抽出",
+          "画像の色",
+          "カラーパレットジェネレーター",
+          "主要な色",
+          "色の分析",
+          "hexの色",
+          "rgbの色",
+          "画像カラーピッカー",
+        ],
+        ogTitle: "画像パレット抽出器 - color.soft.io.vn",
+        ogDescription:
+          "画像から主要なカラーパレットを抽出します。画像をアップロードして、HEX、RGB、HSL値をパーセンテージ付きで取得します。",
+        siteName: "カラー検索",
+        ogImageAlt: "画像パレット抽出器 - color.soft.io.vn",
+      },
     },
   },
   ko: {
@@ -1865,6 +2026,48 @@ export const translations: { [key: string]: Translations } = {
         color: "색상",
         luminosity: "명도",
       },
+    },
+    imagePaletteExtractor: {
+      title: "이미지 팔레트 추출기",
+      description:
+        "이미지에서 주요 색상 팔레트를 추출합니다. 이미지를 업로드하고 백분율과 함께 HEX, RGB, HSL 값을 얻으세요.",
+      uploadImage: "이미지 업로드",
+      selectFile: "파일 선택",
+      dragDrop: "여기에 이미지를 드래그 앤 드롭하거나 클릭하여 선택",
+      supportedFormats: "지원 형식: JPG, PNG, GIF, WEBP",
+      maxFileSize: "최대 파일 크기: 10MB",
+      extractPalette: "팔레트 추출",
+      extracting: "추출 중...",
+      colorCount: "색상 수",
+      downloadPalette: "팔레트 다운로드",
+      copyAllColors: "모든 색상 복사",
+      noImageSelected: "먼저 이미지를 선택하세요",
+      extractionError: "색상 추출 오류",
+      imagePreview: "이미지 미리보기",
+      extractedColors: "추출된 색상",
+      colorInfo: "색상 정보",
+      percentage: "백분율",
+      copyHex: "HEX 복사",
+      copyRgb: "RGB 복사",
+      copyHsl: "HSL 복사",
+      clearImage: "이미지 지우기",
+      browseImage: "이미지 찾아보기",
+      clickOrDrop: "클릭하거나 이미지 드롭",
+      extractedColorPalette: "추출된 색상 팔레트",
+      ofImage: "이미지의",
+      noImageSelectedDesc: "선택된 이미지 없음",
+      uploadImageDesc: "이미지를 업로드하여 색상 팔레트 추출",
+      downloadJson: "JSON 다운로드",
+      viewColorPage: "색상 페이지 보기",
+      clickToViewColor: "클릭하여 색상 페이지 보기",
+      clickToView: "클릭하여 보기",
+      colors: "색상",
+      invalidFileType: "유효한 이미지 파일을 선택하세요",
+      fileTooLarge: "파일이 너무 큽니다. 10MB 이하의 이미지를 선택하세요",
+      exportPalette: "팔레트 내보내기",
+      downloadJSON: "JSON 다운로드",
+      uploadPrompt: "이미지를 업로드하여 색상 팔레트 추출",
+      notification: "클립보드에 복사됨",
     },
     paletteDescriptions: {
       shades: "셰이드는 기본 색상에 검은색을 추가하여 더 어두워집니다.",
@@ -2011,6 +2214,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "색상 검색",
         ogImageAlt: "색상 혼합기 - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "이미지 팔레트 추출기 - color.soft.io.vn",
+        description:
+          "이미지에서 주요 색상 팔레트를 추출합니다. 이미지를 업로드하고 백분율과 함께 HEX, RGB, HSL 값을 얻으세요.",
+        keywords: [
+          "이미지 팔레트 추출기",
+          "색상 추출",
+          "이미지 색상",
+          "색상 팔레트 생성기",
+          "주요 색상",
+          "색상 분석",
+          "hex 색상",
+          "rgb 색상",
+          "이미지 색상 선택기",
+        ],
+        ogTitle: "이미지 팔레트 추출기 - color.soft.io.vn",
+        ogDescription:
+          "이미지에서 주요 색상 팔레트를 추출합니다. 이미지를 업로드하고 백분율과 함께 HEX, RGB, HSL 값을 얻으세요.",
+        siteName: "색상 검색",
+        ogImageAlt: "이미지 팔레트 추출기 - color.soft.io.vn",
+      },
     },
   },
   pt: {
@@ -2050,6 +2274,50 @@ export const translations: { [key: string]: Translations } = {
         color: "Cor",
         luminosity: "Luminosidade",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Extrator de paleta de imagens",
+      description:
+        "Extraia a paleta de cores principal de uma imagem. Faça upload de uma imagem e obtenha valores HEX, RGB e HSL com porcentagens.",
+      uploadImage: "Fazer upload da imagem",
+      selectFile: "Selecionar arquivo",
+      dragDrop: "Arraste e solte uma imagem aqui ou clique para selecionar",
+      supportedFormats: "Formatos suportados: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Tamanho máximo do arquivo: 10MB",
+      extractPalette: "Extrair paleta",
+      extracting: "Extraindo...",
+      colorCount: "Número de cores",
+      downloadPalette: "Baixar paleta",
+      copyAllColors: "Copiar todas as cores",
+      noImageSelected: "Por favor, selecione uma imagem primeiro",
+      extractionError: "Erro ao extrair cores",
+      imagePreview: "Pré-visualização da imagem",
+      extractedColors: "Cores extraídas",
+      colorInfo: "Informações da cor",
+      percentage: "Porcentagem",
+      copyHex: "Copiar HEX",
+      copyRgb: "Copiar RGB",
+      copyHsl: "Copiar HSL",
+      clearImage: "Limpar imagem",
+      browseImage: "Procurar imagem",
+      clickOrDrop: "Clique ou solte a imagem",
+      extractedColorPalette: "Paleta de cores extraída",
+      ofImage: "da imagem",
+      noImageSelectedDesc: "Nenhuma imagem selecionada",
+      uploadImageDesc:
+        "Faça upload de uma imagem para extrair a paleta de cores",
+      downloadJson: "Baixar JSON",
+      viewColorPage: "Ver página da cor",
+      clickToViewColor: "Clique para ver a página da cor",
+      clickToView: "Clique para ver",
+      colors: "Cores",
+      invalidFileType: "Por favor, selecione um arquivo de imagem válido",
+      fileTooLarge:
+        "O arquivo é muito grande. Por favor, selecione uma imagem menor que 10MB",
+      exportPalette: "Exportar paleta",
+      downloadJSON: "Baixar JSON",
+      uploadPrompt: "Faça upload de uma imagem para extrair a paleta de cores",
+      notification: "Copiado para a área de transferência",
     },
     paletteDescriptions: {
       shades:
@@ -2213,6 +2481,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Pesquisa de cores",
         ogImageAlt: "Misturador de cores - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Extrator de paleta de imagens - color.soft.io.vn",
+        description:
+          "Extraia a paleta de cores principal de uma imagem. Faça upload de uma imagem e obtenha valores HEX, RGB e HSL com porcentagens.",
+        keywords: [
+          "extrator de paleta de imagens",
+          "extração de cores",
+          "cores de imagem",
+          "gerador de paleta de cores",
+          "cores principais",
+          "análise de cores",
+          "cores hex",
+          "cores rgb",
+          "seletor de cores de imagem",
+        ],
+        ogTitle: "Extrator de paleta de imagens - color.soft.io.vn",
+        ogDescription:
+          "Extraia a paleta de cores principal de uma imagem. Faça upload de uma imagem e obtenha valores HEX, RGB e HSL com porcentagens.",
+        siteName: "Pesquisa de cores",
+        ogImageAlt: "Extrator de paleta de imagens - color.soft.io.vn",
+      },
     },
   },
   ru: {
@@ -2252,6 +2541,49 @@ export const translations: { [key: string]: Translations } = {
         color: "Цвет",
         luminosity: "Яркость",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Извлекатель палитры изображений",
+      description:
+        "Извлекайте основную цветовую палитру из изображения. Загрузите изображение и получите значения HEX, RGB и HSL с процентами.",
+      uploadImage: "Загрузить изображение",
+      selectFile: "Выбрать файл",
+      dragDrop: "Перетащите изображение сюда или нажмите, чтобы выбрать",
+      supportedFormats: "Поддерживаемые форматы: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Максимальный размер файла: 10 МБ",
+      extractPalette: "Извлечь палитру",
+      extracting: "Извлечение...",
+      colorCount: "Количество цветов",
+      downloadPalette: "Скачать палитру",
+      copyAllColors: "Скопировать все цвета",
+      noImageSelected: "Пожалуйста, сначала выберите изображение",
+      extractionError: "Ошибка при извлечении цветов",
+      imagePreview: "Предпросмотр изображения",
+      extractedColors: "Извлеченные цвета",
+      colorInfo: "Информация о цвете",
+      percentage: "Процент",
+      copyHex: "Копировать HEX",
+      copyRgb: "Копировать RGB",
+      copyHsl: "Копировать HSL",
+      clearImage: "Очистить изображение",
+      browseImage: "Просмотреть изображение",
+      clickOrDrop: "Нажмите или перетащите изображение",
+      extractedColorPalette: "Извлеченная цветовая палитра",
+      ofImage: "изображения",
+      noImageSelectedDesc: "Изображение не выбрано",
+      uploadImageDesc: "Загрузите изображение, чтобы извлечь цветовую палитру",
+      downloadJson: "Скачать JSON",
+      viewColorPage: "Просмотреть страницу цвета",
+      clickToViewColor: "Нажмите, чтобы просмотреть страницу цвета",
+      clickToView: "Нажмите, чтобы просмотреть",
+      colors: "Цвета",
+      invalidFileType: "Пожалуйста, выберите допустимый файл изображения",
+      fileTooLarge:
+        "Файл слишком большой. Пожалуйста, выберите изображение размером менее 10 МБ",
+      exportPalette: "Экспортировать палитру",
+      downloadJSON: "Скачать JSON",
+      uploadPrompt: "Загрузите изображение, чтобы извлечь цветовую палитру",
+      notification: "Скопировано в буфер обмена",
     },
     paletteDescriptions: {
       shades:
@@ -2401,6 +2733,27 @@ export const translations: { [key: string]: Translations } = {
         siteName: "Поиск цвета",
         ogImageAlt: "Смеситель цветов - color.soft.io.vn",
       },
+      imagePaletteExtractor: {
+        title: "Извлекатель палитры изображений - color.soft.io.vn",
+        description:
+          "Извлекайте основную цветовую палитру из изображения. Загрузите изображение и получите значения HEX, RGB и HSL с процентами.",
+        keywords: [
+          "извлекатель палитры изображений",
+          "извлечение цветов",
+          "цвета изображений",
+          "генератор цветовой палитры",
+          "основные цвета",
+          "анализ цветов",
+          "цвета hex",
+          "цвета rgb",
+          "пипетка для изображений",
+        ],
+        ogTitle: "Извлекатель палитры изображений - color.soft.io.vn",
+        ogDescription:
+          "Извлекайте основную цветовую палитру из изображения. Загрузите изображение и получите значения HEX, RGB и HSL с процентами.",
+        siteName: "Поиск цвета",
+        ogImageAlt: "Извлекатель палитры изображений - color.soft.io.vn",
+      },
     },
   },
   es: {
@@ -2440,6 +2793,49 @@ export const translations: { [key: string]: Translations } = {
         color: "Color",
         luminosity: "Luminosidad",
       },
+    },
+    imagePaletteExtractor: {
+      title: "Extractor de paleta de imágenes",
+      description:
+        "Extrae la paleta de colores principal de una imagen. Sube una imagen y obtén valores HEX, RGB y HSL con porcentajes.",
+      uploadImage: "Subir imagen",
+      selectFile: "Seleccionar archivo",
+      dragDrop: "Arrastra y suelta una imagen aquí o haz clic para seleccionar",
+      supportedFormats: "Formatos soportados: JPG, PNG, GIF, WEBP",
+      maxFileSize: "Tamaño máximo de archivo: 10MB",
+      extractPalette: "Extraer paleta",
+      extracting: "Extrayendo...",
+      colorCount: "Número de colores",
+      downloadPalette: "Descargar paleta",
+      copyAllColors: "Copiar todos los colores",
+      noImageSelected: "Por favor, selecciona una imagen primero",
+      extractionError: "Error al extraer colores",
+      imagePreview: "Vista previa de la imagen",
+      extractedColors: "Colores extraídos",
+      colorInfo: "Información del color",
+      percentage: "Porcentaje",
+      copyHex: "Copiar HEX",
+      copyRgb: "Copiar RGB",
+      copyHsl: "Copiar HSL",
+      clearImage: "Limpiar imagen",
+      browseImage: "Buscar imagen",
+      clickOrDrop: "Haz clic o suelta la imagen",
+      extractedColorPalette: "Paleta de colores extraída",
+      ofImage: "de la imagen",
+      noImageSelectedDesc: "Ninguna imagen seleccionada",
+      uploadImageDesc: "Sube una imagen para extraer la paleta de colores",
+      downloadJson: "Descargar JSON",
+      viewColorPage: "Ver página del color",
+      clickToViewColor: "Haz clic para ver la página del color",
+      clickToView: "Haz clic para ver",
+      colors: "Colores",
+      invalidFileType: "Por favor, selecciona un archivo de imagen válido",
+      fileTooLarge:
+        "El archivo es demasiado grande. Por favor, selecciona una imagen menor a 10MB",
+      exportPalette: "Exportar paleta",
+      downloadJSON: "Descargar JSON",
+      uploadPrompt: "Sube una imagen para extraer la paleta de colores",
+      notification: "Copiado al portapapeles",
     },
     paletteDescriptions: {
       shades:
@@ -2602,6 +2998,27 @@ export const translations: { [key: string]: Translations } = {
           "Mezcla dos colores con una proporción y modo de mezcla personalizables. ¡Crea colores únicos y explora variaciones ahora!",
         siteName: "Búsqueda de colores",
         ogImageAlt: "Mezclador de colores - color.soft.io.vn",
+      },
+      imagePaletteExtractor: {
+        title: "Extractor de paleta de imágenes - color.soft.io.vn",
+        description:
+          "Extrae la paleta de colores principal de una imagen. Sube una imagen y obtén valores HEX, RGB y HSL con porcentajes.",
+        keywords: [
+          "extractor de paleta de imágenes",
+          "extracción de colores",
+          "colores de imagen",
+          "generador de paleta de colores",
+          "colores principales",
+          "análisis de colores",
+          "colores hex",
+          "colores rgb",
+          "selector de color de imagen",
+        ],
+        ogTitle: "Extractor de paleta de imágenes - color.soft.io.vn",
+        ogDescription:
+          "Extrae la paleta de colores principal de una imagen. Sube una imagen y obtén valores HEX, RGB y HSL con porcentajes.",
+        siteName: "Búsqueda de colores",
+        ogImageAlt: "Extractor de paleta de imágenes - color.soft.io.vn",
       },
     },
   },

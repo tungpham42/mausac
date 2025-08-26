@@ -29,7 +29,7 @@ export default function CmykChart({
           <XAxis dataKey="name" />
           <YAxis domain={[0, 100]} />
           <Tooltip formatter={(value: number) => `${Math.round(value)}%`} />
-          <Bar dataKey="value" fill="#8884d8">
+          <Bar dataKey="value">
             {data.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={entry.color} />
             ))}

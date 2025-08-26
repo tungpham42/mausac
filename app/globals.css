@@ -61,8 +61,19 @@ h6,
 
 .card-header,
 p.text-muted,
-p {
+p,
+label,
+li,
+span,
+.text-muted,
+small.text-muted {
   color: var(--foreground) !important;
+}
+
+.image-palette-extractor svg,
+.image-palette-extractor svg * {
+  fill: var(--foreground) !important;
+  stroke: var(--foreground) !important;
 }
 
 .list-group-item {
@@ -83,6 +94,10 @@ line.recharts-cartesian-axis-line {
   stroke: var(--foreground) !important;
 }
 
+.recharts-surface path.recharts-tooltip-cursor {
+  fill: var(--card-bg) !important;
+}
+
 * {
   box-sizing: border-box;
   padding: 0;
@@ -98,6 +113,13 @@ a:not(.btn-lg):not(.lang-dropdown-item) {
 a:not(.btn-lg):not(.lang-dropdown-item):hover {
   color: var(--primary-hover) !important;
   text-decoration: underline !important;
+}
+
+.toast {
+  background: var(--card-bg) !important;
+  color: var(--foreground) !important;
+  border: none !important;
+  box-shadow: var(--shadow);
 }
 
 .card {
@@ -341,4 +363,27 @@ span.color-code {
 
 .custom-range::-moz-range-thumb:hover {
   transform: scale(1.2);
+}
+
+/* Tooltip container */
+.recharts-default-tooltip {
+  background-color: var(--card-bg) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  color: var(--foreground) !important;
+  padding: 8px 12px;
+  box-shadow: var(--shadow) !important;
+}
+
+/* Label (top text) */
+.recharts-tooltip-label {
+  color: var(--foreground) !important;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+/* Each item row */
+.recharts-tooltip-item {
+  color: var(--accent) !important;
+  font-size: 14px;
 }
