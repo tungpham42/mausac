@@ -10,15 +10,6 @@ interface PageProps {
   params: Promise<{ lang: string }>;
 }
 
-export async function generateStaticParams() {
-  // Generate static params for all supported languages except English
-  return validLanguages
-    .filter((lang) => lang !== "en")
-    .map((lang) => ({
-      lang: lang,
-    }));
-}
-
 export async function generateMetadata({
   params,
 }: {
