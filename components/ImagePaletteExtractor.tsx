@@ -16,6 +16,7 @@ import tinycolor from "tinycolor2";
 import { useRouter } from "next/navigation";
 import { getTranslation } from "@/translations";
 import Image from "next/image";
+import AdSenseBanner from "./AdSenseBanner";
 
 interface ExtractedColor {
   hex: string;
@@ -310,7 +311,7 @@ export default function ImagePaletteExtractor({
   };
 
   return (
-    <div className="image-palette-extractor position-relative min-vh-100">
+    <div className="image-palette-extractor position-relative">
       <canvas ref={canvasRef} style={{ display: "none" }} />
 
       {/* Toast Notification */}
@@ -632,6 +633,7 @@ export default function ImagePaletteExtractor({
           </Col>
         </Row>
       )}
+      <AdSenseBanner />
     </div>
   );
 }

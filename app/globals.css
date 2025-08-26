@@ -69,6 +69,10 @@ small.text-muted {
   color: var(--foreground) !important;
 }
 
+.image-palette-extractor {
+  min-height: calc(100vh - 348px) !important;
+}
+
 .image-palette-extractor .palette-placeholder svg,
 .image-palette-extractor .palette-placeholder svg * {
   fill: var(--foreground) !important;
