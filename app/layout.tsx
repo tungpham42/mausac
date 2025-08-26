@@ -30,7 +30,7 @@ export default async function RootLayout({
 
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
-      <html lang={initialLanguage} suppressHydrationWarning>
+      <html lang={initialLanguage}>
         <head>
           <Script
             id="adsense-script"
@@ -40,7 +40,7 @@ export default async function RootLayout({
             crossOrigin="anonymous"
           />
         </head>
-        <body suppressHydrationWarning={true}>
+        <body>
           <div className="d-flex justify-content-start gap-0">
             <MainBrandLogo
               logoSrc="/soft-logo.webp"
