@@ -175,7 +175,7 @@ interface Translations {
     toolsLabel: string;
     colorPicker: string;
     colorMixer: string;
-    imagePaletteExtractor?: string;
+    imagePaletteExtractor: string;
   };
   metadata: Metadata;
 }
@@ -2170,6 +2170,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "도구",
       colorPicker: "색상 선택기",
       colorMixer: "색상 혼합기",
+      imagePaletteExtractor: "이미지 팔레트 추출기",
     },
     metadata: {
       home: {
@@ -2423,6 +2424,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Ferramentas",
       colorPicker: "Seletor de cores",
       colorMixer: "Misturador de cores",
+      imagePaletteExtractor: "Extrator de paleta de imagens",
     },
     metadata: {
       home: {
@@ -2689,6 +2691,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Инструменты",
       colorPicker: "Пипетка",
       colorMixer: "Смеситель цветов",
+      imagePaletteExtractor: "Извлекатель палитры изображений",
     },
     metadata: {
       home: {
@@ -2941,6 +2944,7 @@ export const translations: { [key: string]: Translations } = {
       toolsLabel: "Herramientas",
       colorPicker: "Selector de color",
       colorMixer: "Mezclador de colores",
+      imagePaletteExtractor: "Extractor de paleta de imágenes",
     },
     metadata: {
       home: {
