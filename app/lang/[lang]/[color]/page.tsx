@@ -146,6 +146,30 @@ export default async function ColorPage({
     colorName || hexClean
   }`;
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: (
+      getTranslation(language, "metadata.colorPage.title") as string
+    ).replace("<hex>", formats.hex),
+    description: (
+      getTranslation(language, "metadata.colorPage.description") as string
+    ).replace("<hex>", formats.hex),
+    url: baseUrl,
+    inLanguage: language,
+    publisher: {
+      "@type": "Organization",
+      name: "Soft.io.vn",
+      url: "https://soft.io.vn",
+    },
+    image: {
+      "@type": "ImageObject",
+      url: `https://singlecolorimage.com/get/${hexClean}/1200x630`,
+      width: 1200,
+      height: 630,
+    },
+  };
+
   function parseRgbString(rgbString: string) {
     const match = rgbString.match(/\d+/g);
     if (!match) return { r: 0, g: 0, b: 0 };
@@ -162,6 +186,10 @@ export default async function ColorPage({
 
   return (
     <LanguageProvider initialLanguage={language}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container mt-0">
         <TopMenu />
         <h1 className="mb-4 text-center">

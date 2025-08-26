@@ -61,8 +61,38 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ColorMixerPage() {
   const language = "en";
+  const hostUrl = await getHostUrl();
+  const baseUrl = `${hostUrl}/color-mixer`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    name: getTranslation(language, "metadata.colorMixer.title") as string,
+    description: getTranslation(
+      language,
+      "metadata.colorMixer.description"
+    ) as string,
+    url: baseUrl,
+    applicationCategory: "DesignApplication",
+    operatingSystem: "Web Browser",
+    inLanguage: language,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Soft.io.vn",
+      url: "https://soft.io.vn",
+    },
+  };
+
   return (
     <LanguageProvider initialLanguage={language}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="container mt-0">
         <TopMenu />
         <h1 className="mb-4 text-center">

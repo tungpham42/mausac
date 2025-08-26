@@ -63,5 +63,32 @@ export default async function HomePage({
   const language = validLanguages.includes(paramsResolved.lang)
     ? paramsResolved.lang
     : "en";
-  return <Home language={language} />;
+  const hostUrl = await getHostUrl();
+  const baseUrl = language === "en" ? hostUrl : `${hostUrl}/${language}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: getTranslation(language, "metadata.home.title") as string,
+    description: getTranslation(
+      language,
+      "metadata.home.description"
+    ) as string,
+    url: baseUrl,
+    inLanguage: language,
+    publisher: {
+      "@type": "Organization",
+      name: "Soft.io.vn",
+      url: "https://soft.io.vn",
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Home language={language} />
+    </>
+  );
 }

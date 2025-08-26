@@ -61,7 +61,7 @@ export async function generateMetadata({
       url: baseUrl,
       images: [
         {
-          url: `${hostUrl}/image-palette-extractor-1200x630.jpg`,
+          url: `${hostUrl}/image-palette-extractor-1200x619.jpg`,
           width: 1200,
           height: 630,
           alt: getTranslation(
@@ -83,13 +83,20 @@ export default async function ImagePaletteExtractorLangPage({
 }: PageProps) {
   const { lang } = await params;
   const language = validLanguages.includes(lang) ? lang : "en";
+  const hostUrl = await getHostUrl();
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
-    name: "Image Palette Extractor",
-    description: "Free online tool to extract color palettes from images",
-    url: `${await getHostUrl()}/${lang}/image-palette-extractor`,
+    name: getTranslation(
+      language,
+      "metadata.imagePaletteExtractor.title"
+    ) as string,
+    description: getTranslation(
+      language,
+      "metadata.imagePaletteExtractor.description"
+    ) as string,
+    url: `${hostUrl}/${language}/image-palette-extractor`,
     applicationCategory: "UtilitiesApplication",
     operatingSystem: "Any",
     permissions: "browser",

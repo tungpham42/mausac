@@ -59,8 +59,7 @@ export default async function ImagePaletteExtractorPage() {
   const language = "en";
   const hostUrl = await getHostUrl();
 
-  // Structured data for SEO
-  const structuredData = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     name: "Image Palette Extractor",
@@ -83,13 +82,18 @@ export default async function ImagePaletteExtractorPage() {
       "Download color palette as JSON",
       "Copy individual or all colors",
     ],
+    publisher: {
+      "@type": "Organization",
+      name: "Soft.io.vn",
+      url: "https://soft.io.vn",
+    },
   };
 
   return (
     <LanguageProvider initialLanguage={language}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container mt-0">
         <TopMenu />
