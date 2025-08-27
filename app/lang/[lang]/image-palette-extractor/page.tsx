@@ -62,7 +62,7 @@ export async function generateMetadata({
       url: baseUrl,
       images: [
         {
-          url: `${hostUrl}/image-palette-extractor-1200x619.jpg`,
+          url: `${hostUrl}/image-palette-extractor-1200x630.jpg`,
           width: 1200,
           height: 630,
           alt: getTranslation(
