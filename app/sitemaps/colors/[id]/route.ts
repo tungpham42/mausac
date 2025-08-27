@@ -175,7 +175,7 @@ export async function GET(
 
   const hostUrl = await getHostUrl();
   const now = new Date().toISOString();
-  const lastMod = "2025-08-21";
+  const lastMod = now.split("T")[0]; // Format as YYYY-MM-DD
   const start = (idNum - 1) * MAX_PER_SITEMAP;
   const end = Math.min(start + MAX_PER_SITEMAP, TOTAL_COLORS);
 
