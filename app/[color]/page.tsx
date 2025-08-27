@@ -35,6 +35,7 @@ import {
 import { Ratio } from "react-bootstrap";
 import validLanguages from "@/languages";
 import TopMenu from "@/components/TopMenu";
+import Script from "next/script";
 
 export async function generateMetadata({
   params,
@@ -173,8 +174,10 @@ export default async function ColorPage({
 
   return (
     <LanguageProvider initialLanguage={language}>
-      <script
+      <Script
+        id="json-ld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container mt-0">

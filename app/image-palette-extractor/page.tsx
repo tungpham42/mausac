@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
 import validLanguages from "@/languages";
 import TopMenu from "@/components/TopMenu";
+import Script from "next/script";
 
 export async function generateMetadata(): Promise<Metadata> {
   const hostUrl = await getHostUrl();
@@ -91,8 +92,10 @@ export default async function ImagePaletteExtractorPage() {
 
   return (
     <LanguageProvider initialLanguage={language}>
-      <script
+      <Script
+        id="json-ld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container mt-0">

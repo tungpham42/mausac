@@ -493,7 +493,7 @@ export default function ImagePaletteExtractor({
             </Card>
           ) : (
             <Card className="h-100 d-flex align-items-center justify-content-center">
-              <Card.Body className="text-center text-muted palette-placeholder">
+              <Card.Body className="text-center text-muted palette-placeholder align-content-center">
                 <FontAwesomeIcon icon={faImage} size="3x" className="mb-3" />
                 <h5>{t("imagePaletteExtractor.noImageSelected")}</h5>
                 <p>{t("imagePaletteExtractor.uploadPrompt")}</p>

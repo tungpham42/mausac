@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { getHostUrl } from "@/utils/getHostUrl";
 import { getTranslation } from "@/translations";
 import validLanguages from "@/languages";
+import Script from "next/script";
 
 export async function generateMetadata({
   params,
@@ -84,8 +85,10 @@ export default async function HomePage({
 
   return (
     <>
-      <script
+      <Script
+        id="json-ld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Home language={language} />

@@ -5,6 +5,7 @@ import { getHostUrl } from "@/utils/getHostUrl";
 import validLanguages from "@/languages";
 import TopMenu from "@/components/TopMenu";
 import { getTranslation } from "@/translations";
+import Script from "next/script";
 
 interface PageProps {
   params: Promise<{ lang: string }>;
@@ -115,8 +116,10 @@ export default async function ImagePaletteExtractorLangPage({
 
   return (
     <LanguageProvider initialLanguage={language}>
-      <script
+      <Script
+        id="json-ld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <div className="container mt-0">
