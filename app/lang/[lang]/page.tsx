@@ -68,14 +68,21 @@ export default async function HomePage({
   const baseUrl = language === "en" ? hostUrl : `${hostUrl}/${language}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     name: getTranslation(language, "metadata.home.title") as string,
     description: getTranslation(
       language,
       "metadata.home.description"
     ) as string,
     url: baseUrl,
+    applicationCategory: "DesignApplication",
+    operatingSystem: "Web Browser",
     inLanguage: language,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
     publisher: {
       "@type": "Organization",
       name: "Soft.io.vn",

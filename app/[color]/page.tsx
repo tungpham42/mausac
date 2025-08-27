@@ -136,7 +136,7 @@ export default async function ColorPage({
 
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
+    "@type": "WebApplication",
     name: (
       getTranslation(language, "metadata.colorPage.title") as string
     ).replace("<hex>", colorHex),
@@ -145,6 +145,13 @@ export default async function ColorPage({
     ).replace("<hex>", colorHex),
     url: baseUrl,
     inLanguage: language,
+    applicationCategory: "DesignApplication",
+    operatingSystem: "Web Browser",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
     publisher: {
       "@type": "Organization",
       name: "Soft.io.vn",
