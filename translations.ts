@@ -145,6 +145,8 @@ interface Translations {
     brown: string;
     magenta: string;
     viewDetails: string;
+    videoTitle: string;
+    videoDescription: string;
     youtubeCode: string;
     colorMixerTitle: string;
     mixColor1: string;
@@ -296,6 +298,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Nâu",
       magenta: "Cánh sen",
       viewDetails: "Xem chi tiết",
+      videoTitle: "Hướng dẫn sử dụng công cụ tra cứu mã màu",
+      videoDescription:
+        "Video hướng dẫn cách sử dụng công cụ tra cứu mã màu: nhập tên màu hoặc mã HEX để tìm kiếm và khám phá các biến thể màu sắc.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Trộn màu",
       mixColor1: "Màu thứ nhất",
@@ -562,6 +567,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Brown",
       magenta: "Magenta",
       viewDetails: "View Details",
+      videoTitle: "How to Use the Color Lookup Tool",
+      videoDescription:
+        "A tutorial video on how to use the color lookup tool: enter a color name or HEX code to search and explore color variations.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Color Mixer",
       mixColor1: "First Color",
@@ -849,6 +857,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "棕色",
       magenta: "品红色",
       viewDetails: "查看详情",
+      videoTitle: "如何使用颜色查询工具",
+      videoDescription:
+        "关于如何使用颜色查询工具的教程视频：输入颜色名称或HEX代码进行搜索并探索颜色变化。",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "颜色混合器",
       mixColor1: "第一种颜色",
@@ -1106,6 +1117,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Marron",
       magenta: "Magenta",
       viewDetails: "Voir les détails",
+      videoTitle: "Comment utiliser l'outil de recherche de couleur",
+      videoDescription:
+        "Une vidéo tutorielle sur l'utilisation de l'outil de recherche de couleur : entrez un nom de couleur ou un code HEX pour rechercher et explorer les variations de couleur.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Mélangeur de couleurs",
       mixColor1: "Première couleur",
@@ -1374,6 +1388,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Braun",
       magenta: "Magenta",
       viewDetails: "Details anzeigen",
+      videoTitle: "So verwenden Sie das Farbsuchtool",
+      videoDescription:
+        "Ein Tutorial-Video zur Verwendung des Farbsuchtools: Geben Sie einen Farbnamen oder HEX-Code ein, um zu suchen und Farbvariationen zu erkunden.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Farbmixer",
       mixColor1: "Erste Farbe",
@@ -1625,6 +1642,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Marrone",
       magenta: "Magenta",
       viewDetails: "Visualizza dettagli",
+      videoTitle: "Come utilizzare lo strumento di ricerca colore",
+      videoDescription:
+        "Un video tutorial sull'uso dello strumento di ricerca colore: inserisci un nome di colore o un codice HEX per cercare ed esplorare le variazioni di colore.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Miscelatore di colori",
       mixColor1: "Primo colore",
@@ -1890,6 +1910,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "茶",
       magenta: "マゼンタ",
       viewDetails: "詳細を表示",
+      videoTitle: "カラー検索ツールの使い方",
+      videoDescription:
+        "カラー検索ツールの使用方法に関するチュートリアルビデオ：色の名前またはHEXコードを入力して検索し、色のバリエーションを探索します。",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "カラー混合器",
       mixColor1: "最初の色",
@@ -2139,6 +2162,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "갈색",
       magenta: "마젠타",
       viewDetails: "자세히 보기",
+      videoTitle: "색상 검색 도구 사용법",
+      videoDescription:
+        "색상 검색 도구 사용법에 대한 튜토리얼 비디오: 색상 이름 또는 HEX 코드를 입력하여 검색하고 색상 변화를 탐색합니다.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "색상 혼합기",
       mixColor1: "첫 번째 색상",
@@ -2393,6 +2419,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Marrom",
       magenta: "Magenta",
       viewDetails: "Ver detalhes",
+      videoTitle: "Como usar a ferramenta de pesquisa de cores",
+      videoDescription:
+        "Vídeo tutorial sobre como usar a ferramenta de pesquisa de cores: digite um nome de cor ou código HEX para pesquisar e explorar variações de cores.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Misturador de cores",
       mixColor1: "Primeira cor",
@@ -2660,6 +2689,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Коричневый",
       magenta: "Маджента",
       viewDetails: "Посмотреть подробности",
+      videoTitle: "Как использовать инструмент поиска цвета",
+      videoDescription:
+        "Учебное видео о том, как использовать инструмент поиска цвета: введите название цвета или HEX-код для поиска и изучения вариаций цвета.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Смеситель цветов",
       mixColor1: "Первый цвет",
@@ -2913,6 +2945,9 @@ export const translations: { [key: string]: Translations } = {
       brown: "Marrón",
       magenta: "Magenta",
       viewDetails: "Ver detalles",
+      videoTitle: "Cómo usar la herramienta de búsqueda de colores",
+      videoDescription:
+        "Video tutorial sobre cómo usar la herramienta de búsqueda de colores: introduce un nombre de color o código HEX para buscar y explorar variaciones de colores.",
       youtubeCode: "ULDRwd5dLLg",
       colorMixerTitle: "Mezclador de colores",
       mixColor1: "Primer color",

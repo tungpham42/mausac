@@ -38,10 +38,6 @@ export default function Home({ language }: { language: string }) {
             publisher: {
               "@type": "Organization",
               name: "Soft.io.vn",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://soft.io.vn/logo.png",
-              },
             },
           }),
         }}

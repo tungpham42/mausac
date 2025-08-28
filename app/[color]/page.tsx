@@ -196,8 +196,8 @@ export default async function ColorPage({
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "VideoObject",
-            name: getTranslation(language, "colorPage.videoTitle"),
-            description: getTranslation(language, "colorPage.videoDescription"),
+            name: getTranslation(language, "home.videoTitle"),
+            description: getTranslation(language, "home.videoDescription"),
             thumbnailUrl: `https://img.youtube.com/vi/${getTranslation(
               language,
               "home.youtubeCode"
@@ -214,10 +214,6 @@ export default async function ColorPage({
             publisher: {
               "@type": "Organization",
               name: "Soft.io.vn",
-              logo: {
-                "@type": "ImageObject",
-                url: "https://soft.io.vn/logo.png",
-              },
             },
           }),
         }}
