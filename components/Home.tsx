@@ -15,6 +15,34 @@ export default function Home({ language }: { language: string }) {
 
   return (
     <Container className="mt-0">
+      {/* VideoObject schema cho đúng video đang nhúng */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: t("home.videoTitle"),
+            description: t("home.videoDescription"),
+            thumbnailUrl: `https://img.youtube.com/vi/${t(
+              "home.youtubeCode"
+            )}/hqdefault.jpg`,
+            uploadDate: "2023-01-01", // Update to actual upload date if known
+            embedUrl: `https://www.youtube.com/embed/${t("home.youtubeCode")}`,
+            contentUrl: `https://www.youtube.com/watch?v=${t(
+              "home.youtubeCode"
+            )}`,
+            publisher: {
+              "@type": "Organization",
+              name: "Soft.io.vn",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://soft.io.vn/logo.png",
+              },
+            },
+          }),
+        }}
+      />
       <TopMenu />
       <h1 className="mb-4 text-center">{t("home.title")}</h1>
       <p className="text-center">{t("home.description")}</p>

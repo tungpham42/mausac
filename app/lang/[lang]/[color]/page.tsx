@@ -200,6 +200,41 @@ export default async function ColorPage({
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      {/* VideoObject schema cho đúng video đang nhúng */}
+      <Script
+        id="video-json-ld"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "VideoObject",
+            name: getTranslation(language, "colorPage.videoTitle"),
+            description: getTranslation(language, "colorPage.videoDescription"),
+            thumbnailUrl: `https://img.youtube.com/vi/${getTranslation(
+              language,
+              "home.youtubeCode"
+            )}/hqdefault.jpg`,
+            uploadDate: "2023-01-01", // Update to actual upload date if known
+            embedUrl: `https://www.youtube.com/embed/${getTranslation(
+              language,
+              "home.youtubeCode"
+            )}`,
+            contentUrl: `https://www.youtube.com/watch?v=${getTranslation(
+              language,
+              "home.youtubeCode"
+            )}`,
+            publisher: {
+              "@type": "Organization",
+              name: "Soft.io.vn",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://soft.io.vn/logo.png",
+              },
+            },
+          }),
+        }}
+      />
       <div className="container mt-0">
         <TopMenu />
         <h1 className="mb-4 text-center">
