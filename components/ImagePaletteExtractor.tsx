@@ -480,10 +480,6 @@ export default function ImagePaletteExtractor({
                       size="sm"
                       onClick={clearImage}
                       className="position-absolute top-0 end-0 m-2"
-                      style={{
-                        borderColor: "#dc3545",
-                        color: "#dc3545",
-                      }}
                     >
                       <FontAwesomeIcon icon={faTrash} />
                     </Button>
