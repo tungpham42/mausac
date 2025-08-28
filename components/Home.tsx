@@ -9,6 +9,7 @@ import Link from "next/link";
 import { hexToRgba } from "@/utils/colorUtils";
 import AdSenseBanner from "./AdSenseBanner";
 import TopMenu from "./TopMenu";
+import Script from "next/script";
 
 export default function Home({ language }: { language: string }) {
   const { t } = useContext(LanguageContext);
@@ -16,8 +17,10 @@ export default function Home({ language }: { language: string }) {
   return (
     <Container className="mt-0">
       {/* VideoObject schema cho đúng video đang nhúng */}
-      <script
+      <Script
+        id="video-json-ld"
         type="application/ld+json"
+        strategy="afterInteractive"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
