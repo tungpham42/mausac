@@ -202,7 +202,7 @@ export default async function ColorPage({
               language,
               "home.youtubeCode"
             )}/hqdefault.jpg`,
-            uploadDate: "2023-01-01", // Update to actual upload date if known
+            uploadDate: "2025-07-09T00:00:00+07:00", // Ngày công chiếu thật, chuẩn ISO 8601
             embedUrl: `https://www.youtube.com/embed/${getTranslation(
               language,
               "home.youtubeCode"

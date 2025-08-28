@@ -30,7 +30,7 @@ export default function Home({ language }: { language: string }) {
             thumbnailUrl: `https://img.youtube.com/vi/${t(
               "home.youtubeCode"
             )}/hqdefault.jpg`,
-            uploadDate: "2023-01-01", // Update to actual upload date if known
+            uploadDate: "2025-07-09T00:00:00+07:00",
             embedUrl: `https://www.youtube.com/embed/${t("home.youtubeCode")}`,
             contentUrl: `https://www.youtube.com/watch?v=${t(
               "home.youtubeCode"
