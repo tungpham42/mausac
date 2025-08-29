@@ -9,13 +9,8 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       {
         userAgent: "*",
         allow: "/",
-        disallow: "/private/",
-      },
-      {
-        userAgent: "facebookexternalhit",
-        allow: "/",
       },
     ],
-    sitemap: `${hostUrl}/sitemap.xml`,
+    sitemap: [`${hostUrl}/sitemap.xml`], // ensure it's an array (supports multiple)
   };
 }
