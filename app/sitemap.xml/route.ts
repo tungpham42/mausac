@@ -1,59 +1,88 @@
-import { getHostUrl } from "@/utils/getHostUrl";
 import { NextResponse } from "next/server";
+import { getHostUrl } from "@/utils/getHostUrl";
+import validLanguages from "@/languages";
+import cssColors from "css-colors";
 
-const TOTAL_COLORS = 16777216;
-const MAX_PER_SITEMAP = 4096;
-const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
+const CACHE_HEADER = "public, s-maxage=604800, stale-while-revalidate=86400";
 
-let cachedXml: string | null = null;
-let cacheTimestamp: number = 0;
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours
+// Cache individual sitemaps
+const sitemapCache = new Map<string, { xml: string; timestamp: number }>();
+const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
 
-// Pre-compute sitemap entries
-const precomputedSitemapEntries = (() => {
-  const entries: string[] = new Array(SITEMAP_COUNT + 1);
-  const lastMod = new Date().toISOString().split("T")[0];
-  const template = `  <sitemap>\n<loc>{HOST_URL}/sitemaps/colors/{ID}.xml</loc>\n<lastmod>${lastMod}</lastmod>\n</sitemap>`;
+// Template for URL entries to avoid repetitive string building
+const URL_TEMPLATE = (loc: string, lastMod: string) =>
+  `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`;
 
-  for (let i = 0; i <= SITEMAP_COUNT; i++) {
-    entries[i] = template.replace("{ID}", i.toString());
+async function generateRootSitemap(
+  hostUrl: string,
+  lastMod: string
+): Promise<string> {
+  const cacheKey = `root-${lastMod}`;
+  const cached = sitemapCache.get(cacheKey);
+
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.xml;
   }
-  return entries;
-})();
-
-async function generateSitemapIndex() {
-  const hostUrl = await getHostUrl();
 
   const lines: string[] = [
     `<?xml version="1.0" encoding="UTF-8"?>`,
     `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>`,
-    `<!-- Sitemap Index for Color Pages -->`,
-    `<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    URL_TEMPLATE(`${hostUrl}`, lastMod),
   ];
 
-  // Use precomputed entries with host URL replacement
-  for (let i = 0; i <= SITEMAP_COUNT; i++) {
-    lines.push(precomputedSitemapEntries[i].replace("{HOST_URL}", hostUrl));
+  // Homepage URLs for all languages
+  for (const lang of validLanguages) {
+    if (lang !== "en") {
+      lines.push(URL_TEMPLATE(`${hostUrl}/${lang}`, lastMod));
+    }
   }
 
-  lines.push(`</sitemapindex>`, `<!-- End of Sitemap Index -->`);
+  // Color mixer URLs
+  for (const lang of validLanguages) {
+    const loc =
+      lang === "en"
+        ? `${hostUrl}/color-mixer`
+        : `${hostUrl}/${lang}/color-mixer`;
+    lines.push(URL_TEMPLATE(loc, lastMod));
+  }
 
-  return lines.join("\n");
+  // Image extractor URLs
+  for (const lang of validLanguages) {
+    const loc =
+      lang === "en"
+        ? `${hostUrl}/image-palette-extractor`
+        : `${hostUrl}/${lang}/image-palette-extractor`;
+    lines.push(URL_TEMPLATE(loc, lastMod));
+  }
+
+  // CSS color URLs (pre-compute language variations)
+  for (const color of cssColors) {
+    for (const lang of validLanguages) {
+      const loc =
+        lang === "en" ? `${hostUrl}/${color}` : `${hostUrl}/${lang}/${color}`;
+      lines.push(URL_TEMPLATE(loc, lastMod));
+    }
+  }
+
+  lines.push(`</urlset>`);
+  const xml = lines.join("\n");
+
+  sitemapCache.set(cacheKey, { xml, timestamp: Date.now() });
+  return xml;
 }
 
 export async function GET() {
-  const now = Date.now();
+  const hostUrl = await getHostUrl();
+  const lastMod = new Date().toISOString().split("T")[0];
 
-  if (!cachedXml || now - cacheTimestamp > CACHE_TTL) {
-    cachedXml = await generateSitemapIndex();
-    cacheTimestamp = now;
-  }
+  const xml = await generateRootSitemap(hostUrl, lastMod);
 
-  return new NextResponse(cachedXml, {
+  return new NextResponse(xml, {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      "Cache-Control": "public, s-maxage=86400, stale-while-revalidate",
+      "Cache-Control": CACHE_HEADER,
     },
   });
 }
