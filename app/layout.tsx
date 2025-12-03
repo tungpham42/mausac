@@ -25,10 +25,6 @@ export default async function RootLayout({
     ? langFromHeader.toLowerCase()
     : "en";
 
-  console.log("resolvedParams:", resolvedParams);
-  console.log("langFromHeader:", langFromHeader);
-  console.log("initialLanguage:", initialLanguage);
-
   return (
     <LanguageProvider initialLanguage={initialLanguage}>
       <html lang={initialLanguage}>
