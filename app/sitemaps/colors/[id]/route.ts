@@ -1,168 +1,126 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
 import validLanguages from "@/languages";
+import cssColors from "css-colors";
 
 const TOTAL_COLORS = 16777216;
 const MAX_PER_SITEMAP = 4096;
 const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
 
-const cssColors = [
-  "aliceblue",
-  "antiquewhite",
-  "aqua",
-  "aquamarine",
-  "azure",
-  "beige",
-  "bisque",
-  "black",
-  "blanchedalmond",
-  "blue",
-  "blueviolet",
-  "brown",
-  "burlywood",
-  "cadetblue",
-  "chartreuse",
-  "chocolate",
-  "coral",
-  "cornflowerblue",
-  "cornsilk",
-  "crimson",
-  "cyan",
-  "darkblue",
-  "darkcyan",
-  "darkgoldenrod",
-  "darkgray",
-  "darkgreen",
-  "darkgrey",
-  "darkkhaki",
-  "darkmagenta",
-  "darkolivegreen",
-  "darkorange",
-  "darkorchid",
-  "darkred",
-  "darksalmon",
-  "darkseagreen",
-  "darkslateblue",
-  "darkslategray",
-  "darkslategrey",
-  "darkturquoise",
-  "darkviolet",
-  "deeppink",
-  "deepskyblue",
-  "dimgray",
-  "dimgrey",
-  "dodgerblue",
-  "firebrick",
-  "floralwhite",
-  "forestgreen",
-  "fuchsia",
-  "gainsboro",
-  "ghostwhite",
-  "gold",
-  "goldenrod",
-  "gray",
-  "green",
-  "greenyellow",
-  "grey",
-  "honeydew",
-  "hotpink",
-  "indianred",
-  "indigo",
-  "ivory",
-  "khaki",
-  "lavender",
-  "lavenderblush",
-  "lawngreen",
-  "lemonchiffon",
-  "lightblue",
-  "lightcoral",
-  "lightcyan",
-  "lightgoldenrodyellow",
-  "lightgray",
-  "lightgreen",
-  "lightgrey",
-  "lightpink",
-  "lightsalmon",
-  "lightseagreen",
-  "lightskyblue",
-  "lightslategray",
-  "lightslategrey",
-  "lightsteelblue",
-  "lightyellow",
-  "lime",
-  "limegreen",
-  "linen",
-  "magenta",
-  "maroon",
-  "mediumaquamarine",
-  "mediumblue",
-  "mediumorchid",
-  "mediumpurple",
-  "mediumseagreen",
-  "mediumslateblue",
-  "mediumspringgreen",
-  "mediumturquoise",
-  "mediumvioletred",
-  "midnightblue",
-  "mintcream",
-  "mistyrose",
-  "moccasin",
-  "navajowhite",
-  "navy",
-  "oldlace",
-  "olive",
-  "olivedrab",
-  "orange",
-  "orangered",
-  "orchid",
-  "palegoldenrod",
-  "palegreen",
-  "paleturquoise",
-  "palevioletred",
-  "papayawhip",
-  "peachpuff",
-  "peru",
-  "pink",
-  "plum",
-  "powderblue",
-  "purple",
-  "rebeccapurple",
-  "red",
-  "rosybrown",
-  "royalblue",
-  "saddlebrown",
-  "salmon",
-  "sandybrown",
-  "seagreen",
-  "seashell",
-  "sienna",
-  "silver",
-  "skyblue",
-  "slateblue",
-  "slategray",
-  "slategrey",
-  "snow",
-  "springgreen",
-  "steelblue",
-  "tan",
-  "teal",
-  "thistle",
-  "tomato",
-  "turquoise",
-  "violet",
-  "wheat",
-  "white",
-  "whitesmoke",
-  "yellow",
-  "yellowgreen",
-];
-
-const padHex = (n: number) => n.toString(16).padStart(6, "0").toUpperCase();
-
-// --------------------------------------------
-// CACHE CỨNG: 7 NGÀY – runtime gần bằng 0
-// --------------------------------------------
 const CACHE_HEADER = "public, s-maxage=604800, stale-while-revalidate=86400";
+
+// Cache individual sitemaps
+const sitemapCache = new Map<string, { xml: string; timestamp: number }>();
+const CACHE_TTL = 7 * 24 * 60 * 60 * 1000; // 7 days
+
+// Pre-compute hex values for all colors
+const hexCache = new Array(TOTAL_COLORS);
+for (let i = 0; i < TOTAL_COLORS; i++) {
+  hexCache[i] = i.toString(16).padStart(6, "0").toUpperCase();
+}
+
+// Template for URL entries to avoid repetitive string building
+const URL_TEMPLATE = (loc: string, lastMod: string) =>
+  `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`;
+
+async function generateRootSitemap(
+  hostUrl: string,
+  lastMod: string
+): Promise<string> {
+  const cacheKey = `root-${lastMod}`;
+  const cached = sitemapCache.get(cacheKey);
+
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.xml;
+  }
+
+  const lines: string[] = [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+    URL_TEMPLATE(`${hostUrl}`, lastMod),
+  ];
+
+  // Homepage URLs for all languages
+  for (const lang of validLanguages) {
+    if (lang !== "en") {
+      lines.push(URL_TEMPLATE(`${hostUrl}/${lang}`, lastMod));
+    }
+  }
+
+  // Color mixer URLs
+  for (const lang of validLanguages) {
+    const loc =
+      lang === "en"
+        ? `${hostUrl}/color-mixer`
+        : `${hostUrl}/${lang}/color-mixer`;
+    lines.push(URL_TEMPLATE(loc, lastMod));
+  }
+
+  // Image extractor URLs
+  for (const lang of validLanguages) {
+    const loc =
+      lang === "en"
+        ? `${hostUrl}/image-palette-extractor`
+        : `${hostUrl}/${lang}/image-palette-extractor`;
+    lines.push(URL_TEMPLATE(loc, lastMod));
+  }
+
+  // CSS color URLs (pre-compute language variations)
+  for (const color of cssColors) {
+    for (const lang of validLanguages) {
+      const loc =
+        lang === "en" ? `${hostUrl}/${color}` : `${hostUrl}/${lang}/${color}`;
+      lines.push(URL_TEMPLATE(loc, lastMod));
+    }
+  }
+
+  lines.push(`</urlset>`);
+  const xml = lines.join("\n");
+
+  sitemapCache.set(cacheKey, { xml, timestamp: Date.now() });
+  return xml;
+}
+
+async function generateColorSitemap(
+  hostUrl: string,
+  lastMod: string,
+  start: number,
+  end: number
+): Promise<string> {
+  const cacheKey = `colors-${start}-${end}-${lastMod}`;
+  const cached = sitemapCache.get(cacheKey);
+
+  if (cached && Date.now() - cached.timestamp < CACHE_TTL) {
+    return cached.xml;
+  }
+
+  const lines: string[] = [
+    `<?xml version="1.0" encoding="UTF-8"?>`,
+    `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>`,
+    `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
+  ];
+
+  // Pre-build language URLs for each color
+  for (let i = start; i < end; i++) {
+    const hex = hexCache[i];
+
+    // English version
+    lines.push(URL_TEMPLATE(`${hostUrl}/${hex}`, lastMod));
+
+    // Other languages
+    for (let j = 1; j < validLanguages.length; j++) {
+      const lang = validLanguages[j];
+      lines.push(URL_TEMPLATE(`${hostUrl}/${lang}/${hex}`, lastMod));
+    }
+  }
+
+  lines.push(`</urlset>`);
+  const xml = lines.join("\n");
+
+  sitemapCache.set(cacheKey, { xml, timestamp: Date.now() });
+  return xml;
+}
 
 export async function GET(
   req: NextRequest,
@@ -176,85 +134,17 @@ export async function GET(
   }
 
   const hostUrl = await getHostUrl();
-  const now = new Date().toISOString();
-  const lastMod = now.split("T")[0];
+  const lastMod = new Date().toISOString().split("T")[0];
 
-  // Dùng array push — nhanh hơn concat string rất nhiều
-  const lines: string[] = [];
-
-  lines.push(`<?xml version="1.0" encoding="UTF-8"?>`);
-  lines.push(
-    `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>`
-  );
+  let xml: string;
 
   if (idNum === 0) {
-    // -------- ROOT SITEMAP --------
-    lines.push(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`);
-    lines.push(
-      `  <url><loc>${hostUrl}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-    );
-
-    for (const lang of validLanguages) {
-      if (lang !== "en") {
-        lines.push(
-          `  <url><loc>${hostUrl}/${lang}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-        );
-      }
-    }
-
-    for (const lang of validLanguages) {
-      const loc =
-        lang === "en"
-          ? `${hostUrl}/color-mixer`
-          : `${hostUrl}/${lang}/color-mixer`;
-      lines.push(
-        `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-      );
-    }
-
-    for (const lang of validLanguages) {
-      const loc =
-        lang === "en"
-          ? `${hostUrl}/image-palette-extractor`
-          : `${hostUrl}/${lang}/image-palette-extractor`;
-      lines.push(
-        `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-      );
-    }
-
-    for (const color of cssColors) {
-      for (const lang of validLanguages) {
-        const loc =
-          lang === "en" ? `${hostUrl}/${color}` : `${hostUrl}/${lang}/${color}`;
-        lines.push(
-          `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-        );
-      }
-    }
+    xml = await generateRootSitemap(hostUrl, lastMod);
   } else {
-    // -------- COLOR SITEMAPS --------
     const start = (idNum - 1) * MAX_PER_SITEMAP;
     const end = Math.min(start + MAX_PER_SITEMAP, TOTAL_COLORS);
-
-    lines.push(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`);
-
-    for (let i = start; i < end; i++) {
-      const hex = padHex(i);
-      for (const lang of validLanguages) {
-        const loc =
-          lang === "en" ? `${hostUrl}/${hex}` : `${hostUrl}/${lang}/${hex}`;
-
-        lines.push(
-          `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
-        );
-      }
-    }
+    xml = await generateColorSitemap(hostUrl, lastMod, start, end);
   }
-
-  lines.push(`</urlset>`);
-
-  // Join một lần — cực nhanh
-  const xml = lines.join("\n");
 
   return new NextResponse(xml, {
     status: 200,
