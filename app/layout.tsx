@@ -8,6 +8,7 @@ import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
 import { headers } from "next/headers";
 import validLanguages from "@/languages";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default async function RootLayout({
   children,
@@ -57,6 +58,7 @@ export default async function RootLayout({
           </div>
           {children}
           <Footer />
+          <SpeedInsights />
           <GoogleAnalytics ga_id="G-HHXZSNQ65X" />
           <Script id="update-lang" strategy="afterInteractive">
             {`
