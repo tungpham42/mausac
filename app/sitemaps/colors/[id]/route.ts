@@ -2,13 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { getHostUrl } from "@/utils/getHostUrl";
 import validLanguages from "@/languages";
 
-const TOTAL_COLORS = 16777216; // 256^3 (total possible hex colors)
-const MAX_PER_SITEMAP = 4096; // Maximum URLs per sitemap file
+const TOTAL_COLORS = 16777216;
+const MAX_PER_SITEMAP = 4096;
 const SITEMAP_COUNT = Math.ceil(TOTAL_COLORS / MAX_PER_SITEMAP);
-
-function padHex(n: number) {
-  return n.toString(16).padStart(6, "0").toUpperCase(); // Uppercase for consistency
-}
 
 const cssColors = [
   "aliceblue",
@@ -161,122 +157,110 @@ const cssColors = [
   "yellowgreen",
 ];
 
+const padHex = (n: number) => n.toString(16).padStart(6, "0").toUpperCase();
+
+// --------------------------------------------
+// CACHE CỨNG: 7 NGÀY – runtime gần bằng 0
+// --------------------------------------------
+const CACHE_HEADER = "public, s-maxage=604800, stale-while-revalidate=86400";
+
 export async function GET(
-  req: Request | NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
   const idNum = parseInt(id, 10);
 
-  // Validate sitemap ID
   if (Number.isNaN(idNum) || idNum < 0 || idNum > SITEMAP_COUNT) {
     return new NextResponse("Invalid sitemap ID", { status: 404 });
   }
 
   const hostUrl = await getHostUrl();
   const now = new Date().toISOString();
-  const lastMod = now.split("T")[0]; // Format as YYYY-MM-DD
-  const start = (idNum - 1) * MAX_PER_SITEMAP;
-  const end = Math.min(start + MAX_PER_SITEMAP, TOTAL_COLORS);
+  const lastMod = now.split("T")[0];
 
-  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
-  xml += `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>\n`;
+  // Dùng array push — nhanh hơn concat string rất nhiều
+  const lines: string[] = [];
+
+  lines.push(`<?xml version="1.0" encoding="UTF-8"?>`);
+  lines.push(
+    `<?xml-stylesheet type="text/xsl" href="${hostUrl}/sitemap.xsl"?>`
+  );
 
   if (idNum === 0) {
-    xml += `<!-- Sitemap for Color Home Pages, Color Mixer, and CSS Colors -->\n`;
-    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    xml += `  <!-- Generated ${now} -->\n`;
-    xml += `  <url>\n`;
-    xml += `    <loc>${hostUrl}</loc>\n`;
-    xml += `    <lastmod>${lastMod}</lastmod>\n`;
-    xml += `    <changefreq>monthly</changefreq>\n`;
-    xml += `    <priority>0.8</priority>\n`;
-    xml += `  </url>\n`;
+    // -------- ROOT SITEMAP --------
+    lines.push(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`);
+    lines.push(
+      `  <url><loc>${hostUrl}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+    );
 
-    // Add language home pages
     for (const lang of validLanguages) {
       if (lang !== "en") {
-        xml += `  <url>\n`;
-        xml += `    <loc>${hostUrl}/${lang}</loc>\n`;
-        xml += `    <lastmod>${lastMod}</lastmod>\n`;
-        xml += `    <changefreq>monthly</changefreq>\n`;
-        xml += `    <priority>0.8</priority>\n`;
-        xml += `  </url>\n`;
+        lines.push(
+          `  <url><loc>${hostUrl}/${lang}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+        );
       }
     }
 
-    // Add color-mixer URLs
     for (const lang of validLanguages) {
       const loc =
         lang === "en"
           ? `${hostUrl}/color-mixer`
           : `${hostUrl}/${lang}/color-mixer`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${loc}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
+      lines.push(
+        `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+      );
     }
 
-    // Add image-palette-extractor URLs
     for (const lang of validLanguages) {
       const loc =
         lang === "en"
           ? `${hostUrl}/image-palette-extractor`
           : `${hostUrl}/${lang}/image-palette-extractor`;
-      xml += `  <url>\n`;
-      xml += `    <loc>${loc}</loc>\n`;
-      xml += `    <lastmod>${lastMod}</lastmod>\n`;
-      xml += `    <changefreq>monthly</changefreq>\n`;
-      xml += `    <priority>0.8</priority>\n`;
-      xml += `  </url>\n`;
+      lines.push(
+        `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+      );
     }
 
-    // Add CSS color URLs
     for (const color of cssColors) {
       for (const lang of validLanguages) {
         const loc =
           lang === "en" ? `${hostUrl}/${color}` : `${hostUrl}/${lang}/${color}`;
-        xml += `  <url>\n`;
-        xml += `    <loc>${loc}</loc>\n`;
-        xml += `    <lastmod>${lastMod}</lastmod>\n`;
-        xml += `    <changefreq>monthly</changefreq>\n`;
-        xml += `    <priority>0.8</priority>\n`;
-        xml += `  </url>\n`;
+        lines.push(
+          `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+        );
       }
     }
   } else {
-    xml += `<!-- Sitemap ${id} for Color Pages (Range: ${start} to ${
-      end - 1
-    }) -->\n`;
-    xml += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
-    xml += `  <!-- Generated ${now} -->\n`;
-    xml += `  <!-- Total URLs in this sitemap: ${end - start} -->\n`;
+    // -------- COLOR SITEMAPS --------
+    const start = (idNum - 1) * MAX_PER_SITEMAP;
+    const end = Math.min(start + MAX_PER_SITEMAP, TOTAL_COLORS);
 
-    // Generate URL entries with additional metadata
+    lines.push(`<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`);
+
     for (let i = start; i < end; i++) {
       const hex = padHex(i);
       for (const lang of validLanguages) {
         const loc =
           lang === "en" ? `${hostUrl}/${hex}` : `${hostUrl}/${lang}/${hex}`;
-        xml += `  <url>\n`;
-        xml += `    <loc>${loc}</loc>\n`;
-        xml += `    <lastmod>${lastMod}</lastmod>\n`;
-        xml += `    <changefreq>monthly</changefreq>\n`;
-        xml += `    <priority>0.8</priority>\n`;
-        xml += `  </url>\n`;
+
+        lines.push(
+          `  <url><loc>${loc}</loc><lastmod>${lastMod}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`
+        );
       }
     }
   }
-  xml += `</urlset>\n`;
-  xml += `<!-- End of Sitemap ${id} -->`;
+
+  lines.push(`</urlset>`);
+
+  // Join một lần — cực nhanh
+  const xml = lines.join("\n");
 
   return new NextResponse(xml, {
     status: 200,
     headers: {
       "Content-Type": "application/xml",
-      "Cache-Control": "public, s-maxage=3600, stale-while-revalidate",
+      "Cache-Control": CACHE_HEADER,
     },
   });
 }
