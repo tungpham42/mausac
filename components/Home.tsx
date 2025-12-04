@@ -104,8 +104,7 @@ export default function Home({ language }: { language: string }) {
                 )}`;
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 6px 12px rgba(0, 0, 0, 0.5)";
+                e.currentTarget.style.boxShadow = "var(--shadow)";
               }}
             >
               <div

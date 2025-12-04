@@ -16,7 +16,7 @@ export default function ColorCard({ hex }: { hex: string }) {
         e.currentTarget.style.boxShadow = `0 6px 12px ${hexToRgba(hex, 0.5)}`;
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 6px 12px rgba(0, 0, 0, 0.5)";
+        e.currentTarget.style.boxShadow = "var(--shadow)";
       }}
     >
       <Card.Header>

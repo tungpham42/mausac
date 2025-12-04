@@ -48,7 +48,7 @@ export default function ScreenColorPicker() {
       </ButtonGroup>
 
       {pickedColor && (
-        <Alert variant="info" className="mt-3">
+        <Alert variant="success" className="mt-3">
           <strong>{t("screenColorPicker.selectedColor")}</strong>{" "}
           <Link
             href={

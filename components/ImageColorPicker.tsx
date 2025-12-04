@@ -125,7 +125,7 @@ export default function ImageColorPicker() {
       )}
 
       {pickedColor && (
-        <Alert variant="info" className="mt-3">
+        <Alert variant="success" className="mt-3">
           <strong>{t("imageColorPicker.selectedColor")}</strong>{" "}
           <Link
             href={
